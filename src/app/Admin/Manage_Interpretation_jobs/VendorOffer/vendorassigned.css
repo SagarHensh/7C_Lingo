@@ -1,0 +1,35 @@
+#vendoroff a.grey-btn,
+a.blue-btn {
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#jobdetails.tab-pane .job-section-tab table {
+  background: url(../../../../images/job-detail-watermark.png) no-repeat center
+    center;
+}
+.job-details-tab._fl.sdw.vend_assign_pge ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.job-details-tab._fl.sdw.vend_assign_pge ul.nav-tabs.stb .nav-link {
+  padding: 16px 9px 16px 6px;
+  line-height: 28px;
+}
+.job-details-tab._fl.sdw.vend_assign_pge ul.nav-tabs.stb li {
+  width: auto;
+}
+.dollar {
+  border-top-left-radius: 9px;
+
+  border-bottom-left-radius: 9px;
+}
+.delete-btn {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.unit-cost {
+  height: auto;
+}

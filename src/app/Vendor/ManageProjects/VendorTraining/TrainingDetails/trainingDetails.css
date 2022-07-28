@@ -1,0 +1,43 @@
+.deep_grey_font_color {
+    color: #6f7271;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+  }
+  .sky_font_color {
+    color: #03a0df;
+    font-size: 16px;
+
+    margin-bottom: 0px !important;
+  }
+  .yellow_font_color {
+    color: #cc9f53;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+  }
+  .blue_font_color {
+    color: #035d83;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+  }
+ .green_font_color {
+    color: #6ba565;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+  }
+  .red_font_color { 
+    color: #993921;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+  }
+  .training_file{
+    cursor: pointer;
+    border: 1px solid #c5c5c5;
+    height: 40px;
+    margin-bottom: 0px;
+    padding: 7px !important;
+  }
+  .followup_details{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }

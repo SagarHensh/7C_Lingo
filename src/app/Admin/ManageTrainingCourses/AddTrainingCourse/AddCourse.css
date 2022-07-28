@@ -1,0 +1,22 @@
+.status_btn {
+  align-items: center;
+  display: inline-block;
+  margin-left: 10;
+  top: 25px;
+}
+.duration_field {
+  text-align: center;
+}
+
+/*responsive code*/
+
+@media (max-width:768px){
+
+    .add-traning-cours-savasdraf{
+      width: 90px !important;
+      height: 47px !important;
+      text-align: center;
+      font-size: 9px !important;
+    }
+  
+}

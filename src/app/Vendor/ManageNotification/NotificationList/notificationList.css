@@ -1,0 +1,53 @@
+.notify{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.job_details{
+    font-size: 12px;
+    font-weight: 600;
+}
+.notify_time{
+    font-size: 12px;
+    font-weight: 300;
+}
+.notify_body{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.notify_card{
+    border-radius: 20px;
+    width:75%;
+    margin-bottom: 20px;
+}
+.notify_dot{
+    height: 12px;
+    width: 12px;
+    background-color: #993921;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+   
+}
+.mark_as_read{
+    font-size: 10px;
+    text-decoration: underline;
+    font-style: italic;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.mark_as_read:hover{
+    color:#015D83
+}
+.mark_as_read_disable{
+    font-size: 10px;
+    text-decoration: underline;
+    font-style: italic;
+    padding-top: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.boxTitle{
+    font-size: 17px;
+    color: #005d83;
+    padding: 16px 19px;
+    text-transform: uppercase;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+}

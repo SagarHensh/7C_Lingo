@@ -1,0 +1,90 @@
+.delete-head {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+  font-size: 17px;
+  border-bottom: 1px solid #993921;
+  color: #993921;
+}
+.body-txt {
+  color: #993921;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  width: 100%;
+}
+
+/*service category responsive*/
+
+@media(max-width:768px){
+  
+  #vendor-info-cont{
+    width: 100% !important;
+    position: relative;
+  }
+
+  .vn_frm{
+    width: 100% !important;
+  }
+
+  .table-responsive{
+    width: auto;
+  }
+
+  .tble-row{
+    display: flex;
+    width: 100% !important;
+    text-align: center;
+    justify-content: space-around;
+    float: left;
+    margin-left: 5px !important;
+  }
+
+  .tble-row tr{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+
+  .service-category-edit-del{
+    width: 17px !important;
+    height: 17px !important;
+    flex-direction: row;
+    position: relative;
+  }
+
+  .serv-cat-edit-btn{
+    position: absolute;
+    top: 9px !important;
+    left: -5px !important;
+  }
+
+  .serv-cat-del-btn{
+    position: absolute;
+    top: 9px !important;
+    left: 3px !important;
+  }
+
+ #service-categ-botm-tabsort{
+   display: flex;
+   flex-direction: column;
+   margin-left: 102px !important;
+ }
+
+ .service-categ-botm-disp-text{
+   margin-top: 10px !important;
+ }
+
+  #one-text-td fieldset{
+    margin-left: -20px !important;
+  }
+
+  #date-td{
+    margin-left: -25px !important;
+    width: 13px;
+  }
+
+}
+

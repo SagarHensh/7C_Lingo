@@ -1,0 +1,80 @@
+import React, { Component } from "react";
+import "./App.scss";
+import Track from "./Track";
+
+class Participant extends Component {
+  constructor(props) {
+    super(props);
+
+    const existingPublications = Array.from(
+      this.props.participant.tracks.values()
+    );
+    const existingTracks = existingPublications.map(
+      (publication) => publication.track
+    );
+    const nonNullTracks = existingTracks.filter((track) => track !== null);
+
+    this.state = {
+      tracks: nonNullTracks,
+    };
+
+    // this.eventClick = this.eventClick.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.props.localParticipant) {
+      this.props.participant.on("trackSubscribed", (track) =>
+        this.addTrack(track)
+      );
+    }
+  }
+  eventuClick() {
+    this.props.getParticipant();
+  }
+  addTrack(track) {
+    this.setState({
+      tracks: [...this.state.tracks, track],
+    });
+  }
+
+  render() {
+    return (
+      <>
+        {this.props.dominantParticpant === "true" ? (
+          <>
+            <div className="participant" id={this.props.participant.identity}>
+              <div className="identity-text">
+                {this.props.participant.identity}
+              </div>
+              {this.state.tracks.map((track) => (
+                <Track key={track} filter={this.state.filter} track={track} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className="participant-each"
+              id={this.props.participant.identity}
+              onClick={() => this.eventuClick()}
+            >
+              <div className="identity-text">
+                {this.props.participant.identity}
+              </div>
+              {this.state.tracks.map((track) => (
+                <Track
+                  key={track}
+                  filter={this.state.filter}
+                  track={track}
+                  identity={this.props.participant.identity}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </>
+    );
+  }
+}
+
+export default Participant;

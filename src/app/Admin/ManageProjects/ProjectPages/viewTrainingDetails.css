@@ -1,0 +1,25 @@
+#Document .tblt td a.btns{
+    color: #fff;
+    padding: 5px 6px;
+    border-radius: 6px;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    text-decoration: none;
+    }
+    #Document .tblt td a{text-decoration: none;}
+    #Document .tblt td a.btns.btn-green{background: #65A57C;}
+    #Document .tblt td a.btns.btn-blue{background: #00A0DF;}
+    #Document .tblt td a.btns.btn-drk-blue{background: #005D83;}
+    .payblercble .job-details-tab ul.nav-tabs.stb li {
+        width: 16.66%;
+    }
+    .actn-pr {
+        display: flex;
+    }
+    .actn-pr a{
+        margin: 0 2px;
+    }
+    .acc_payable h3{font-size: 16px; padding-bottom: 0px;}
+    .acc_payable{padding-bottom: 50px; overflow: hidden;}
+    .acc_payable:nth-child(2){padding-bottom: 0;};

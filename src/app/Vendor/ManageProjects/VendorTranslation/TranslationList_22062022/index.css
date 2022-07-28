@@ -1,0 +1,30 @@
+.rbc-current-time-indicator {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    height: 2px;
+    right: 0;
+    background-color:green !important;
+    pointer-events: none;
+}
+
+.popover {
+    /* top: 71px !important; */
+    left: -80px !important;
+    /* right: 10px; */
+}
+
+
+.verificaiton-doc-tab.venProject {
+    margin-top: 0;
+  }
+  .verificaiton-doc-tab.venProject ul {
+    width: 100%;
+  }
+  .verificaiton-doc-tab.venProject ul li {
+    width: 25%;
+    float: left;
+    height: 39px;
+    line-height: 13px;
+    padding-top: 13px !important;
+  }

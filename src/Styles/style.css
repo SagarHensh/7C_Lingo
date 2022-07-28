@@ -1,0 +1,1157 @@
+.container {
+  padding: 2% 1% 2% 1% !important;
+}
+.content-header {
+  padding: 1.5rem 3.5rem !important;
+
+  background-color: white !important;
+}
+.mainHead {
+  display: flex;
+}
+.content-wrapper {
+  margin-left: 305px !important;
+  margin-top: 80px !important;
+}
+.main-header {
+  overflow-x: hidden;
+  margin-left: 0% !important;
+}
+.navbar {
+  overflow-x: hidden !important;
+}
+/* ............sideBar................................ */
+
+.sideMenu {
+  padding: 10%;
+  border-bottom: 0.5px solid white;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* .........requestcontact............... */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 0.4375em !important;
+}
+.arrowBtn {
+  border: none;
+  background-color: white;
+}
+.paginate {
+  display: flex;
+  flex-direction: row;
+  border: 0.5px solid grey;
+  /* width: 15%; */
+  padding: 5px;
+  border-radius: 10%;
+}
+.paginateInput {
+  border: none;
+  width: 35%;
+  outline: none;
+  text-align: center;
+}
+/* ................client contact details............ */
+.clientInputField {
+  display: flex;
+  flex-direction: column;
+}
+.errMsg {
+  color: red;
+  font-size: 11px;
+}
+/* ...............remove spiner in input type number.................. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* ..............vendortable head................ */
+.vendortableHead {
+  width: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.vendortableBody {
+  width: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+/* .............tablehead btns.................. */
+.clienttableHead {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.clienttableBody {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.tableHead {
+  border-top: 0.5px solid grey;
+  border-bottom: 0.5px solid grey;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.headBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 120px;
+}
+.headBtn1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 60px;
+  justify-content: center;
+}
+.headBtn2 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn3 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn4 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn5 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.headBtn6 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn7 {
+  width: 180px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn8 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn9 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headBtn10 {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.statusBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  padding: 5px;
+  border-radius: 10px;
+}
+.btns {
+  display: flex;
+  flex-direction: column;
+}
+.imageDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: center;
+  padding: 10%;
+}
+/* .............................vendor verified doc........................... */
+.docBtnTab {
+  color: red;
+}
+.tabBtn1 {
+  width: 40%;
+  font-size: 12px;
+  color: grey;
+  border: none;
+  background-color: white;
+  border-radius: 10px 0px 0px 10px;
+}
+.tabBtn2 {
+  width: 40%;
+  font-size: 12px;
+  color: grey;
+  border: none;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  background-color: white;
+}
+.tabBtn3 {
+  width: 40%;
+  font-size: 12px;
+  color: grey;
+  border: none;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+.mainTab {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  border-radius: 10px;
+  padding: 1px;
+  border: 1px solid grey;
+}
+.activeTab1 {
+  width: 40%;
+  font-size: 12px;
+  color: white;
+  border: none;
+  background-color: blue;
+  border-radius: 10px 0px 0px 10px;
+}
+.activeTab2 {
+  width: 40%;
+  font-size: 12px;
+  color: white;
+  border: none;
+  background-color: blue;
+}
+.activeTab3 {
+  width: 40%;
+  font-size: 12px;
+  color: white;
+  border: none;
+  background-color: blue;
+  border-radius: 0px 10px 10px 0px;
+}
+/* ................vendor doc table header.............................. */
+/* ..............contract header............ */
+.vendorContracthead {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.vendorbody {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+}
+.vendorheadaction {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  align-items: center;
+}
+/* ............idendification head............ */
+.vendorIdentifyhead {
+  width: 156px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.vendorIdentifybody {
+  width: 156px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+}
+.vendorIdentifyheadaction {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  align-items: center;
+}
+/* .............education header......... */
+.vendorEducationyhead {
+  width: 175px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.vendorEducationbody {
+  width: 175px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+}
+.vendorEducationheadaction {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  align-items: center;
+}
+/* .................vendor detail page..................... */
+.vendorDetailhead {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.vendorDetailbody {
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 11px;
+  align-items: center;
+}
+.vendorDetailheadaction {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  align-items: center;
+}
+/* ..................department list page...................... */
+.departmentListhead {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.departmentListbody {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 14px;
+  align-items: center;
+}
+.departmentstatusbody {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  align-items: center;
+}
+/* ..............clientdepartment............... */
+
+.clientDepartmenthead {
+  width: 260px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.clientDepartmentbody {
+  width: 260px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 12px;
+  align-items: center;
+}
+.clientdepartmentstatusbody {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 12px;
+  align-items: center;
+}
+/* ...........manage admin staff........... */
+.userTableHead {
+  width: 260px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.userTablebody {
+  width: 260px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 12px;
+  align-items: center;
+}
+/* ...................clients table...................... */
+
+.clientsTableHead {
+  width: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.clientsTablebody {
+  width: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 12px;
+  align-items: center;
+}
+
+/* .............CLIENT DEPARTMENT DETAILS PAGE.......... */
+.customrow {
+  display: flex;
+  flex-direction: column;
+}
+.spanTitle {
+  margin-left: 5%;
+}
+.departmentSubmitBtn {
+  padding: 15px;
+  background-color: rgb(16, 45, 75);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+.departmentDetails {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+
+  border-radius: 10px;
+}
+.clientDetailHead {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid grey;
+  font-size: 20px;
+  color: blue;
+}
+
+.clientDetailsBody {
+  /* background-color: red; */
+  align-items: center;
+}
+.departmentHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.5px solid grey;
+  flex-direction: row;
+}
+.departmentHead1 {
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  border-right: 0.5px solid grey;
+  cursor: pointer;
+}
+.departmentHead2 {
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.departmentbody {
+  background-color: khaki;
+  padding: 5px;
+}
+
+.subBody {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 0.5px solid grey;
+}
+.departmentcancelBtn {
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: brown;
+  border: none;
+  border-radius: 20px;
+}
+
+/* ........table style....................... */
+ul {
+  list-style-type: none;
+}
+
+.element {
+  padding: 2% !important;
+
+  border-top: 0.5px solid grey;
+  border-bottom: 0.5px solid grey;
+
+  display: flex !important;
+  color: dimgrey !important;
+  align-items: center;
+}
+.elementBody {
+  padding: 2% !important;
+
+  border: 0.5px grey;
+  border-radius: 10px !important;
+  display: flex !important;
+  color: dimgrey !important;
+  align-items: center;
+  font-size: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+}
+/* ................clientRequest................... */
+.contctDetailsBtn {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+/* ..................contactdetails page............. */
+.status {
+  background-color: rgb(216, 185, 25);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+.declineBtn {
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: brown;
+  border: none;
+  border-radius: 20px;
+}
+.acceptBtn {
+  padding: 15px;
+  background-color: dodgerblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+.nextBtn {
+  width: 100px;
+  padding: 15px;
+  background-color: dodgerblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+/* ..........................decline..modal............. */
+.modalHead {
+  background-color: red;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+}
+.closeCirle {
+  height: 20px;
+  width: 20px;
+  border-radius: 40px;
+  border: 1px solid black;
+  background-color: grey;
+}
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+.modalCancelBtn {
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: brown;
+  border: none;
+  border-radius: 20px;
+}
+.modalRejecttBtn {
+  padding: 15px;
+  width: 20%;
+  background-color: firebrick;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+.modalApproveBtn {
+  padding: 15px;
+  width: 20%;
+  background-color: rgb(16, 45, 75);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+.modalCancelBtn {
+  padding: 15px;
+  background-color: grey;
+  width: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  margin-left: 5px;
+  border-radius: 20px;
+}
+.modalSubmitBtn {
+  padding: 15px;
+  background-color: rgb(16, 45, 75);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+.closeImg {
+  cursor: pointer;
+  float: right;
+  margin-top: 5px;
+  width: 20px;
+}
+.modalBtns {
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  width: 40%;
+}
+.modalverificationBtns {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 80%;
+}
+/* .....................filter modal................. */
+.modalFilterHead {
+  height: 60px;
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  border-bottom: 1px solid grey;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+}
+.applyBtn {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  border: none;
+  background-color: white;
+}
+.resetBtn {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  border: none;
+  background-color: white;
+}
+.headBtns {
+  display: flex;
+  flex-direction: row;
+
+  margin-left: 55%;
+}
+.headerBtns {
+  display: flex;
+  flex-direction: row;
+}
+.filtertoDate {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  height: 2rem;
+  justify-content: center !important;
+}
+.filterbody {
+  padding: 5% !important;
+}
+/* //////////////////dshboard part//////////////// */
+
+.row {
+  align-items: center !important;
+}
+/* .col-md-4 {
+  margin-top: 3% !important;
+} */
+.toDate {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  height: 2rem;
+  justify-content: center !important;
+}
+.calender_img {
+  margin: 0% !important;
+}
+.btn_apply {
+  justify-content: flex-start;
+  display: flex;
+}
+.dash_title {
+  font-size: 2.7rem;
+  padding-top: 2rem;
+  color: gray;
+  font-weight: bold;
+}
+.client_title {
+  font-size: 2.5rem;
+
+  color: rgb(66, 169, 228);
+  font-weight: bold;
+}
+.vendor_title {
+  font-size: 2.5rem;
+  padding-top: 5%;
+  color: rgb(66, 169, 228);
+  font-weight: bold;
+}
+label {
+  font-size: 12px;
+  color: dimgrey;
+}
+/* ...........tabs.............. */
+
+.tab_container {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  margin-top: 10%;
+  height: 37rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tab_head {
+  background-color: #c5ad0eec;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px 25px 0px 0px;
+  padding: 5%;
+  height: 17%;
+  color: white;
+  box-shadow: 0px 3px 6px 0 rgb(0 0 0 / 20%);
+}
+.tab_head1 {
+  background-color: #27497f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px 25px 0px 0px;
+  padding: 5%;
+  height: 17%;
+  color: white;
+  box-shadow: 0px 3px 6px 0 rgb(0 0 0 / 20%);
+}
+.tab_head2 {
+  background-color: #34495e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px 25px 0px 0px;
+  padding: 5%;
+  height: 17%;
+  color: white;
+  box-shadow: 0px 3px 6px 0 rgb(0 0 0 / 20%);
+}
+.inter {
+  border-bottom: 4px solid currentColor;
+  display: inline-block;
+  line-height: -0.25;
+
+  font-size: 100%;
+  font-weight: 600;
+}
+.tab_top {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5px solid beige;
+  box-shadow: 0px 3px 6px 0 rgb(0 0 0 / 20%);
+  border-radius: 0px 0px 30px 30px;
+}
+/* ....................client tab custom show..................... */
+
+/* .inter-tabs {
+  padding: 3%;
+  text-align: center;
+
+  font-size: 80%;
+ 
+  border-right: 0.5px solid grey;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border: none;
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+  color: #444;
+  bottom: -3.5%;
+} */
+/* .tabs:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+  border: none;
+} */
+/* .tabs {
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+  border: none;
+} */
+
+.active-inter-tabs {
+  background: white;
+}
+
+.active-inter-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  /* background: #c5ad0eec; */
+}
+/* ..................project.tabs.................... */
+.project-tabs {
+  padding: 3%;
+  text-align: center;
+  font-size: 80%;
+  border-right: 0.5px solid grey;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border: none;
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+  color: #444;
+  bottom: -3.5%;
+}
+
+.active-project-tabs {
+  background: white;
+}
+
+.active-project-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: #27497f;
+}
+/* .................................................... */
+/* .................bill.tabs.................... */
+.bill-tabs {
+  padding: 3%;
+  text-align: center;
+  font-size: 80%;
+  width: 50%;
+  border-right: 0.5px solid grey;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border: none;
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+  color: #444;
+  bottom: -3.5%;
+}
+
+.active-bill-tabs {
+  background: white;
+}
+
+.active-bill-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: #34495e;
+}
+/* .................................................... */
+/* .................invoice.tabs.................... */
+
+.active-invoice-tabs {
+  background: white;
+}
+
+.active-invoice-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: #27497f;
+}
+/* .................................................... */
+
+.active-content {
+  display: block !important;
+}
+.content {
+  background: white;
+  display: none;
+  border-radius: 0px 0px 30px 30px;
+}
+/* ................................................. */
+
+.tab_body {
+  padding: 0% 5%;
+}
+.tab_main_body {
+  display: flex;
+  flex-direction: column;
+}
+/* ..............scroolbar.................... */
+
+/* width */
+.scrollbar {
+  float: left;
+  height: 380px;
+  width: 100%;
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #8f9395;
+}
+/* *  STYLE 1
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0b5f70;
+}
+/* ....tab list....................... */
+.tab_list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #bcbfc4;
+  padding-bottom: 2%;
+  padding-top: 2%;
+}
+.project_tab_list {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #bcbfc4;
+  padding-bottom: 3%;
+  padding-top: 2%;
+}
+.list_left {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.list_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+.list_project_left {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.list_project_right {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+.list_vender_project_right {
+  display: flex;
+
+  width: 25%;
+}
+.list_title {
+  font-size: 1rem;
+}
+.list_project_title {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.list_project_date {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.list_project_uname {
+  font-size: 85%;
+  font-weight: 100;
+}
+.list_date {
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding-bottom: 1%;
+}
+.loc_image {
+  height: 65%;
+  width: 7%;
+  margin: 0% 0% 0% 0% !important;
+}
+.loc_txt {
+  font-size: 77%;
+  font-weight: 300;
+}
+.loc_profile_txt {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.invoice_img {
+  height: 50px;
+
+  margin: 0% 0% 0% 0% !important;
+}
+
+.viewAll {
+  text-align: end;
+  margin-right: 5%;
+}
+.rigth_txt {
+  color: #c5ad0eec;
+  font-size: 95%;
+}
+.circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 60%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-size: 95%;
+  font-weight: 600;
+}
+.btnTxt {
+  color: white;
+  border-radius: 10%/50%;
+  padding: 0% !important;
+}
+.btnVTxt {
+  color: white;
+  border-radius: 10%/50%;
+}
+
+.btnTxt .btn .btn-info {
+  font-size: 10px;
+  padding: 0% !important;
+}
+.btnTxt .btn .btn-success {
+  font-size: 10px;
+  padding: 0% !important;
+}
+.css-19kzrtu {
+  padding: 0px 10px 40px 20px !important;
+}
+.css-heg063-MuiTabs-flexContainer {
+  justify-content: space-evenly !important;
+}
+/* ...........header....................... */
+header {
+  padding: 1%;
+}
+.logo_7c {
+  background-color: white;
+}

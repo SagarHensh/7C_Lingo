@@ -1,0 +1,14 @@
+.status-btn {
+  align-items: center;
+  display: flex;
+  margin-left: 10px;
+}
+
+@media (max-width:768px) 
+{
+  #manag-admin-stf-edit-acti-cont{
+    margin-top: -100px !important;
+    margin-left: 170px !important;
+  }
+  
+}

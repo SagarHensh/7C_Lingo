@@ -1,0 +1,94 @@
+.delete-head {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+  font-size: 17px;
+  border-bottom: 1px solid #993921;
+  color: #993921;
+}
+.body-txt {
+  color: #993921;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  width: 100%;
+}
+
+/*responsive code*/
+
+@media(max-width:768px){
+#table-respons-tr{
+  width: 100%;
+  display: flex;
+  float: left;
+  
+}
+
+#table-respons-tr th{
+  font-size: 8px !important;
+  margin-left: 2px;
+  padding: 2px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+#edit-main-cont{
+  width: 100% !important;
+  padding: 2px !important;
+  box-sizing: border-box;
+}
+
+#edit-main-cont tr td{
+  font-size: 8px !important;
+}
+
+#wap{
+  width: 30px !important;
+  margin-left: -10px;
+}
+
+#fee-text{
+  width: 20px !important;
+}
+
+#traning-cour-list-edit-btn{
+  margin-left:13px !important;
+  margin-top: -1px !important;
+}
+
+#spn-num{
+  margin-left: 3px !important;
+  margin-top: -2px;
+  z-index: 1;
+}
+
+.prv_btn{
+  display: none;
+}
+
+#cours-list-spn-buttom-num{
+  margin-left:3px !important;
+  margin-top: -1px;
+}
+
+#cours-list-tbl-short-cont{
+  margin-left: 140px;
+}
+
+#cours-list-lbl-text{
+  margin-top: 9px !important;
+}
+
+.filter-pagination{
+ width:100px !important;
+ border-radius: 6px;
+}
+
+#table-short-top{
+  margin-left: -3px;
+}
+ 
+
+}

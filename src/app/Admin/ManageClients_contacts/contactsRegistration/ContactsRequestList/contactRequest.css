@@ -1,0 +1,22 @@
+
+.sorting_btn_cr button{
+    background: none; 
+    border: 0px;
+    height: 9px; 
+    cursor:pointer; 
+    padding:0px;
+}
+.sorting_btn_cr{ 
+    width: 13px; 
+    /* float: left;  */
+    line-height: 5px;
+    display: inline-block;
+    margin-right: 5%;
+}
+
+
+
+.green_status_btn{ background: #65a57c; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.pending_status_btn{ background: #cc9f53; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.declined_status_btn{ background: #993921; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.approve_status_btn{ background: #0095e1; color: #fff; display: inline-block; padding: 7px 9px; text-transform: uppercase; border-radius: 18px; font-size: 11px;}

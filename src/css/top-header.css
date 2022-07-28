@@ -1,0 +1,19 @@
+.logo {  float: left; width: auto; margin:0px 0px;}
+.logo img{width: 257px;}
+.header-information {width: 100%; background: #24272a; padding: 10px 0px; float: left; box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 54%); position: fixed; top: 0;left: 0; z-index: 12;}
+.app-right-info{width: auto; float: right; margin:0px 0 0 0}
+.profile-pic{float: left; width: 61px; height: 62px; position: relative; background:url(../images/stroke-shape.png) no-repeat; background-size:100% 100%;padding: 9px;}
+.notification{float: left; margin: 19px 24px 0 0;}
+.notification a { display:block; position:relative;}
+.notification a span{position: absolute; background: #893215; width: 20px; height: 20px; text-align: center; color: #fff; font-weight: 600; border-radius: 100%;
+    font-size: 12px;padding-top: 2px; top: -6px; right: -7px;}
+.head_btn{ float: left; width: auto; margin-right:20px;}	
+.head_btn a{    background: #fff; color: #c3c3c3; border: 0px;text-transform: uppercase; padding: 9px 12px; font-weight: 400; border-radius: 15px;
+    text-align: center; display: inline-block; cursor: pointer;  margin: 11px 4px 0; font-size: 11px;line-height: 11px;}
+.head_btn a span{ display:block}	
+.head_btn a.blue{  background: #00a0df; color:rgb(255 255 255 / 78%); text-decoration:none}
+.head_btn a:hover{background: #005d83; text-decoration:none; color:#fff}
+
+.header-information.grey{background: #e5e5e5; height: 80px;}
+.request-quote-btn{float: right;background: #00a0de; padding: 16px 33px; color: #fff; border-radius: 15px;}
+.request-quote-btn:hover{ background:#0d93c7; text-decoration:none; color:#fff}

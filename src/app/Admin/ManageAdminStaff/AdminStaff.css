@@ -1,0 +1,71 @@
+.table-filter-app-b {
+    width: 95%;
+    float: left;
+    margin: 0 0 25px 20px;
+}
+
+/*css code*/
+
+@media(max-width:768px)
+{
+    #manage-admin-staf-cont{
+        display: flex;
+        width: 100% !important;
+    }
+
+    #manage-admin-staf-cont th{
+        display: flex;
+        flex-direction: row;
+        font-size: 9px !important;
+        font-family: sans-serif !important;
+        justify-content: space-around;
+    }
+
+    #admin-staf-sort-btn{
+      display: none;
+    }
+
+    .sort-btn1{
+        display: none;
+    }
+
+
+    #status-text{
+        margin-right:3px !important ;
+    }
+
+    #action-text{
+        margin-left:6px !important;
+        font-size: 8px !important;
+    }
+
+#adminstaf-tabl-datil-cont{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+}
+
+#adminstaf-tabl-cont{
+    width: 100% !important;
+    display: flex;
+    justify-content: space-around;
+}
+
+#adminstaf-tabl-cont td{
+    font-size: 8px !important;
+    font-family: sans-serif !important;
+}
+
+#manage-admin-stf-disptext{
+    display: flex;
+    flex-direction: column;
+    margin-left: 105px !important;
+    margin-top: -20px !important;
+}
+
+.manage-admin-stf-dispspn{
+    margin-top: 20px !important;
+}
+
+
+}

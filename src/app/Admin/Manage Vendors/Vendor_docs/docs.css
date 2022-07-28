@@ -1,0 +1,54 @@
+.docs-modal-head {
+    background: #fff;
+    padding: 20px 20px 21px;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    color: #cfcfcf;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 1px solid;
+}
+
+.doc-modal {
+    font-size: 14px;
+    color: gray;
+}
+
+.doc_img_id {
+    height: 20px;
+    width: 30px;
+    border-radius: 5px
+}
+
+.docIdentification_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.brd {
+    display: inline-block;
+    border-right: 2px solid #e6e3e3;
+    width: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.contract_upload {
+    cursor: pointer;
+    width: "45px";
+    /* margin-left: "5px"; */
+    margin: auto;
+}
+
+.contract_upld_icon {
+    /* margin-right: "5px";
+    margin-left: "10px"; */
+    width: 10%;
+    height: 20px;
+    cursor: pointer;
+}
+
+.pd_rt_5{
+    padding-right: 5px;
+}

@@ -1,0 +1,34 @@
+.heading {
+  font-size: 16px !important;
+  padding-bottom: 20px !important;
+}
+.status_btn {
+  align-items: center;
+  display: inline-block;
+  margin-left: 10px;
+  top: 25px;
+}
+
+
+/*responsive code*/
+@media(max-width:768px)
+{
+  
+  .status_btn{
+    float:left;
+    margin-top: -90px;
+    margin-left: 50px;
+    width: 80% !important;
+  }
+
+  .status_text{
+    text-align: right;
+  }
+
+  .blue-btn{
+    width: 30% !important;
+  }
+
+  
+  }
+

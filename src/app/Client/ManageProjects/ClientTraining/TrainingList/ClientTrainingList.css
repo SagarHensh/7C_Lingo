@@ -1,0 +1,13 @@
+.tab-app-information.activeLnk2 {
+    display: block;
+}
+
+.clientJob .progress-btn {
+    color: #fff;
+    display: inline-block;
+    width: 170px;
+    padding: 8px 0px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-size: 10px;
+}

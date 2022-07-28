@@ -1,0 +1,72 @@
+.dropdwn .dd-select .dd-selected-text {
+  color: #a39e9e;
+}
+.my-form-rw {
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+}
+.dropdwn label {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: 15px;
+  padding: 0px 15px;
+}
+.sf-row .dropdwn {
+  margin-left: 65px;
+  width: auto;
+}
+.tble-short .dropdwn {
+  width: 73px;
+  float: left;
+}
+.d-select .dropdwn {
+  float: none;
+  width: auto;
+  margin-left: 84px;
+}
+.headTitle {
+  border-bottom: 1px solid;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 20px;
+}
+.form_status {
+  display: block;
+  color: white !important;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.status_text {
+  color: #335b7b;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.form-main-body {
+  padding: 30px;
+}
+
+/*code*/
+
+#add-text{
+  margin-left: 20px;
+}
+
+#f-box{
+ display: flex;
+}
+
+#f-cont{
+  justify-content: center;
+}
+
+@media(max-width:768px){
+  
+.mast-addnew-act-text{
+  margin-top: -52px !important;
+  margin-left: -2px !important;
+}
+
+}

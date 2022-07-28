@@ -1,0 +1,131 @@
+#vendorsetting .form_rbx,
+#vendorsetting .dropdwn.md5 {
+  width: 93%;
+}
+#vendorsetting .form_rbx .in-field2 {
+  width: 93%;
+  color: var(--greyLight);
+}
+#vendorsetting .form_rbx > span {
+  padding-left: 0;
+}
+#vendorsetting .dropdwn.md5 .m-selectbox.mini {
+  width: 100%;
+  color: var(--greyLight);
+}
+#clientsetting .job-section-tab h3,
+#vendorsetting .job-section-tab h3 {
+  color: #005d83;
+  margin-bottom: 20px;
+}
+.btn-toggle {
+  margin: 0 4rem;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 1.4rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  color: #6b7381;
+  background: #005d83;
+}
+.btn-toggle:focus,
+.btn-toggle.focus,
+.btn-toggle:focus.active,
+.btn-toggle.focus.active {
+  outline: none;
+}
+.btn-toggle:before,
+.btn-toggle:after {
+  line-height: 1rem;
+  width: 4rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.25s;
+}
+
+.btn-toggle > .handle {
+  position: absolute;
+  top: 0.18rem;
+  left: 0.1875rem;
+  width: 1.125rem;
+  height: 1.1rem;
+  border-radius: 1.125rem;
+  background: #fff;
+  transition: left 0.25s;
+}
+.btn-toggle.active {
+  transition: background-color 0.25s;
+}
+.btn-toggle.active > .handle {
+  left: 1.6875rem;
+  transition: left 0.25s;
+}
+.btn-toggle.active:before {
+  opacity: 0.5;
+}
+.btn-toggle.active:after {
+  opacity: 1;
+}
+.btn-toggle.btn-secondary {
+  color: #6b7381;
+  background: #bdc1c8;
+}
+.btn-toggle.btn-secondary:before,
+.btn-toggle.btn-secondary:after {
+  color: #6b7381;
+}
+.btn-toggle.btn-secondary.active {
+  background-color: #ff8300;
+}
+
+.swize label {
+  line-height: 15px;
+  color: var(--greyLight);
+  font-size: 13px;
+  margin-right: 20px;
+}
+.my-form-bx-bo {
+  margin-top: 30px;
+}
+.cofigpanl .job-details-tab ul.nav.nav-tabs {
+  background: none;
+}
+.cofigpanl_top {
+  background: #005d83;
+  border-radius: 10px 10px 0 0;
+}
+.cofigpanl_top .f-right {
+  float: right;
+  margin: 20px;
+}
+.cofigpanl_top .f-right a {
+  text-decoration: none;
+}
+.cofigpanl > h2 {
+  color: var(--greyLight);
+  font-size: 18px;
+}
+.swize {
+  margin-bottom: 10px;
+}
+.job-details-tab._fl.sdw.cofigpanl_wid {
+  width: 80%;
+}
+
+.cofigpanl_wid.job-details-tab ul.nav-tabs .nav-link figure {
+  top: 0;
+}
+
+/* ............. */
+.configuration_tab {
+  align-items: center;
+  height: 75px;
+  text-align: center;
+  display: flex;
+}

@@ -1,0 +1,32 @@
+.status_btn {
+  align-items: center;
+  display: inline-block;
+  margin-left: 10;
+  top: 25px;
+}
+
+.status_text {
+  color: #335b7b;
+  font-weight: 600;
+
+  margin-left: 10px !important;
+}
+.billing-info {
+  width: 100%;
+  float: left;
+  border-top: 1px solid #efe9e9;
+  border-bottom: 1px solid #efe9e9;
+  padding: 15px 20px !important;
+}
+.span_loc {
+  color: white;
+  background-color: #c3c5c4;
+  border-radius: 10px;
+  font-size: 11px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  margin-right: 5px;
+}

@@ -1,0 +1,7 @@
+.agencyType_contact input[type="text"]:disabled {
+    background: #fff;
+}
+
+.green_status_btn_contact{ background: #65a57c; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.pending_status_btn_contact{ background: #cc9f53; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.declined_status_btn_contact{ background: #993921; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}

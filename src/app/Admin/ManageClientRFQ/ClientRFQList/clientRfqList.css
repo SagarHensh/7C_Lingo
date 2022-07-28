@@ -1,0 +1,60 @@
+.source_lang {
+  text-align: center !important;
+}
+/* ................. */
+#filter-model.modal.fade.modelwindow.filter-pop {
+  /* opacity: 1;
+    display: block; */
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 40px;
+}
+.filter-pop .job_filt_lfe {
+  float: left;
+}
+.filterTab_translation ul li.active {
+  background: #005d83 !important;
+  color: #fff !important;
+}
+.filterTab_training ul li.active {
+  background: #005d83 !important;
+  color: #fff !important;
+}
+
+.tab-app-information.activeLnkTranslation {
+  display: block;
+}
+.tab-app-information.activeLnkTraining {
+  display: block;
+}
+
+.filter-pop .filterTab_translation ul{  
+  float: right;
+  width: auto;
+  overflow: hidden;
+  padding: 0px;
+  list-style: none;
+  border: 1px solid #dcdbd8;
+  border-radius: 5px;
+
+}
+.filter-pop .filterTab_training ul{  
+float: right;
+width: auto;
+overflow: hidden;
+padding: 0px;
+list-style: none;
+border: 1px solid #dcdbd8;
+border-radius: 5px;
+
+}
+.filter-pop .filterTab_translation ul li,
+.filter-pop .filterTab_training ul li,
+.filter-pop .verificaiton-doc-tab ul li {
+float: none;
+width: 100%;
+text-align: left;
+border-bottom: 1px solid #dcdbd8;
+padding: 30px 20px;
+height: auto;
+font-size: 14px;
+}

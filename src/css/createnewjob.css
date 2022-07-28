@@ -1,0 +1,248 @@
+.create-new-job-wrap {
+    width: 100%;
+    float: left;
+    margin: 50px 0px;
+}
+
+.main-container {
+    max-width: 850px;
+    margin: 0 auto
+}
+
+.create-head {
+    background: #005d83;
+    padding: 20px 20px 21px;
+    border-radius: 15px 15px 0 0;
+}
+
+.create-head h2 {
+    margin: 0px;
+}
+
+.create-head h2 a {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    background: url(../images/arrow.jpg) no-repeat;
+    padding-left: 32px;
+    padding-bottom: 0;
+}
+
+.create-jeneral-wrap {
+    width: 100%;
+    float: left;
+    padding: 20px
+}
+
+.create-sb-head {
+    width: 100%;
+    float: left;
+    padding: 20px;
+    background: #00a0df;
+    border-radius: 15px 15px 0 0;
+}
+
+.create-sb-head h3 {
+    font-size: 16px;
+    width: 100%;
+    float: left;
+    text-transform: uppercase;
+    color: #fff;
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.create-row-app {
+    width: 100%;
+    float: left;
+    padding: 10px 20px;
+}
+
+.web-form-bx {
+    width: 100%;
+    float: left;
+    margin: 13px 0px;
+    position: relative
+}
+
+.frm-label {
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    color: var(--grey);
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.web-form-bx .dropdwn {
+    width: 100%;
+    float: left
+}
+
+.web-form-bx .dropdwn.md4 {
+    width: 60%
+}
+
+.rgn-info {
+    width: 71%;
+    float: right;
+}
+
+.pic-data {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.wt-left .web-form-app {
+    width: 90%;
+    float: left
+}
+
+.wt-right .web-form-app {
+    width: 90%;
+    float: right
+}
+
+.d-icon {
+    background: #fff url(../images/calender-icon2.png) no-repeat right 5px;
+}
+
+.t-time {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.t-time span {
+    border: 1px solid #b8bab9;
+    height: 48px;
+    width: 45px;
+    display: inline-block;
+    border-radius: 12px;
+}
+
+.t-time span small {
+    font-size: 24px;
+    position: relative;
+    padding-top: 5px;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.t-time span.t1 {
+    margin-right: 16px;
+    position: relative
+}
+
+.t-time span.t1:before {
+    width: 8px;
+    height: 8px;
+    background: #b8bab9;
+    border-radius: 100%;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    right: -14px;
+    top: 12px;
+}
+
+.t-time span.t1:after {
+    width: 8px;
+    height: 8px;
+    background: #b8bab9;
+    border-radius: 100%;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    right: -14px;
+    top: 28px;
+}
+
+.tr-3 {
+    width: 100%;
+    float: left;
+    position: relative
+}
+
+.tr-3 .in-textarea {
+    box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%);
+    width: 100%;
+    border: 1px solid #d3d2d2;
+    padding: 12px;
+    height: 45px;
+    border-radius: 4px;
+}
+
+.tr-3 .ak {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+}
+
+.in-textarea.msg.min {
+    box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%);
+    width: 100%;
+    border: 1px solid #d3d2d2;
+    padding: 12px;
+    height: 120px;
+    border-radius: 4px;
+}
+
+.addnew_lei {
+    position: absolute;
+    right: -61px;
+    bottom: 0;
+    border: 0;
+    background: url(../images/add-round-circle-plus-btn.jpg) center top no-repeat;
+    padding-top: 28px;
+    color: #00a0df;
+    text-transform: uppercase;
+    font-size: 9px;
+}
+
+.reset_lei {
+    position: absolute;
+    right: -5px;
+    bottom: 0;
+    border: 0;
+    background: url(../images/reset.png) center top no-repeat;
+    padding-top: 28px;
+    color: gray;
+    text-transform: uppercase;
+    font-size: 9px;
+    background-size: 57%;
+}
+
+.frm-label i {
+    font-style: normal;
+    color: #00a0de;
+}
+
+
+/* For Time design */
+
+.t-time span {
+    /* height: 120px; */
+    border: 0;
+}
+.t-time span.t1::after {
+    top: 62px;
+    right: -12px;
+}
+.t-time span.t1::before {
+    top: 50px;
+    right: -12px;
+}
+.t-time span small input {
+    border: 1px solid #b8bab9 !important;
+    display: inline-block;
+    border-radius: 10px;
+}
+.t-time .tsd2{width: 100%;}
+    
+    

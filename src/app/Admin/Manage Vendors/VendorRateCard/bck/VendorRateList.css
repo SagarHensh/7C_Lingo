@@ -1,0 +1,78 @@
+     /* new css */
+
+
+     .rateList ._fl{ width:auto; float:left}
+     .rateList ._fl.wdth-80 {
+       width: 100%;
+     }
+     .c-nt-btn_rate {
+       float: right;
+       width: auto;
+       margin: 5px 0 0 0;
+     }
+     .c-nt-btn_rate button {
+       background: #00a0df;
+       color: rgb(255 255 255 / 78%);
+       border: 0px;
+       text-transform: uppercase;
+       padding: 14px 22px;
+       font-weight: 400;
+       border-radius: 15px;
+       text-align: center;
+       display: inline-block;
+       cursor: pointer;
+       margin: 11px 4px 0;
+       font-size: 11px;
+       line-height: 11px;
+     }
+     .f2f_rate{  background: #333; display: inline-block; width: 30px; height: 30px;  color: #fff;  text-align: center; border-radius: 100%; padding-top: 8px;}
+
+  .largewindow .modal-lg {
+    max-width: 980px;
+  }
+  #interpretationModal .modal-lg { max-width: 95%;}
+    #translationModal .modal-lg { max-width: 90%;}
+    #trainingModal .modal-lg { max-width: 95%; }
+    #interpretationModalEdit .modal-lg { max-width: 95%;}
+    #translationModalEdit .modal-lg { max-width: 90%;}
+    #trainingModalEdit .modal-lg { max-width: 95%; }
+
+
+    .rateList .verificaiton-doc-tab ul{ float:right; width:auto; overflow:hidden; padding:0px; list-style:none; border:1px solid #dcdbd8; border-radius:10px;}
+    .rateList .verificaiton-doc-tab ul li{ height: 30px;   float:  left; font-size: 11px; text-transform: uppercase; padding: 10px 25px; border-left: 1px solid #dcdbd8; text-align: center;
+        width: 33.333%; line-height: 11px; cursor: pointer; color: var(--grey);}
+    .rateList .verificaiton-doc-tab ul li:first-child{ padding-left:15px; border:0px;}	
+    .rateList .verificaiton-doc-tab{ margin-top:20px;}
+    .rateList .verificaiton-doc-tab ul li.active{ background:#005d83; color:#fff}
+
+
+    .m-selectbox.mini{ width:80px; }
+    .m-selectbox{     appearance: none; -moz-appearance: none;  -o-appearance: none; -webkit-appearance: none;
+      background: #fff url(../../../../images/select-arrow.png) no-repeat scroll right 8px center;
+      width: 120px; border: 1px solid #d3d2d2;  border-radius: 4px; font-size: 15px; box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%); line-height: 30px;
+      display: inline-block; height: 35px; color: var(--graylight); background-size: 16px; padding-left: 8px;}
+.in-field3{    
+  border: 1px solid #d3d2d2; 
+  border-radius: 4px;
+  font-size: 10px;
+  box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%); 
+  line-height: 30px; display: inline-block;
+  height: 35px;
+  color: var(--graylight); 
+  width: 25%; 
+  text-align: center;
+  margin-right: 8px;
+}
+.in-field4{    
+  border: 1px solid #d3d2d2; 
+  border-radius: 4px;
+  font-size: 15px;
+  box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%); 
+  line-height: 30px; display: inline-block;
+  height: 35px;
+  color: var(--graylight); 
+  width: 80px; 
+  text-align: center;
+  margin-right: 8px;
+}
+

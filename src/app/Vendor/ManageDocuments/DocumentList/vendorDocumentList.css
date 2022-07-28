@@ -1,0 +1,49 @@
+.doc-sheet1 {
+  width: 100%;
+  float: left;
+  padding: 18px;
+  border-radius: 8px;
+
+  border: 1px dashed #c5c5c5;
+  text-align: center;
+
+  color: #05a3e0;
+  font-weight: 500;
+  background-size: 18px;
+}
+.doc-img {
+  display: inline-block;
+  width: 35px;
+}
+.doc-img-main {
+  width: 35px;
+}
+.doc-table-row {
+  padding: 8px 0px !important;
+}
+.cross-btn {
+  width: 25px;
+  position: absolute !important;
+  cursor: pointer;
+  /* float: right; */
+  margin-left: 20px;
+  margin-top: -10px;
+}
+.doc-save-btn {
+  text-decoration: none;
+  color: white;
+  border-radius: 25px/50px;
+
+  padding: 20px 50px;
+}
+
+/* ................................. */
+.modal-doc-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-doc-close {
+  top: 0px;
+  right: -10px;
+}

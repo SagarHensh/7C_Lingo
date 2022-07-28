@@ -1,0 +1,30 @@
+.taskTitleHead{
+    color: white;
+    background: none !important;
+}
+.taskHead{
+    padding: "20px 20px 10px"
+}
+.taskLabel{
+    font-size: 16px !important;
+}
+.task-close-page{
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    cursor: pointer;
+    border: 0px;
+    background: no-repeat;
+}
+.statusTxt{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 15px;
+    padding: 10px;
+    color:grey;
+    margin-left: 50px;
+}
+.create_project_sec{
+    padding-bottom: 30px;
+}

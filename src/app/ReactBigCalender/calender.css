@@ -1,0 +1,15 @@
+.rbc-current-time-indicator {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    height: 2px;
+    right: 0;
+    background-color:green !important;
+    pointer-events: none;
+}
+
+.popover {
+    /* top: 71px !important; */
+    left: -80px !important;
+    /* right: 10px; */
+}

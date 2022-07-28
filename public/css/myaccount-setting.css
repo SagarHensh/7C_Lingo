@@ -1,0 +1,243 @@
+.my-form-rw {
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 10%);
+}
+.my-form-bx {
+  width: 100%;
+  float: left;
+  display: none;
+  padding: 20px 20px 30px;
+  border-top: 1px solid #edeaea;
+}
+.my-form-rw h3 {
+  font-size: 17px;
+  color: var(--greyLight);
+  padding: 16px 19px;
+  text-transform: uppercase;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+}
+.my-form-rw h3:before {
+  background: url(../images/pm.png) no-repeat;
+  width: 28px;
+  height: 28px;
+  content: "";
+  border: 0px;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  cursor: pointer;
+}
+.my-form-rw h3.open:before {
+  background: url(../images/pm.png) -33px 0px no-repeat;
+}
+.my-form-rw h3.open {
+  color: var(--blue);
+}
+.form_rbx {
+  width: 100%;
+  position: relative;
+  float: left;
+  margin: 0 0 22px 0px;
+}
+.form_rbx span {
+  display: block;
+  color: var(--greyLight);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.file-sheet {
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 19%);
+  width: 100%;
+  float: left;
+  position: relative;
+  padding: 18px 20px 17px 50px;
+  background: url(../images/sheet-icon.png) no-repeat 14px 14px;
+  height: 60px;
+  border-radius: 8px;
+  color: var(--grey);
+}
+.file-sheet:before {
+  background: url(../images/doc1.png);
+  width: 27px;
+  height: 27px;
+  content: "";
+  position: absolute;
+  right: 9px;
+  top: 16px;
+}
+.sv_btn {
+  border: 0px;
+  text-transform: uppercase;
+  padding: 18px 35px;
+  font-weight: 500;
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  margin: 6px 4px;
+  font-size: 13px;
+  line-height: 15px;
+  background: #00a0df;
+  color: #fff;
+  text-decoration: none;
+}
+.sv_btn:hover {
+  background: #005d83;
+  text-decoration: none;
+  color: #fff;
+}
+.in-textarea {
+  box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%);
+  width: 100%;
+  border: 1px solid #d3d2d2;
+  padding: 12px;
+  height: 51px;
+  border-radius: 4px;
+}
+.ak {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+}
+.billing-info {
+  width: 100%;
+  float: left;
+  border-top: 1px solid #efe9e9;
+  border-bottom: 1px solid #efe9e9;
+  padding: 15px 0px;
+}
+.billing-info h4 {
+  float: left;
+  color: var(--grey);
+  font-size: 16px;
+  margin: 0;
+}
+.billing-info .custom_check {
+  float: right;
+  color: var(--grey);
+}
+.billing-info .custom_check input:checked ~ .checkmark {
+  background-color: #005d83;
+}
+.billing-info .checkmark {
+  background-color: #005d83;
+}
+.billing-info .custom_check .checkmark:after {
+  left: 7px;
+  top: 4px;
+  width: 8px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.billing-address-info {
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+.in-textarea.min {
+  height: 120px;
+}
+.in-field3 {
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 19%);
+  width: 100%;
+  border: 1px solid #d3d2d2;
+  padding: 12px;
+  border-radius: 4px;
+}
+._psw {
+  position: relative;
+}
+._psw .sh {
+  background: url(../images/eye.png) no-repeat;
+  width: 21px;
+  height: 15px;
+  border: 0px;
+  cursor: pointer;
+  position: absolute;
+  right: 11px;
+  top: 16px;
+  text-indent: -9999px;
+}
+.cn_btn {
+  background: #fff;
+  color: #444;
+  border: 0px;
+  text-transform: uppercase;
+  padding: 18px 26px;
+  font-weight: 500;
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 15px;
+  box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 25%);
+}
+.m20 {
+  margin-top: 20px;
+}
+.cn_btn:hover {
+  background: #005d83;
+  text-decoration: none;
+  color: #fff;
+}
+.profile-pic-data {
+  width: 180px;
+  height: 180px;
+  text-align: center;
+  float: left;
+}
+.c-logo {
+  border: 2px solid #0091d9;
+  text-align: center;
+  border-radius: 100%;
+  padding: 10px;
+  position: relative;
+  margin-top: 13px;
+  width: 208px;
+  height: 208px;
+}
+.c-logo img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+.pht {
+  cursor: pointer;
+  background: url(../images/cmr.png) no-repeat;
+  width: 32px;
+  height: 32px;
+  border: 0px;
+  background-size: 100%;
+  position: absolute;
+  right: 19px;
+  bottom: 0px;
+}
+.h4_text {
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 25px 0 0 0;
+  float: left;
+  width: 100%;
+  color: var(--grey);
+}
+.billing-info .checkmark {
+  position: absolute;
+  top: -2px;
+  left: -4px;
+  height: 26px;
+  width: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #005d83;
+}

@@ -1,0 +1,144 @@
+.side-navigaiton {
+  background: #005d83;
+  width: 340px;
+  height: 100%;
+  transition: ease all 0.4s;
+  box-shadow: 0px 0px 6px 0px rgb(0 0 0 / 46%);
+  float: left;
+  position: absolute;
+}
+.hp .side_navigatoin ul > li > a span {
+  opacity: 0;
+}
+.side-navigaiton.hp {
+  width: 97px;
+}
+.side-navigaiton.hp .side_navigatoin ul > li.dd-menu > a {
+  background: none;
+}
+._menubtn {
+  border: 0px;
+  cursor: pointer;
+  width: 100%;
+  float: left;
+  text-align: center;
+  background: url(/src/images/menu-bg.png) center top no-repeat;
+  height: 110px;
+}
+.side_navigatoin {
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  background: #005d83;
+}
+.side_navigatoin ul {
+  width: 100%;
+  float: left;
+  list-style: none;
+  padding: 0px 20px;
+  margin: 0px;
+}
+.side_navigatoin ul > li {
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.arrow_btn {
+  background: url(/src/images/dd-arrow.png) 100% center no-repeat;
+}
+.arrow_btn.op {
+  background: url(/src/images/dd-arrow-h.png) 100% center no-repeat;
+}
+.hp .arrow_btn {
+  display: none;
+}
+.side_navigatoin ul > li.active:before {
+  background: #deeef5;
+  width: 8px;
+  position: absolute;
+  left: -19px;
+  top: 9px;
+  height: 86%;
+  content: "";
+  border-radius: 0px 8px 8px 0px;
+}
+.side_navigatoin ul > li > a {
+  color: #0079a9;
+  height: 100px;
+  text-transform: uppercase;
+  font-size: 16px;
+  display: block;
+  padding-left: 73px;
+  border-top: 1px solid #1a79a1;
+  line-height: 100px;
+}
+.side_navigatoin ul > li > .dropdown-app ul li a {
+  border: 0px;
+  padding-left: 53px;
+  line-height: 32px;
+  height: auto;
+}
+.side_navigatoin ul > li > .dropdown-app {
+  margin-bottom: 23px;
+  float: left;
+  width: 100%;
+  display: none;
+}
+.side_navigatoin ul > li > a.Remote {
+  line-height: 20px;
+  padding-top: 27px;
+  padding-bottom: 22px;
+}
+.side_navigatoin ul > li > a:hover,
+.side_navigatoin ul > li.active > a {
+  text-decoration: none;
+  color: #d9f4ff !important;
+}
+.side_navigatoin ul > li > a .menu-link-icon {
+  position: absolute;
+  left: 8px;
+  top: -1px;
+  margin: 0;
+  z-index: 1;
+}
+.side_navigatoin ul > li > a.Remote .menu-link-icon {
+  top: 21px;
+}
+.side_navigatoin ul > li > a:hover .menu-link-icon img {
+  filter: brightness(0) invert(1);
+}
+.side_navigatoin ul > li.active > a .menu-link-icon img {
+  filter: brightness(0) invert(1);
+}
+.side-navigaiton.hp ._menubtn {
+  border: 0px;
+  cursor: pointer;
+  width: 254px;
+  float: left;
+  text-align: center;
+  background: url(/src/images/menu-bg.png) center top no-repeat;
+  height: 110px;
+  background-size: 100%;
+  margin-left: -70px;
+}
+.side-navigaiton ._menubtn img {
+  margin-top: -30px;
+}
+.responsive-menu,
+.close-nav {
+  display: none;
+}
+.side-navigaiton.hp ._menubtn img {
+  transition: 0s;
+  -webkit-transition: 0s;
+}
+.dd-menu .Departments.arrow_btn,
+.dd-menu .Clinets.arrow_btn {
+  width: 100%;
+  position: inherit;
+  /* height: auto; */
+  right: inherit;
+  top: inherit;
+  background-position: 100% center;
+  display: block;
+}

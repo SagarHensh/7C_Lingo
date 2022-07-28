@@ -1,0 +1,131 @@
+.btns {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.button_one {
+  border: none;
+  background-color: white;
+}
+.button_two {
+  border: none;
+  background-color: white;
+}
+.button_three {
+  border: none;
+  background-color: white;
+}
+.source_lang {
+  display: flex;
+  align-items: center;
+}
+.tble-row_t {
+  padding: 15px 0px;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 24%);
+  border-radius: 15px;
+  margin: 7px 0px;
+}
+.tabview {
+  padding-top: 10px !important;
+  height: 32px !important;
+}
+/* .historyTab{
+
+} */
+/* ._fl .verificaiton-doc-tab .ven:active {
+  background: #005d83;
+  color: #fff;
+} */
+.verificaiton-doc-tab ul li.active {
+  background: #005d83 !important;
+  color: #fff !important;
+}
+
+/* .................................... */
+
+.table-listing-app {
+  width: 100%;
+  float: left;
+}
+.table-listing-app table th {
+  border-bottom: 1px solid #b7b8b8;
+  border-top: 1px solid #b7b8b8;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--grey);
+  text-align: center;
+  padding: 17px 0px;
+}
+.table-listing-app table td {
+  font-size: 13px;
+  color: var(--grey);
+  text-align: center;
+  padding: 10px 0px;
+}
+.tr-toggle {
+  background: none;
+  border: 0px;
+  cursor: pointer;
+}
+.table-listing-app tr td a.view {
+  color: #0ea5e0;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.table-listing-app tr td a.view:hover {
+  text-decoration: none;
+  color: #111;
+}
+.table-listing-app .table-responsive {
+  padding: 0px 5px;
+}
+.table-listing-app.tblt table td {
+  padding: 7px 0px;
+}
+.table-responsive_cus.table-style-a table .tble-row_t td {
+  padding: 0px;
+  border-right: 1px solid #ebe9e99a;
+  line-height: 14px;
+}
+.table-responsive_cus.table-style-a table th {
+  padding: 10px 0px;
+  line-height: 15px;
+}
+/* ..........status........................ */
+.Pending_btn {
+  background: #cc9f53;
+  color: #111;
+  padding: 7px 9px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.progress-btn {
+  color: #fff;
+  display: inline-block;
+  width: 90%;
+  padding: 8px 0px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.progress-btn.grey {
+  background: #b0b3b2;
+}
+.progress-btn.deep_grey {
+  background: #6f7271;
+}
+.progress-btn.sky {
+  background: #03a0df;
+}
+.progress-btn.yellow {
+  background: #cc9f53;
+}
+.progress-btn.blue {
+  background: #035d83;
+}
+.progress-btn.green {
+  background: #6ba565;
+}

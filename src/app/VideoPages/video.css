@@ -1,0 +1,290 @@
+/* body{
+  padding: 0px;
+  margin: 0px;
+} */
+.app {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.room {
+  background: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#button-bar {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+}
+
+#button-bar ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  /* For IE, the outcast */
+  zoom: 1;
+  *display: inline;
+  list-style-type: none;
+}
+
+#button-bar ul li {
+  display: inline-block;
+  background-color: #fe019a;
+  font-weight: bold;
+  margin: 0 auto 0 10px;
+  color: white;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  font-size: 24px;
+  text-align: center;
+}
+
+#button-bar ul li svg {
+  margin: 18px auto 0;
+  display: block;
+}
+
+.video {
+  -webkit-transform: scaleX(1, 1);
+  transform: scaleX(1, 1);
+}
+
+#chat-bar {
+  background-color: #fff;
+  height: 60vh;
+  min-height: 300px;
+  width: 30%;
+  overflow: scroll;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+#participant-bar {
+  width: 95vw;
+  display: flex;
+  overflow-x: auto;
+  margin: 10px auto 0;
+  justify-content: center;
+}
+
+.participant-each {
+  width: 150px;
+  height: 140px;
+  flex: 0 0 auto;
+  margin: 0 10px;
+  background: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.identity-text {
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  position: absolute;
+  left: 0;
+  margin: 0 auto;
+  right: 0;
+  z-index: 9;
+}
+
+.participant-each video {
+  width: 100%;
+  height: 100%;
+}
+
+#dominant-participant {
+  height: 480px;
+}
+
+.participant-each .track.video {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.lobby {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.participants {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: -.75vw;
+}
+
+.participant {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 8px;
+  margin-left: .75vw;
+  margin-bottom: .75vw;
+  width: 97%;
+  overflow: hidden;
+  height: auto;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  display: flex;
+  justify-content: center;
+}
+
+.participant-each .identity {
+  color: #000 !important;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0 0 6px;
+  text-align: center;
+  text-transform: capitalize;
+  position: inherit;
+}
+
+.track.video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.identity {
+  position: relative;
+  left: 0px;
+  bottom: 15px;
+  color: white;
+  padding-left: 15px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+/* // .participant-each .track.video {
+//   width: 150px;
+//   height: 128px;
+// } */
+.identity-text {
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+
+/* button {
+  background-color: #fe019a;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  width: 50px;
+  height:50px;
+  cursor: pointer;
+  font-size: 8px;
+} */
+
+/* button:disabled {
+  opacity: .4;
+  cursor:initial;
+} */
+
+#leaveRoom {
+  margin-top: 25px;
+  margin-left: 0;
+}
+
+.bb {
+  margin-top: 25px;
+  margin-left: 5px;
+}
+
+/* input {
+  padding-bottom: 5px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #555;
+  margin-bottom: 25px;
+  width: 200px;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 0;
+} */
+.lobby label {
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.lobby label input[type="checkbox"] {
+  width: auto;
+  margin: 0 12px 0 0;
+}
+
+.lobby button {
+  background-color: #fe019a;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  padding: 0;
+}
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+/* Firefox */
+/* input::placeholder { 
+  color: red;
+  opacity: 1; 
+} */
+/* Internet Explorer 10-11 */
+/* input:-ms-input-placeholder { 
+  color: red;
+} */
+/* Microsoft Edge */
+/* input::-ms-input-placeholder { 
+  color: red;
+} */
+
+@media (max-width: 1048px) {
+  .app {
+    padding: 0px;
+  }
+
+  #participant-bar {
+    width: 500px;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  @media (orientation:landscape) {
+    .participant {
+      width: 97%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 96vh;
+    }
+
+  }
+
+}

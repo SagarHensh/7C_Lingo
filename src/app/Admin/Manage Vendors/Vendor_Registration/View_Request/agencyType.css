@@ -1,0 +1,8 @@
+.agencyType input[type="text"]:disabled {
+    background: #fff;
+}
+
+.green_status_btn{ background: #65a57c; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.pending_status_btn{ background: #cc9f53; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.declined_status_btn{ background: #993921; color: #fff; display: inline-block; padding: 9px 17px; text-transform: uppercase; border-radius: 18px; margin-left: 30px;}
+.approve_status_btn{ background: #0095e1; color: #fff; display: inline-block; padding: 7px 9px; text-transform: uppercase; border-radius: 18px; font-size: 11px;}

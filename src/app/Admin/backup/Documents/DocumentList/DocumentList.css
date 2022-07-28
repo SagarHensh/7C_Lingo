@@ -1,0 +1,19 @@
+.sent_btn {
+  background-color: #65a57c;
+  color: white;
+  padding: 6px;
+  width: 75px;
+  border-radius: 10%/50%;
+}
+.signed_btn {
+  background-color: #03a0df;
+  color: white;
+  padding: 6px;
+  width: 75px;
+  border-radius: 10%/50%;
+}
+.status_btn_b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

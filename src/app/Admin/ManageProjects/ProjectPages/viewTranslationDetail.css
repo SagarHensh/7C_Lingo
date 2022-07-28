@@ -1,0 +1,150 @@
+#Document .tblt td a.btns {
+  color: #fff;
+  padding: 5px 6px;
+  border-radius: 6px;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+#Document .tblt td a {
+  text-decoration: none;
+}
+
+#Document .tblt td a.btns.btn-green {
+  background: #65A57C;
+}
+
+#Document .tblt td a.btns.btn-blue {
+  background: #00A0DF;
+}
+
+#Document .tblt td a.btns.btn-drk-blue {
+  background: #005D83;
+}
+
+
+
+
+/* ..........New Project details tab design css..... */
+.table-listing-app.proj_tbl table td,
+.table-listing-app.proj_tbl table th {
+  padding: 5px 10px !important;
+}
+
+.table-listing-app.proj_tbl table td .web-form-bx {
+  width: 120px;
+}
+
+.table-listing-app.proj_tbl table td .web-form-bx a {
+  /* position: absolute; 
+      right: 0;  */
+  top: 0;
+}
+
+.adtst_btn {
+  background: gray;
+  color: #fff;
+  padding: 7px 9px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 11px;
+  border: 0;
+  margin: 0 10px 10px;
+}
+
+.text_rite {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.add_tsts {
+  /* overflow: hidden; */
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 3px;
+  padding: 20px;
+  margin: 5px;
+}
+
+.serv_typ {
+  padding: 10px 10px 0;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.create-offer-list .vendBits p span::before {
+  display: none;
+}
+
+.create-offer-list .vendBits p span {
+  display: block;
+}
+
+.create-offer_top .tsk-tabl {
+  width: 95%;
+  float: none;
+  padding: 9px 0px;
+  margin: 0 auto;
+}
+
+.job-section-tab .create-offer_top .create-offer table th {
+  color: #005d83;
+  font-size: 15px;
+  text-transform: inherit;
+}
+
+.job-section-tab .create-offer_top .create-offer table td {
+  font-size: 15px;
+  text-transform: inherit;
+}
+
+.job-section-tab .create-offer_top .create-offer table th:first-child {
+  text-align: left;
+  font-size: 16px;
+  color: var(--greyLight);
+  text-transform: inherit;
+}
+
+.text-rej {
+  color: #C09B8F !important;
+  font-weight: 600;
+}
+
+.text-totle {
+  color: #000 !important;
+  font-weight: 600;
+  font-size: 16px !important;
+  background: #FDF6E6;
+}
+
+.job-details-tab._fl.sdw.bid_vend_assign_pge ul.nav-tabs.stb li {
+  width: 33.32%;
+}
+
+.job-details-tab.bid_vend_assign_pge ul.nav-tabs.stb .nav-link .taber {
+  line-height: 30px;
+}
+
+.bid_vend_assign_pge .tsk-tabl h3 {
+  text-align: center;
+  text-transform: inherit;
+}
+
+.tr_nl {
+  display: block;
+}
+
+.tr_notes_p {
+  padding-left: 40px;
+  text-align: left;
+}
+
+.doc_action_modal {
+  padding: 30px 40px;
+}
+
+.mrtp_40 {
+  margin-top: 40px !important;
+}

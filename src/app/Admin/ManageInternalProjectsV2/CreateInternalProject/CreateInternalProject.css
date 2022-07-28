@@ -1,0 +1,24 @@
+.projectDatePicker{
+    width: "100%";
+   border-radius: "9px";
+    height: "43px";
+    border: "1px solid #ced4da";
+    box-shadow:
+      "0px 0px 4px 0px rgb(0 0 0 / 28%)",
+ 
+}
+.milestoneTxt{
+  background: none !important;
+}
+.addTaskBtn{
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+.dateFieldTxt{
+  width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

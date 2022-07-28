@@ -1,0 +1,227 @@
+const VENDOR_PATH = Object.freeze({
+    DASHBOARD: ["/vendorDashboard"],
+    DOCUMENTS: ["/vendorDocList", "/vendorAddDocument", "/vendorEditDocument"],
+    PROJECT: ["/vendorTranslationList", "/vendorTrainingList", "/vendorTranslationDetails", "/vendorTrainingDetails"],
+    TRANSLATION: ["/vendorTranslationList", "/vendorTranslationDetails"],
+    TRAINING: ["/vendorTrainingList", "/vendorTrainingDetails"],
+    RATE_CARD: ["/vendorRateCard"],
+    INVOICE: ["/vendorInvoicePage"],
+    NOTIFICATION: ["/vendorNotificationList"],
+    SETTINGS: ["/vendorReminderList", "/vendorAddReminder"],
+    REMINDER: ["/vendorReminderList", "/vendorAddReminder"],
+    CONTACT_7C: ["/contact7C"]
+});
+
+const ADMIN_PATH = Object.freeze({
+    DASHBOARD: ["/adminDashboard",
+        "/adminEditProfile",
+        "/adminCreateNewJob",
+        "/adminCreateOnDemandJob",
+        "/adminCreateNewTranslation",
+        "/adminCreateNewTraining"
+    ],
+    DEPARTMENT: ["/masterDepartment", "/addMasterDepartment", "/editDepartment",
+        "/clientDepartment",
+        "/addClientDepartment",
+        "/editClientdetails"
+    ],
+    MASTER_DEPT: ["/masterDepartment", "/addMasterDepartment", "/editDepartment"],
+    CLIENT_DEPT: ["/clientDepartment", "/addClientDepartment", "/editClientdetails"],
+    CLIENT_CONTACT: ["/adminClientRequstList",
+        "/adminClientRequestEdit",
+        "/adminContactsRequest",
+        "/adminContactRequestView",
+        "/adminClientList",
+        "/adminClientAdd",
+        "/adminClientEdit",
+        "/adminJobDetailsOfClient",
+        "/adminProjectDetailsOfClient",
+        "/adminClientRateCard",
+        "/adminClientContactList",
+        "/adminAddClientContact",
+        "/adminEditClientContact",
+        "/adminViewCancelContactRequest"
+    ],
+    CLIENT_REQUEST: ["/adminClientRequstList", "/adminClientRequestEdit"],
+    CONTACT_REQUEST: ["/adminContactsRequest", "/adminContactRequestView", "/adminViewCancelContactRequest"],
+    CLIENT: ["/adminClientList", "/adminClientAdd", "/adminClientEdit", "/adminJobDetailsOfClient", "/adminProjectDetailsOfClient", "/adminClientRateCard"],
+    CONTACT: ["/adminClientContactList", "/adminAddClientContact", "/adminEditClientContact"],
+    VENDOR_PANEL: ["/adminVendorRegistration",
+        "/adminVendorRequestDetails",
+        "/adminVendorList",
+        "/adminVendorAdd",
+        "/adminVendorEdit",
+        "/adminVendorRateCard",
+        "/adminVendorDocs",
+        "/adminAddVendorCertificate",
+        "/adminEditVendorCertificate"
+    ],
+    VENDOR_REGISTRATION: ["/adminVendorRegistration", "/adminVendorRequestDetails"],
+    VENDOR: ["/adminVendorList",
+        "/adminVendorEdit",
+        "/adminVendorAdd",
+        "/adminVendorRateCard",
+        "/adminVendorDocs",
+        "/adminAddVendorCertificate",
+        "/adminEditVendorCertificate"
+    ],
+    CLIENT_RFQ: ["/adminClientRfqList", "/adminClientRfqDetails", "/adminClientRfqTranslationDetails", "/adminClientRfqTrainingDetails"],
+    JOB_PANEL: ["/adminViewAllJobs",
+        "/adminJobDetails",
+    ],
+    INTERPRETATION: ["/adminViewAllJobs", "/adminJobDetails"],
+    REMOTE_HISTORY: [],
+    PROJECTS: [
+        "/adminProjectList",
+        "/adminTranslationDetails",
+        "/adminTrainingList",
+        "/adminTrainingDetails"
+    ],
+    TRANSLATION: [
+        "/adminProjectList",
+        "/adminTranslationDetails"
+    ],
+    TRAINING: ["/adminTrainingList",
+        "/adminTrainingDetails"
+    ],
+    DOCUMENTS: ["/adminDocuments",
+        "/adminAddDocument",
+        "/adminEditDocument"
+    ],
+    ACCOUNTS: ["/adminMainBillUnderVerification",
+        "/adminJobDetailsFromBillVerification",
+        "/adminTrainingDetailsFromBillVerification",
+        "/adminMainReceivable",
+        "/adminMainPayables"
+    ],
+    BILL_VERIFICATION: ["/adminMainBillUnderVerification",
+        "/adminJobDetailsFromBillVerification",
+        "/adminTrainingDetailsFromBillVerification"
+    ],
+    RECEIVABLES: ["/adminMainReceivable"],
+    PAYABLES: ["/adminMainPayables"],
+    STORE_PANEL: ["/adminStoreList",
+        "/adminAddStore",
+        "/adminEditStore",
+        "/adminMaintenanceList",
+        "/adminAddMaintenance",
+        "/adminEditMaintenance",
+
+    ],
+    STORE: ["/adminStoreList",
+        "/adminAddStore",
+        "/adminEditStore"
+    ],
+    MAINTAINANCE: ["/adminMaintenanceList",
+        "/adminAddMaintenance",
+        "/adminEditMaintenance"
+    ],
+    SETTINGS: ["/adminNotificationList",
+        "/adminAddNotification",
+        "/adminEditNotification",
+        "/adminConfigurationPanel",
+        "/adminConfigurationPanelNotification",
+        "/adminIndustryTypeList",
+        "/adminAddIndustryType",
+        "/adminEditIndustryType",
+        "/adminServiceCategory",
+        "/adminAddServiceCategory",
+        "/adminEditServiceCategory",
+        "/adminTrainingCourse",
+        "/adminAddTrainingCourse",
+        "/adminEditTrainingCourse",
+        "/adminRoles",
+        "/adminPermissionAdd",
+        "/adminPermissionEdit",
+        "/adminStaff",
+        "/adminAddStaff",
+        "/adminEditStaff"
+    ],
+    NOTIFICATION: ["/adminNotificationList",
+        "/adminAddNotification",
+        "/adminEditNotification"
+    ],
+    CONFIGURATION: ["/adminConfigurationPanel"],
+    NOTIFICATION_PANEL: ["/adminConfigurationPanelNotification"],
+    INDUSTRY_TYPE: ["/adminIndustryTypeList",
+        "/adminAddIndustryType",
+        "/adminEditIndustryType"
+    ],
+    SERVICE: ["/adminServiceCategory",
+        "/adminAddServiceCategory",
+        "/adminEditServiceCategory"
+    ],
+    TRAINING_COURSE: ["/adminTrainingCourse",
+        "/adminAddTrainingCourse",
+        "/adminEditTrainingCourse"
+    ],
+    ROLES: ["/adminRoles",
+        "/adminPermissionAdd",
+        "/adminPermissionEdit"
+    ],
+    ADMIN_STAFF: ["/adminStaff",
+        "/adminAddStaff",
+        "/adminEditStaff"
+    ],
+    MANAGE_STATIC_CONTENTS: []
+});
+
+const CLIENT_PATH = Object.freeze({
+    DASHBOARD: ["/clientDashboard",
+        "/clientProfile",
+        "/adminCreateNewJob",
+        "/adminCreateOnDemandJob",
+        "/adminCreateNewTranslation",
+        "/adminCreateNewTraining"
+    ],
+    CONTACT: ["/clientContactRequestPage",
+        "/clientViewContactRequestPage",
+        "/clientContactListPage",
+        "/clientEditContactPage",
+        "/clientAddContactPage"
+    ],
+    CONTACT_REQUEST: ["/clientContactRequestPage",
+        "/clientViewContactRequestPage"
+    ],
+    CONTACT_LIST: ["/clientContactListPage",
+        "/clientEditContactPage",
+        "/clientAddContactPage"
+    ],
+    DEPARTMENT: ["/departmentClient",
+        "/addDeptClient",
+        "/editDepartmentClient"
+    ],
+    JOB_PANEL: ["/clientNeedAttentionJobs",
+        "/clientUnAssignedJobs",
+        "/clientAssignedJobs",
+        "/clientAllJobsMain",
+        "/clientJobsHistory",
+        "/clientJobDetails",
+    ],
+    NEED_ATTENTION: ["/clientNeedAttentionJobs"],
+    UNASSIGNED: ["/clientUnAssignedJobs"],
+    ASIGNED: ["/clientAssignedJobs"],
+    ALL_JOBS: ["/clientAllJobsMain"],
+    HISTORY: ["/clientJobsHistory"],
+    INTERPRETATION_HISTORY: [],
+    PROJECTS: ["/clientTranslationList",
+        "/clientTranslationDetails",
+        "/clientTrainingList",
+        "/clientTrainingDetails",
+
+    ],
+    TRANSLATION: ["/clientTranslationList",
+        "/clientTranslationDetails"
+    ],
+    TRAINING: ["/clientTrainingList",
+        "/clientTrainingDetails"
+    ],
+    INVOICE: ["/clientInvoiceList"],
+    CHAT: [],
+    RESOURCES: [],
+    SETTINGS: [],
+    NOTIFICATION: [],
+    NOTIFICATION_PANEL: []
+});
+
+export { VENDOR_PATH, ADMIN_PATH, CLIENT_PATH };

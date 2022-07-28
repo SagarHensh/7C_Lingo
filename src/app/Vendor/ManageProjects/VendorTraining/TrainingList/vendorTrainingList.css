@@ -1,0 +1,36 @@
+.verificaiton-doc-tab-filter ul li.active {
+    background: #005d83 !important;
+    color: #fff !important;
+  }
+
+ .verificaiton-doc-tab-filter ul li {
+    float: none;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #dcdbd8;
+    padding: 30px 20px;
+    height: auto;
+    font-size: 14px;
+}
+.verificaiton-doc-tab-filter ul li {
+    /* height: 41px;
+    float: left;
+    font-size: 11px; */
+    text-transform: uppercase;
+    /* padding: 10px 25px; */
+    border: 1px solid #dcdbd8;
+    /* text-align: center; */
+    /* width: 33.333%; */
+    line-height: 11px;
+    cursor: pointer;
+    color: var(--grey);
+}
+.verificaiton-doc-tab-filter ul{
+    list-style: none;
+}
+.verificaiton-doc-tab-filter {
+    margin-top: 20px;
+}
+.tab-app-information.activeLnk1 {
+    display: block;
+}

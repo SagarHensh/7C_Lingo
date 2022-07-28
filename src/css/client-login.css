@@ -1,0 +1,20 @@
+.bg-form2{ background:url(../images/bg2.jpg) repeat;
+width: 100%;
+height: 100%;
+/* position: fixed; */
+}
+.cotact-information-row{ width: 100%; float: left; padding: 40px 0px;}
+.c-form-bx{    width: 80%; background: #005e84; float: left; padding: 30px 30px 52px; border-radius: 15px; box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 36%);}
+.c-form-bx h3	{color: var(--white); background:url(../images/email.jpg) right no-repeat;padding-top: 7px;
+    font-size: 25px; text-transform: uppercase; margin-bottom: 25px;}
+.frm{ margin:10px 0px; width:80%}
+.frm-field::placeholder{color: var(--white); }
+.frm-field{    width: 100%; background: no-repeat; border: 0px;border-bottom: 1px solid #337a97; padding: 10px 0; color: var(--white);}
+.frm-right-app{    width: 100%; float:right; background: #fff; border-radius: 15px; box-shadow: 0px 0px 8px rgb(0 0 0 / 46%);}
+.frm-info{ padding: 26px 36px; border-top: 1px solid #e8e8e8;}
+.frm-bx{ margin:7px 0px;}
+.frm4-field {width: 100%; border: 1px solid #d3d2d2;  border-radius: 4px; padding: 0 14px; font-size: 15px; box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 26%);
+    line-height: 43px;}
+.frm4-select{ width: 100%; border: 1px solid #d3d2d2; border-radius: 8px; padding: 8px; font-size: 14px; box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 18%);  appearance: none;-moz-appearance: none; -o-appearance: none;  outline: 0; transition: border-color .1s ease-in-out 0s,box-shadow .1s ease-in-out 0s; -webkit-appearance: none;}
+.frm4-field::placeholder{color: #a39e9e;}
+

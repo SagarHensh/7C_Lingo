@@ -1,0 +1,46 @@
+
+.job-section-tab .add-more-field .table-listing-app table,
+#jobdetails.tab-pane .job-section-tab table{background: url(../../../../images/job-detail-watermark.png) no-repeat center center;}
+.addmore_service.text-right a {
+    text-decoration: none;
+    background-position: 0 center;
+}
+.job-section-tab .add-more-field .table-listing-app table th {
+    border-top: 1px solid #e3e3e3;
+    text-align: left;
+    font-size: 15px !important;
+}
+.job-section-tab .add-more-field .table-listing-app table td {
+    text-align: left;
+    font-size: 15px !important;
+}
+.job-section-tab .add-more-field .table-listing-app table th:nth-child(2),
+.job-section-tab .add-more-field .table-listing-app table td:nth-child(2) {
+    border-left: 1px solid #e3e3e3;
+    text-align: right;
+}
+.job-section-tab .add-more-field .table-listing-app table td .inputfield.flr {
+    width: 40%;
+    text-align: center;
+    color: var(--grey);
+}
+.addmore_service a{text-decoration: none; line-height: 16px;}
+.c-l-s p,.c-l-s h4 {
+    color: var(--grey);
+    font-weight: 400;
+}
+.job-section-tab .create-offer table th {
+    text-align: center;
+}
+.project_rqst_clnt a.white-btn{text-decoration: none;}
+.project_rqst_clnt .nav.nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.project_rqst_clnt .job-details-tab .nav.nav-tabs li {
+    width: 25%;
+text-align: center;
+}
+.project_rqst_clnt .tsk-col ul li a{text-decoration: none;}
+.project_rqst_clnt .tsk-col ul li:nth-child(2) a{background-size: 33px; text-decoration: none;}

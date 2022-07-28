@@ -1,0 +1,245 @@
+.logo {
+  float: left;
+  width: auto;
+  margin: 0px 0px;
+}
+.logo img {
+  width: 257px;
+}
+.header-information {
+  width: 100%;
+  background: #24272a;
+  padding: 10px 0px;
+  float: left;
+  box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 54%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12;
+}
+.app-right-info {
+  width: auto;
+  float: right;
+  margin: 0px 0 0 0;
+}
+.profile-pic {
+  float: left;
+  width: 61px;
+  height: 62px;
+  position: relative;
+  background: url(/src/images/stroke-shape.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 9px;
+}
+.notification {
+  float: left;
+  margin: 19px 24px 0 0;
+}
+.notification a {
+  display: block;
+  position: relative;
+}
+.notification a span {
+  position: absolute;
+  background: #893215;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 100%;
+  font-size: 12px;
+  padding-top: 2px;
+  top: -6px;
+  right: -7px;
+}
+.head_btn {
+  float: left;
+  width: auto;
+  margin-right: 20px;
+}
+.head_btn a {
+  background: #fff;
+  color: #c3c3c3;
+  border: 0px;
+  text-transform: uppercase;
+  padding: 15px 12px;
+  font-weight: 400;
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  margin: 11px 4px 0;
+  font-size: 11px;
+  line-height: 11px;
+}
+.head_btn a span {
+  display: block;
+}
+.head_btn a.blue {
+  background: #00a0df;
+  color: rgb(255 255 255 / 78%);
+  text-decoration: none;
+}
+.head_btn a:hover {
+  background: #005d83;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-information.grey {
+  background: #e5e5e5;
+  height: 80px;
+}
+.request-quote-btn {
+  float: right;
+  background: #00a0de;
+  padding: 16px 33px;
+  color: #fff;
+  border-radius: 15px;
+}
+.request-quote-btn:hover {
+  background: #0d93c7;
+  text-decoration: none;
+  color: #fff;
+}
+
+.profile_img{
+  border-radius: 50%;
+  height: 45px;
+  width: 60px;
+}
+
+
+/*header custom*/
+
+#img{ 
+  display: inline-block; 
+  position: absolute; 
+   left: 6px; background: no-repeat; 
+   width: 39px; top: 15px; border: 0px;
+   display: none;
+ }
+
+
+
+/*#img{
+  vertical-align: middle;
+  border-style: none;
+  width: 20px;
+  height: auto;
+
+}*/
+
+@media(max-width: 768px)
+{
+  #img{ left: 6px; width: 23px; top: 13px;
+    display: block;
+  }
+.logo{
+    width: 129px;
+    margin: 12px 0px 0 26px;
+    margin-top: 12px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 26px;
+}
+
+.notification{
+  float: left;
+  margin: 19px 24px 0 0;
+  margin-top: 19px;
+  margin-right:5px;
+  margin-bottom: 0px;
+  margin-left:30px !important;
+  
+}
+
+#bell{
+margin-left:30px !important;
+margin-top: -8px !important;
+}
+
+
+.head_btn{
+  top:7px;
+  height: 30px ;
+  margin-left:130px;
+  width: 40%;
+  flex-direction: row;
+  text-align: center;
+  background: none !important;
+}
+
+.head_btn span{
+  font-size: 7px !important;
+  margin-top: -7px;
+  margin-left: -5px;
+  text-align: center;
+  padding-right:2px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+#cre-proj-text{
+  margin-left: -7px;
+}
+
+._btn{
+  width: 40px !important;
+  height: 35px;
+  text-align:center;
+  margin-top: 20px;
+  vertical-align: middle;
+  flex-direction: row;
+  border-radius: 7px !important;
+  margin-left: -5px !important;
+  margin-left: 3px !important;
+}
+
+#logo-img{
+  margin-left:20px;
+  width: 115px !important;
+  margin-top: 12px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+#head-cont{
+  flex-direction: row;
+  display:-ms-inline-flexbox;
+}
+
+}
+
+@-moz-document url-prefix() {
+  @media(max-width:367px){
+  
+    .head_btn{
+      top:7px;
+      height: 30px ;
+      margin-left:135px;
+      width: 40%;
+      flex-direction: row;
+      text-align: center;
+      background: none !important;
+      
+    }
+    
+    .head_btn span{
+      font-size: 9px !important;
+      margin-top: -7px;
+      margin-left: -5px;
+      text-align: center;
+      padding-right:2px;
+      box-sizing: border-box;
+    }
+    
+    #cre-proj-text{
+      margin-left: -7px;
+    }
+
+  }
+
+
+  }

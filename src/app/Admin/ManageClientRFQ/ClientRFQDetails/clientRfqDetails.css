@@ -1,0 +1,19 @@
+.f2f-b {
+  background: #333;
+  display: inline-block;
+  width: 35px;
+  height: 37px;
+  color: #fff;
+  text-align: center;
+  border-radius: 100%;
+  padding-top: 8px;
+}
+p.notes span {
+  color: var(--blue);
+}
+.drpdownTd {
+  padding-left: 7% !important;
+}
+.drpdown_clientRFQDetails {
+  width: 70%;
+}
