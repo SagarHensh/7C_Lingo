@@ -210,11 +210,11 @@ const reqData = {
 
 const invoiceStatusArr = [
   {
-    label: "Raised",
+    label: "Invoiceable",
     value: 0,
   },
   {
-    label: "Received",
+    label: "Invoiced",
     value: 1,
   },
   {
@@ -222,15 +222,15 @@ const invoiceStatusArr = [
     value: 2,
   },
   {
-    label: "Payment Failed",
+    label: "Failed",
     value: 3,
   },
   {
-    label: "Rejected",
+    label: "Cancelled",
     value: 4,
   },
   {
-    label: "Void",
+    label: "Reviewed and Approved",
     value: 5,
   },
 ];
@@ -3942,10 +3942,7 @@ export default class ReceivableTrainingPage extends React.Component {
                       open={open1}
                       onClose={this.handleMenuClose}
                     >
-                      <MenuItem disableRipple onClick={() => this.onVoidClick()}>
-                        {/* <EditIcon /> */}
-                        Void
-                      </MenuItem>
+                    
                       <MenuItem disableRipple onClick={this.onEmailClick}>
                         {/* <FileCopyIcon /> */}
                         Email
@@ -4119,7 +4116,7 @@ export default class ReceivableTrainingPage extends React.Component {
                                         href="#"
                                         className="progress-btn sky"
                                       >
-                                        Verified
+                                        Invoiceable
                                       </span>
                                     </React.Fragment>
                                   ) : data.status === 2 ? (
@@ -4128,7 +4125,7 @@ export default class ReceivableTrainingPage extends React.Component {
                                         href="#"
                                         className="progress-btn sky"
                                       >
-                                        Invoice Created
+                                        Invoiced
                                       </span>
                                     </React.Fragment>
                                   ) : (
@@ -4175,8 +4172,6 @@ export default class ReceivableTrainingPage extends React.Component {
                           <strong>Invoice ID</strong>
                         </th>
                         <th style={{ width: "15%" }}>Client(Bill To)</th>
-                        {/* <th style={{ width: "10%" }}>Vendor</th>
-                        <th style={{ width: "10%" }}>Vendor Type</th> */}
                         <th style={{ width: "12%" }}>Actual Date</th>
                         <th style={{ width: "10%" }}>Status</th>
                         <th style={{ width: "11%" }}>Total Amount</th>
@@ -4194,7 +4189,6 @@ export default class ReceivableTrainingPage extends React.Component {
                                   data-placement="top"
                                   title={data.invoiceId}
                                 >
-                                  {/* {data.jobId} */}
                                   <label className="custom_check2">
                                     <input
                                       type="checkbox"
@@ -4224,75 +4218,54 @@ export default class ReceivableTrainingPage extends React.Component {
                                     </strong>
                                   </label>
                                 </td>
-                                {/* <td style={{ width: "10%" }}>
-                                  {data.serviceType}
-                                </td> */}
                                 <td style={{ width: "15%" }}>
                                   {data.clientName}
                                 </td>
-                                {/* <td style={{ width: "10%" }}>
-                                  {data.vendorName}
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {" "}
-                                  {data.vendotType}
-                                </td> */}
                                 <td style={{ width: "12%" }}>
                                   {SetDateFormat(data.invoiceDate) +
                                     " | " +
                                     SetTimeFormat(data.invoiceDate)}
                                 </td>
                                 <td style={{ width: "10%" }}>
-                                  {data.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Raised
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Received
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 2 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Paid
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 3 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Payment Failed
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 4 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Rejected
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 5 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Void
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment />
-                                  )}
-
-                                  {/* <a href="#" class="progress-btn sky">Verified</a> */}
+                                {data.status === 0 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Invoicable
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 1 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Invoiced
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 2 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Paid
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 3 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Failed
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 4 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Cancelled
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 5 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Received and Approved
+                                  </span>
+                                </React.Fragment>
+                              ) : (
+                                <React.Fragment />
+                              )}
                                 </td>
                                 <td style={{ width: "11%" }}>
                                   $ {data.amount}
@@ -6376,16 +6349,12 @@ export default class ReceivableTrainingPage extends React.Component {
                             // styles={customStyles}
                             name="select"
                             placeholder="Select"
-                            // components={{
-                            //   DropdownIndicator,
-                            //   IndicatorSeparator: () => null,
-                            // }}
                             value={this.state.edit_invoiceStatusData}
                             optionData={invoiceStatusArr}
                             onSelectChange={(value) =>
                               this.edit_onInvoiceStatusChange(value)
                             }
-                            // isDisabled
+                            isDisabled={true}
                           />
                         </div>
                       </div>

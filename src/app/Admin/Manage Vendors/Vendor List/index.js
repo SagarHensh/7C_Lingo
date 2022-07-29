@@ -32,6 +32,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CommonData, ErrorCode } from "../../../../services/constant";
 import { passWordRandomGenerate } from "./function";
+import LotteLoader from "../../../Loader/LotteLoader";
 
 // const style = {
 //   position: "absolute",
@@ -180,7 +181,8 @@ export default class VendorList extends React.Component {
       vendorId: "",
 
       isActive: false,
-      resetPasswordData:""
+      resetPasswordData: "",
+      isLoad : true,
     };
   }
 
@@ -265,6 +267,7 @@ export default class VendorList extends React.Component {
       this.setState({
         listData: arr,
         total_page: totalPage,
+        isLoad : false
       });
     }
   };
@@ -845,11 +848,11 @@ export default class VendorList extends React.Component {
       }
     }
   };
-  
+
   handleReset = () => {
     let mainPass = passWordRandomGenerate();
     this.setState({
-      resetPasswordData:mainPass
+      resetPasswordData: mainPass
     })
     this.handleMenuClose();
     this.openResetModal();
@@ -858,10 +861,10 @@ export default class VendorList extends React.Component {
     // window.$("#status-model").modal("hide");
     this.closeResetModal();
   };
-   //............Reset Password...........
+  //............Reset Password...........
 
-   onResetPassword = async () => {
-    
+  onResetPassword = async () => {
+
 
     let errorCount = 0;
 
@@ -875,13 +878,13 @@ export default class VendorList extends React.Component {
     }
     // let pass = this.randomString(10, "aA#!");
 
-    if(errorCount === 0) {
-      
+    if (errorCount === 0) {
+
       let data = {
         staffid: this.state.listData[this.state.curIndex].id,
         password: this.state.resetPasswordData,
       };
-  
+
       let status = await ApiCall("userpasswordreset", data);
       if (
         status.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
@@ -891,7 +894,7 @@ export default class VendorList extends React.Component {
         toast.success(AlertMessage.MESSAGE.PASSWORD.RESET_SUCCESS);
       }
     }
-   
+
   };
 
   onResetPassChange = (e) => {
@@ -912,7 +915,10 @@ export default class VendorList extends React.Component {
         {/* <Header /> */}
         <ToastContainer hideProgressBar={true} theme="colored" />
         {/* <Sidebar /> */}
-        <div className="component-wrapper">
+        <div className="component-wrapper" hidden={!this.state.isLoad}>
+          <LotteLoader />
+        </div>
+        <div className="component-wrapper" hidden={this.state.isLoad}>
           <div className="listing-component-app">
             <div
               className="vn_frm"

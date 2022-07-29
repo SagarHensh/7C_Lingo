@@ -188,11 +188,11 @@ const reqData = {
 
 const invoiceStatusArr = [
   {
-    label: "Raised",
+    label: "Invoiceable",
     value: 0,
   },
   {
-    label: "Received",
+    label: "Invoiced",
     value: 1,
   },
   {
@@ -200,30 +200,30 @@ const invoiceStatusArr = [
     value: 2,
   },
   {
-    label: "Payment Failed",
+    label: "Failed",
     value: 3,
   },
   {
-    label: "Rejected",
+    label: "Cancelled",
     value: 4,
   },
   {
-    label: "Void",
+    label: "Reviewed and Approved",
     value: 5,
   },
 ];
 
 
 const contractTypeArr = [
-    {
-      label: "Contract",
-      value: "1",
-    },
-    {
-      label: "Non-Contract",
-      value: "0",
-    },
-  ];
+  {
+    label: "Contract",
+    value: "1",
+  },
+  {
+    label: "Non-Contract",
+    value: "0",
+  },
+];
 
 export default class PayableInterpretationPage extends React.Component {
   constructor(props) {
@@ -290,8 +290,8 @@ export default class PayableInterpretationPage extends React.Component {
       phoneNumber: "",
       invoiceEmail: "",
       invoiceNote: "",
-      clientStatus:"",
-      purchaseOrder:"",
+      clientStatus: "",
+      purchaseOrder: "",
       payableItems: [],
       imagePath: "images/profile-pic.png",
       adminPhoto: "",
@@ -312,26 +312,26 @@ export default class PayableInterpretationPage extends React.Component {
       preview_invoiceNote: "",
       preview_payableItems: [],
 
-       // ...for edit invoice modal......
-       invoiceEditId:"",
-       edit_clientId:"",
-       edit_invoiceId: "",
-       edit_invoiceDate: "",
-       edit_dueDate: "2022-01-25",
-       edit_invoiceStatusArr: [],
-       edit_invoiceStatusData: {},
-       edit_invoicePeriodFromDate: "",
-       edit_invoicePeriodToDate: "",
-       edit_clientName: "",
-       edit_billingAddress: "",
-       edit_phoneNumber: "",
-       edit_invoiceEmail: "",
-       edit_invoiceNote: "",
-       edit_clientStatus: "",
-       edit_purchaseOrder: "",
-       edit_payableItems: [
- 
-       ],
+      // ...for edit invoice modal......
+      invoiceEditId: "",
+      edit_clientId: "",
+      edit_invoiceId: "",
+      edit_invoiceDate: "",
+      edit_dueDate: "2022-01-25",
+      edit_invoiceStatusArr: [],
+      edit_invoiceStatusData: {},
+      edit_invoicePeriodFromDate: "",
+      edit_invoicePeriodToDate: "",
+      edit_clientName: "",
+      edit_billingAddress: "",
+      edit_phoneNumber: "",
+      edit_invoiceEmail: "",
+      edit_invoiceNote: "",
+      edit_clientStatus: "",
+      edit_purchaseOrder: "",
+      edit_payableItems: [
+
+      ],
 
 
       // .........adminInfo..............
@@ -464,7 +464,7 @@ export default class PayableInterpretationPage extends React.Component {
       locationDataTxt: "",
       billingNote: "",
 
-      bulkEmail:""
+      bulkEmail: ""
     };
   }
 
@@ -506,7 +506,7 @@ export default class PayableInterpretationPage extends React.Component {
         classInstance.closeChooseTemplateModal();
       } else if (event.target === previewInvoiceModal) {
         classInstance.closePreviewInvoiceModal();
-      }else if (event.target === editInvoiceModal) {
+      } else if (event.target === editInvoiceModal) {
         classInstance.closeEditInvoiceModal();
       } else if (event.target === emailModal) {
         classInstance.closeEmailModal();
@@ -520,11 +520,11 @@ export default class PayableInterpretationPage extends React.Component {
       $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
     });
     window.$(".filterTab ul li").on("click", function () {
-        $(".filterTab ul li").removeClass("active");
-        $(this).addClass("active");
-        $("div").removeClass("activeLnk1");
-        $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk1");
-      });
+      $(".filterTab ul li").removeClass("active");
+      $(this).addClass("active");
+      $("div").removeClass("activeLnk1");
+      $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk1");
+    });
   }
 
   load = async () => {
@@ -624,8 +624,8 @@ export default class PayableInterpretationPage extends React.Component {
                   appointmentDataArr[k].id === 63
                     ? ImageName.IMAGE_NAME.F2F
                     : appointmentDataArr[k].id === 64
-                    ? ImageName.IMAGE_NAME.VRI_ICON
-                    : ImageName.IMAGE_NAME.OPI_ICON
+                      ? ImageName.IMAGE_NAME.VRI_ICON
+                      : ImageName.IMAGE_NAME.OPI_ICON
                 }
                 height="30px"
                 width="25px"
@@ -635,8 +635,8 @@ export default class PayableInterpretationPage extends React.Component {
                 {appointmentDataArr[k].id === 63
                   ? "Face to Face"
                   : appointmentDataArr[k].id === 64
-                  ? "Video Remote Interpreting"
-                  : "Over the Phone Interpretation"}
+                    ? "Video Remote Interpreting"
+                    : "Over the Phone Interpretation"}
               </span>
             </div>
           ),
@@ -698,7 +698,7 @@ export default class PayableInterpretationPage extends React.Component {
 
   getListDetails = async (data) => {
 
-    consoleLog("req data::",data)
+    consoleLog("req data::", data)
     // .............................................
     let modifyData = { isSelected: false };
 
@@ -734,7 +734,7 @@ export default class PayableInterpretationPage extends React.Component {
     }
   };
   getinvoiceDetails = async (data) => {
-    consoleLog("req data::invoice",data)
+    consoleLog("req data::invoice", data)
     let modifyData = { isSelected: false };
     let res = await ApiCall("fetchAllInvoicePayableV2", data);
     if (
@@ -783,43 +783,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: this.state.offset.toString(),
       jobId: this.state.id,
       search: this.state.input,
-        
-            vendorId:
-            this.state.selectedVendor.value == null ||
-            this.state.selectedVendor.value == undefined
-              ? ""
-              : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
+
+      vendorId:
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
+      searchfrom:
+        this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+      searchto: "",
+      location:
+        this.state.locationDataTxt == null ||
+          this.state.locationDataTxt == undefined
+          ? ""
+          : this.state.locationDataTxt,
+      requester:
+        this.state.selectedRequester.value == null ||
+          this.state.selectedRequester.value == undefined
+          ? ""
+          : this.state.selectedRequester.value,
+      appointmentTypeId:
+        this.state.appointmentTypeData.value == null ||
+          this.state.appointmentTypeData.value == undefined
+          ? ""
+          : this.state.appointmentTypeData.value,
+      leiId:
+        this.state.leiData.value == null ||
+          this.state.leiData.value == undefined
+          ? ""
+          : this.state.leiData.value,
+      clientContractPath:
+        this.state.selectedContract.value == null ||
+          this.state.selectedContract.value == undefined
+          ? ""
+          : this.state.selectedContract.value,
+      language: this.state.targetLangId,
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -835,43 +835,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((totalPage - 1) * this.state.limit),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -890,42 +890,42 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.limit),
       jobId: this.state.id,
       search: this.state.input,
-            vendorId:
-            this.state.selectedVendor.value == null ||
-            this.state.selectedVendor.value == undefined
-              ? ""
-              : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
+      vendorId:
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
+      searchfrom:
+        this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+      searchto: "",
+      location:
+        this.state.locationDataTxt == null ||
+          this.state.locationDataTxt == undefined
+          ? ""
+          : this.state.locationDataTxt,
+      requester:
+        this.state.selectedRequester.value == null ||
+          this.state.selectedRequester.value == undefined
+          ? ""
+          : this.state.selectedRequester.value,
+      appointmentTypeId:
+        this.state.appointmentTypeData.value == null ||
+          this.state.appointmentTypeData.value == undefined
+          ? ""
+          : this.state.appointmentTypeData.value,
+      leiId:
+        this.state.leiData.value == null ||
+          this.state.leiData.value == undefined
+          ? ""
+          : this.state.leiData.value,
+      clientContractPath:
+        this.state.selectedContract.value == null ||
+          this.state.selectedContract.value == undefined
+          ? ""
+          : this.state.selectedContract.value,
+      language: this.state.targetLangId,
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -946,43 +946,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.limit),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -992,7 +992,7 @@ export default class PayableInterpretationPage extends React.Component {
     this.setState({
       limit: parseInt(dat.value),
       selectedDisplayData: dat,
-      current_page:1
+      current_page: 1
     });
 
     let resData = {
@@ -1000,43 +1000,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: "0",
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1059,43 +1059,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: this.state.offset_invoice.toString(),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1112,43 +1112,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((totalPage - 1) * this.state.limit_invoice),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1169,43 +1169,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.limit_invoice),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1226,43 +1226,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.limit_invoice),
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1272,7 +1272,7 @@ export default class PayableInterpretationPage extends React.Component {
     this.setState({
       limit: parseInt(dat.value),
       selectedDisplayData_invoice: dat,
-      current_page_invoice:1
+      current_page_invoice: 1
     });
 
     let fetchData = {
@@ -1280,43 +1280,43 @@ export default class PayableInterpretationPage extends React.Component {
       offset: "0",
       jobId: this.state.id,
       search: this.state.input,
-    
+
       vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
+        this.state.selectedVendor.value == null ||
+          this.state.selectedVendor.value == undefined
+          ? ""
+          : this.state.selectedVendor.value,
       searchfrom:
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let returnData = Object.assign(reqData, fetchData);
 
@@ -1425,27 +1425,27 @@ export default class PayableInterpretationPage extends React.Component {
 
   //..............................
 
-onEditInvoiceModal = async(data) => {
-  let arr = [];
+  onEditInvoiceModal = async (data) => {
+    let arr = [];
     // this.openEditInvoiceModal();
-  
+
     this.setState({
-      invoiceEditId:data.invoiceId,
-      invoiceId:data.id,
-      jobId:data.jobId,
-      edit_clientId:data.clientId
+      invoiceEditId: data.invoiceId,
+      invoiceId: data.id,
+      jobId: data.jobId,
+      edit_clientId: data.clientId
     })
-  
+
     let resInvoice = await ApiCall("fetchTemplateListByUserId", {
       userId: data.clientId,
     });
-  
+
     if (
       resInvoice.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
       resInvoice.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
     ) {
       let decodeDataInvoice = Decoder.decode(resInvoice.data.payload);
-  
+
       // consoleLog("responce invoice", decodeDataInvoice);
       if (
         decodeDataInvoice.data != null ||
@@ -1455,17 +1455,17 @@ onEditInvoiceModal = async(data) => {
         decodeDataInvoice.data != ""
       ) {
         this.openEditInvoiceModal();
-  
+
         decodeDataInvoice.data.map((obj) => {
           arr.push({
             label: obj.templateName,
             value: obj.id,
           });
-  
+
           if (obj.isPrimary == 1) {
             let content = [];
             content = JSON.parse(obj.content);
-  
+
             let showHideObj = {
               dueDateTemplate: false,
               invoicePeriodTemplate: false,
@@ -1476,10 +1476,10 @@ onEditInvoiceModal = async(data) => {
               // payableItemsTemplate: false,
               invoiceIdTemplate: false,
               invoiceDateTemplate: false,
-              purchaseOrderTemplate:false,
-              clientStatusTemplate:false
+              purchaseOrderTemplate: false,
+              clientStatusTemplate: false
             };
-  
+
             content.map((obj1) => {
               if (obj1.name === "Due Date") {
                 showHideObj.dueDateTemplate = true;
@@ -1497,7 +1497,7 @@ onEditInvoiceModal = async(data) => {
                 showHideObj.invoiceIdTemplate = true;
               } else if (obj1.name === "Invoice Date") {
                 showHideObj.invoiceDateTemplate = true;
-              }else if (obj1.name === "Purchase Order") {
+              } else if (obj1.name === "Purchase Order") {
                 showHideObj.purchaseOrderTemplate = true;
               } else if (obj1.name === "Invoice Date") {
                 showHideObj.clientStatusTemplate = true;
@@ -1509,7 +1509,7 @@ onEditInvoiceModal = async(data) => {
             });
           }
         });
-  
+
         this.setState({
           templateArr: arr,
         });
@@ -1525,15 +1525,15 @@ onEditInvoiceModal = async(data) => {
             // payableItemsTemplate: true,
             invoiceIdTemplate: true,
             invoiceDateTemplate: true,
-            purchaseOrderTemplate:true,
-            clientStatusTemplate:true
+            purchaseOrderTemplate: true,
+            clientStatusTemplate: true
           },
         });
       }
     }
-  
+
     let statusObj = {};
-  
+
     let resData = await ApiCall("fetchInvoiceByJobId", { jobId: data.jobId, invoiceId: data.invoiceId })
     // consoleLog("preview data", resData);
     if (
@@ -1559,7 +1559,7 @@ onEditInvoiceModal = async(data) => {
             }
           }
         })
-  
+
         this.setState({
           edit_invoiceStatusData: statusObj,
           edit_invoiceId: previewData.invoiceId,
@@ -1572,16 +1572,16 @@ onEditInvoiceModal = async(data) => {
           edit_invoiceNote: previewData.invoiceNote,
           edit_invoiceEmail: previewData.email,
           edit_invoiceDate: SetScheduleDate(previewData.invoiceDate),
-  
-          edit_purchaseOrder:previewData.purchaseOrder,
-          edit_clientStatus:previewData.isContract == 0 ? "Non Contract":"Contract",
-         
+
+          edit_purchaseOrder: previewData.purchaseOrder,
+          edit_clientStatus: previewData.isContract == 0 ? "Non Contract" : "Contract",
+
           edit_payableItems: payableData
         })
       }
     }
-  
-  
+
+
   }
 
   // .............fetch payable items function..........................
@@ -1648,8 +1648,8 @@ onEditInvoiceModal = async(data) => {
               // payableItemsTemplate: false,
               invoiceIdTemplate: false,
               invoiceDateTemplate: false,
-              purchaseOrderTemplate:false,
-              clientStatusTemplate:false
+              purchaseOrderTemplate: false,
+              clientStatusTemplate: false
             };
 
             content.map((obj1) => {
@@ -1694,11 +1694,10 @@ onEditInvoiceModal = async(data) => {
             phoneNumberTemplate: true,
             emailTemplate: true,
             invoiceNotesTemplate: true,
-            // payableItemsTemplate: true,
             invoiceIdTemplate: true,
             invoiceDateTemplate: true,
-            purchaseOrderTemplate:true,
-              clientStatusTemplate:true
+            purchaseOrderTemplate: true,
+            clientStatusTemplate: true
           },
         });
       }
@@ -1762,9 +1761,9 @@ onEditInvoiceModal = async(data) => {
             preview_invoiceNote: previewData.invoiceNote,
             preview_invoiceEmail: previewData.email,
             preview_invoiceDate: SetScheduleDate(previewData.invoiceDate),
-            preview_purchaseOrder:previewData.purchaseOrder,
-            preview_clientStatus:previewData.isContract == 0 ? "Non Contract":"Contract",
-            
+            preview_purchaseOrder: previewData.purchaseOrder,
+            preview_clientStatus: previewData.isContract == 0 ? "Non Contract" : "Contract",
+
             preview_payableItems: payableData,
           });
         } else {
@@ -1902,7 +1901,7 @@ onEditInvoiceModal = async(data) => {
       invoiceId = obj.id;
     });
 
-   
+
     this.setState({
       jobId: jobID,
       clientName: clientName,
@@ -1971,8 +1970,8 @@ onEditInvoiceModal = async(data) => {
                 // payableItemsTemplate: false,
                 invoiceIdTemplate: false,
                 invoiceDateTemplate: false,
-                purchaseOrderTemplate:false,
-                clientStatusTemplate:false
+                purchaseOrderTemplate: false,
+                clientStatusTemplate: false
               };
 
               content.map((obj1) => {
@@ -1992,7 +1991,7 @@ onEditInvoiceModal = async(data) => {
                   showHideObj.invoiceIdTemplate = true;
                 } else if (obj1.name === "Invoice Date") {
                   showHideObj.invoiceDateTemplate = true;
-                }else if (obj1.name === "Purchase Order") {
+                } else if (obj1.name === "Purchase Order") {
                   showHideObj.purchaseOrderTemplate = true;
                 } else if (obj1.name === "Client Status") {
                   showHideObj.clientStatusTemplate = true;
@@ -2020,8 +2019,8 @@ onEditInvoiceModal = async(data) => {
               // payableItemsTemplate: true,
               invoiceIdTemplate: true,
               invoiceDateTemplate: true,
-              purchaseOrderTemplate:true,
-                clientStatusTemplate:true
+              purchaseOrderTemplate: true,
+              clientStatusTemplate: true
             },
           });
         }
@@ -2086,8 +2085,8 @@ onEditInvoiceModal = async(data) => {
                   "+" + userInfo.adminCountryCode + " " + userInfo.adminPhone,
                 invoiceEmail: userInfo.email,
                 billingAddress: billingInfo.address,
-                clientStatus:userInfo.isContract == 0 ? "Non Contract":"Contract",
-                purchaseOrder:userInfo.purchaseOrder
+                clientStatus: userInfo.isContract == 0 ? "Non Contract" : "Contract",
+                purchaseOrder: userInfo.purchaseOrder
               });
             }
           } else {
@@ -2136,8 +2135,8 @@ onEditInvoiceModal = async(data) => {
                   "+" + userInfo.adminCountryCode + " " + userInfo.adminPhone,
                 invoiceEmail: userInfo.email,
                 billingAddress: billingInfo.address,
-                clientStatus:userInfo.isContract == 0 ? "Non Contract":"Contract",
-                purchaseOrder:userInfo.purchaseOrder
+                clientStatus: userInfo.isContract == 0 ? "Non Contract" : "Contract",
+                purchaseOrder: userInfo.purchaseOrder
               });
             }
           }
@@ -2253,11 +2252,11 @@ onEditInvoiceModal = async(data) => {
 
   toDateChange = (date) => {
     this.setState({
-      toDate:SetUSAdateFormat(date),
+      toDate: SetUSAdateFormat(date),
     });
   };
 
-  
+
   // ......for invoice template modal................
 
   invoiceFormDateChange = (date) => {
@@ -2301,425 +2300,425 @@ onEditInvoiceModal = async(data) => {
 
   onFilterApply = () => {
 
-    if(this.state.isVerifiedJobs){
+    if (this.state.isVerifiedJobs) {
 
-        consoleLog("loc",this.state.locationDataTxt )
+      consoleLog("loc", this.state.locationDataTxt)
 
-    let resData = {
-      limit: this.state.limit,
-      offset: this.state.offset.toString(),
-      jobId: this.state.id,
-      search: this.state.input,
-        serviceTypeId:"45",
-      vendorId:
-      this.state.selectedVendor.value == null ||
-      this.state.selectedVendor.value == undefined
-        ? ""
-        : this.state.selectedVendor.value,
-      searchfrom:
-        this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-      searchto: "",
-      location:
-        this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
-          ? ""
-          : this.state.locationDataTxt,
-      requester:
-        this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
-          ? ""
-          : this.state.selectedRequester.value,
-      appointmentTypeId:
-        this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
-          ? ""
-          : this.state.appointmentTypeData.value,
-      leiId:
-        this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
-          ? ""
-          : this.state.leiData.value,
-      clientContractPath:
-        this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
-          ? ""
-          : this.state.selectedContract.value,
-      language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
-    };
-
-    // let mainData = Object.assign(reqData, resData);
-
-    this.getListDetails(resData);
-
-    this.setState({
-      current_page:1
-    });
-} else {
-    let resData = {
-        limit: this.state.limit_invoice,
-        offset: this.state.offset_invoice.toString(),
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
         jobId: this.state.id,
         search: this.state.input,
-      
+        serviceTypeId: "45",
         vendorId:
-        this.state.selectedVendor.value == null ||
-        this.state.selectedVendor.value == undefined
-          ? ""
-          : this.state.selectedVendor.value,
+          this.state.selectedVendor.value == null ||
+            this.state.selectedVendor.value == undefined
+            ? ""
+            : this.state.selectedVendor.value,
         searchfrom:
           this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
         searchto: "",
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
         clientContractPath:
           this.state.selectedContract.value == null ||
-          this.state.selectedContract.value == undefined
+            this.state.selectedContract.value == undefined
             ? ""
             : this.state.selectedContract.value,
         language: this.state.targetLangId,
-        invoiceNote:this.state.billingNote,
-        status:""
+        invoiceNote: this.state.billingNote,
+        status: ""
       };
-  
-      let mainData = Object.assign(reqData, resData);
-  
-      this.getinvoiceDetails(mainData);
-  
+
+      // let mainData = Object.assign(reqData, resData);
+
+      this.getListDetails(resData);
+
       this.setState({
-        current_page_invoice:1
+        current_page: 1
       });
-}
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset_invoice.toString(),
+        jobId: this.state.id,
+        search: this.state.input,
+
+        vendorId:
+          this.state.selectedVendor.value == null ||
+            this.state.selectedVendor.value == undefined
+            ? ""
+            : this.state.selectedVendor.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let mainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(mainData);
+
+      this.setState({
+        current_page_invoice: 1
+      });
+    }
     this.closeFilterModal();
   };
 
   onResetFilter = () => {
-      if(this.state.isVerifiedJobs){
-          this.resetData()
-        this.setState({
-           
-            current_page: 1,
-            selectedDisplayData: {
-              label: "20",
-              value: "20",
-            },
-          });
+    if (this.state.isVerifiedJobs) {
+      this.resetData()
+      this.setState({
 
-          let resData = {
-            limit: this.state.limit,
-            offset: "0",
-            jobId: "",
-            search: "",
-            serviceTypeId:"45",
-            vendorId:"",
-            searchfrom:"",
-            searchto: "",
-            location:"",
-            requester:"",
-            appointmentTypeId:"",
-            leiId:"",
-            clientContractPath:"",
-            language:"",
-            invoiceNote:"",
-            status:""
+        current_page: 1,
+        selectedDisplayData: {
+          label: "20",
+          value: "20",
+        },
+      });
 
-          }
-          let mainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(mainData);
-      } else {
-          this.resetData();
-        this.setState({
-            
-            current_page_invoice: 1,
-            selectedDisplayData_invoice: {
-              label: "20",
-              value: "20",
-            },
-          });
+      let resData = {
+        limit: this.state.limit,
+        offset: "0",
+        jobId: "",
+        search: "",
+        serviceTypeId: "45",
+        vendorId: "",
+        searchfrom: "",
+        searchto: "",
+        location: "",
+        requester: "",
+        appointmentTypeId: "",
+        leiId: "",
+        clientContractPath: "",
+        language: "",
+        invoiceNote: "",
+        status: ""
 
-          let resData = {
-            limit: this.state.limit_invoice,
-            offset: "0",
-            jobId: "",
-            search: "",
-            serviceTypeId:"45",
-            vendorId:"",
-            searchfrom:"",
-            searchto: "",
-            location:"",
-            requester:"",
-            appointmentTypeId:"",
-            leiId:"",
-            clientContractPath:"",
-            language:"",
-            invoiceNote:"",
-            status:""
-
-          }
-          let mainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(mainData);
       }
-  
+      let mainData = Object.assign(reqData, resData);
+
+      this.getListDetails(mainData);
+    } else {
+      this.resetData();
+      this.setState({
+
+        current_page_invoice: 1,
+        selectedDisplayData_invoice: {
+          label: "20",
+          value: "20",
+        },
+      });
+
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: "0",
+        jobId: "",
+        search: "",
+        serviceTypeId: "45",
+        vendorId: "",
+        searchfrom: "",
+        searchto: "",
+        location: "",
+        requester: "",
+        appointmentTypeId: "",
+        leiId: "",
+        clientContractPath: "",
+        language: "",
+        invoiceNote: "",
+        status: ""
+
+      }
+      let mainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(mainData);
+    }
+
 
     this.closeFilterModal();
   };
 
   // ...........for filter modal invoice tab......................
-//   onFilterApply_invoice = () => {
-//     let resData = {
-//       limit: this.state.limit_invoice,
-//       offset: this.state.offset_invoice.toString(),
-//       search: this.state.input,
-//       jobId: this.state.id,
-//       searchto: this.state.toDate_invoice,
-//       searchfrom: this.state.formDate_invoice,
-//     };
+  //   onFilterApply_invoice = () => {
+  //     let resData = {
+  //       limit: this.state.limit_invoice,
+  //       offset: this.state.offset_invoice.toString(),
+  //       search: this.state.input,
+  //       jobId: this.state.id,
+  //       searchto: this.state.toDate_invoice,
+  //       searchfrom: this.state.formDate_invoice,
+  //     };
 
-//     let mainData = Object.assign(reqData, resData);
+  //     let mainData = Object.assign(reqData, resData);
 
-//     this.getinvoiceDetails(mainData);
+  //     this.getinvoiceDetails(mainData);
 
-//     this.setState({
-//       formDate_invoice: "",
-//       toDate_invoice: "",
-//     });
-//     this.closeFilterModal_invoice();
-//   };
+  //     this.setState({
+  //       formDate_invoice: "",
+  //       toDate_invoice: "",
+  //     });
+  //     this.closeFilterModal_invoice();
+  //   };
 
-//   onResetFilter_invoice = () => {
-//     this.setState({
-//       formDate_invoice: "",
-//       toDate_invoice: "",
-//       current_page_invoice: 1,
-//       selectedDisplayData_invoice: {
-//         label: "20",
-//         value: "20",
-//       },
-//     });
+  //   onResetFilter_invoice = () => {
+  //     this.setState({
+  //       formDate_invoice: "",
+  //       toDate_invoice: "",
+  //       current_page_invoice: 1,
+  //       selectedDisplayData_invoice: {
+  //         label: "20",
+  //         value: "20",
+  //       },
+  //     });
 
-//     this.load();
+  //     this.load();
 
-//     this.closeFilterModal_invoice();
-//   };
+  //     this.closeFilterModal_invoice();
+  //   };
 
   onIdChange = (val) => {
-    if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: val,
-            vendorId:
-            this.state.selectedVendor.value == null ||
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: val,
+        vendorId:
+          this.state.selectedVendor.value == null ||
             this.state.selectedVendor.value == undefined
-              ? ""
-              : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(MainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: val,
-            vendorId:
-              this.state.selectedVendor.value == null ||
-              this.state.selectedVendor.value == undefined
-                ? ""
-                : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(MainData);
-      }
+            ? ""
+            : this.state.selectedVendor.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getListDetails(MainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: val,
+        vendorId:
+          this.state.selectedVendor.value == null ||
+            this.state.selectedVendor.value == undefined
+            ? ""
+            : this.state.selectedVendor.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(MainData);
+    }
     this.setState({
       id: val,
     });
   };
 
   inputChange = (e) => {
-    if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            vendorId:
-              this.state.selectedVendor.value == null ||
-              this.state.selectedVendor.value == undefined
-                ? ""
-                : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(MainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            vendorId:
-              this.state.selectedVendor.value == null ||
-              this.state.selectedVendor.value == undefined
-                ? ""
-                : this.state.selectedVendor.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(MainData);
-      }
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        vendorId:
+          this.state.selectedVendor.value == null ||
+            this.state.selectedVendor.value == undefined
+            ? ""
+            : this.state.selectedVendor.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getListDetails(MainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        vendorId:
+          this.state.selectedVendor.value == null ||
+            this.state.selectedVendor.value == undefined
+            ? ""
+            : this.state.selectedVendor.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(MainData);
+    }
     this.setState({
       input: e.target.value,
     });
@@ -2815,7 +2814,7 @@ onEditInvoiceModal = async(data) => {
   };
   onEditInvoiceNotesChange = (e) => {
     this.setState({
-      edit_invoiceNote:e.target.value
+      edit_invoiceNote: e.target.value
     })
   }
   onInvoicePhoneChange = (value) => {
@@ -3049,7 +3048,7 @@ onEditInvoiceModal = async(data) => {
   };
   onBulkEmailChange = (e) => {
     this.setState({
-      bulkEmail:e.target.value
+      bulkEmail: e.target.value
     })
   }
   openOpenEmailModal = () => {
@@ -3058,17 +3057,17 @@ onEditInvoiceModal = async(data) => {
   emailClose = () => {
     this.closeEmailModal();
     this.setState({
-      bulkEmail:""
+      bulkEmail: ""
     })
   }
 
-  onEmailSubmit = async() => {
+  onEmailSubmit = async () => {
     var errorCount = 0;
     let arr = this.state.bulkEmail.split(",");
-    consoleLog("emailArr:::",arr);
+    consoleLog("emailArr:::", arr);
 
     arr.map((obj) => {
-      if(emailValidator(obj).status == false){
+      if (emailValidator(obj).status == false) {
         toast.error(emailValidator(obj).message, {
           hideProgressBar: true,
         });
@@ -3076,26 +3075,26 @@ onEditInvoiceModal = async(data) => {
       }
     })
 
-    if(errorCount === 0){
+    if (errorCount === 0) {
       let obj = {
-        invoiceId:this.state.invoiceArrId,
-        emailArr:arr
+        invoiceId: this.state.invoiceArrId,
+        emailArr: arr
       }
-      consoleLog("request data emailll:::",obj)
-  
-      let res = await ApiCall("bulkActionToDownloadEmail",obj);
+      consoleLog("request data emailll:::", obj)
+
+      let res = await ApiCall("bulkActionToDownloadEmail", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       ) {
-        consoleLog("________download mail",res)
+        consoleLog("________download mail", res)
         this.emailClose();
       } else {
-        toast.error("error occured!!",{ hideProgressBar:true})
+        toast.error("error occured!!", { hideProgressBar: true })
       }
     }
 
-   
+
   }
   onVoidClick = async () => {
     if (this.state.invoiceArrId.length < 1) {
@@ -3131,8 +3130,8 @@ onEditInvoiceModal = async(data) => {
       }
     }
   };
-  onEmailClick = async() => {
-    if(this.state.invoiceArrId.length < 1){
+  onEmailClick = async () => {
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       this.openOpenEmailModal()
@@ -3146,21 +3145,21 @@ onEditInvoiceModal = async(data) => {
       //   res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       // ) {
       //   consoleLog("________download mail",res)
-        // window.scrollTo(0,0);
-        // toast.success("Invoice Status Change Successfully !!");
-        // let resInvoiceData = {
-        //   limit: this.state.limit_invoice,
-        //   offset: this.state.offset_invoice.toString(),
-        //   search: "",
-        //   jobId: "",
-        //   searchto: "",
-        //   searchfrom: "",
-        // };
-  
-        // let MainInvoiceData = Object.assign(reqData, resInvoiceData);
-  
-        // this.getinvoiceDetails(MainInvoiceData);
-        this.handleMenuClose();
+      // window.scrollTo(0,0);
+      // toast.success("Invoice Status Change Successfully !!");
+      // let resInvoiceData = {
+      //   limit: this.state.limit_invoice,
+      //   offset: this.state.offset_invoice.toString(),
+      //   search: "",
+      //   jobId: "",
+      //   searchto: "",
+      //   searchfrom: "",
+      // };
+
+      // let MainInvoiceData = Object.assign(reqData, resInvoiceData);
+
+      // this.getinvoiceDetails(MainInvoiceData);
+      this.handleMenuClose();
       // } else {
       //   toast.error("Error Occured !!")
       // }
@@ -3168,15 +3167,15 @@ onEditInvoiceModal = async(data) => {
     }
   }
 
-  onDownloadClick = async() => {
-    if(this.state.invoiceArrId.length < 1){
+  onDownloadClick = async () => {
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       let obj = {
-        invoiceId:this.state.invoiceArrId
+        invoiceId: this.state.invoiceArrId
       }
 
-      let res = await ApiCall("bulkActionToDownload",obj);
+      let res = await ApiCall("bulkActionToDownload", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
@@ -3184,7 +3183,7 @@ onEditInvoiceModal = async(data) => {
 
         let decodeData = Decoder.decode(res.data.payload)
 
-        consoleLog("________download",decodeData)
+        consoleLog("________download", decodeData)
         window.open(decodeData.data.url, "_blank");
         this.handleMenuClose();
       } else {
@@ -3360,8 +3359,8 @@ onEditInvoiceModal = async(data) => {
           payableItemsTemplate: false,
           invoiceIdTemplate: false,
           invoiceDateTemplate: false,
-          clientStatusTemplate:false,
-          purchaseOrderTemplate:false
+          clientStatusTemplate: false,
+          purchaseOrderTemplate: false
         };
         templateData.map((obj) => {
           if (obj.name === "Due Date") {
@@ -3382,7 +3381,7 @@ onEditInvoiceModal = async(data) => {
             showHideObj.invoiceIdTemplate = true;
           } else if (obj.name === "Invoice Date") {
             showHideObj.invoiceDateTemplate = true;
-          }else if (obj.name === "Purchase Order") {
+          } else if (obj.name === "Purchase Order") {
             showHideObj.purchaseOrderTemplate = true;
           } else if (obj.name === "Client Status") {
             showHideObj.clientStatusTemplate = true;
@@ -3559,9 +3558,9 @@ onEditInvoiceModal = async(data) => {
     let payableData = this.state.edit_payableItems;
     let data = {
       id: "",
-      payableReceivableId:"",
+      payableReceivableId: "",
       serviceType: "",
-      joinId:"",
+      joinId: "",
       description: "",
       unit: "",
       unitPrice: "",
@@ -3675,66 +3674,66 @@ onEditInvoiceModal = async(data) => {
     });
   };
 
- // ...............for edit payable item Array...........
+  // ...............for edit payable item Array...........
 
- payableIdChange = (index) => (e) => {
-  this.state.edit_payableItems[index].id = e.target.value;
-  this.setState({
-    edit_payableItems: this.state.edit_payableItems,
-  });
-};
-
-edit_payableTypeChange = (index) => (e) => {
-  this.state.edit_payableItems[index].serviceType = e.target.value;
-  this.setState({
-    edit_payableItems: this.state.edit_payableItems,
-  });
-};
-
-edit_payableDescriptionChange = (index) => (e) => {
-  this.state.edit_payableItems[index].description = e.target.value;
-  this.setState({
-    edit_payableItems: this.state.edit_payableItems,
-  });
-};
-edit_payableQuantityChange = (index) => (e) => {
-  if (decimalValue(e.target.value)) {
-    this.state.edit_payableItems[index].unit = e.target.value;
-    let t = e.target.value * this.state.edit_payableItems[index].unitPrice
-    this.state.edit_payableItems[index].totalPrice = t
+  payableIdChange = (index) => (e) => {
+    this.state.edit_payableItems[index].id = e.target.value;
     this.setState({
       edit_payableItems: this.state.edit_payableItems,
     });
-  }
+  };
 
-};
-edit_payableUnitPriceChange = (index) => (e) => {
-  if (decimalValue(e.target.value)) {
-    this.state.payableItems[index].unitPrice = e.target.value;
-    let t = e.target.value * this.state.payableItems[index].unit
-    this.state.payableItems[index].totalPrice = t
+  edit_payableTypeChange = (index) => (e) => {
+    this.state.edit_payableItems[index].serviceType = e.target.value;
+    this.setState({
+      edit_payableItems: this.state.edit_payableItems,
+    });
+  };
+
+  edit_payableDescriptionChange = (index) => (e) => {
+    this.state.edit_payableItems[index].description = e.target.value;
+    this.setState({
+      edit_payableItems: this.state.edit_payableItems,
+    });
+  };
+  edit_payableQuantityChange = (index) => (e) => {
+    if (decimalValue(e.target.value)) {
+      this.state.edit_payableItems[index].unit = e.target.value;
+      let t = e.target.value * this.state.edit_payableItems[index].unitPrice
+      this.state.edit_payableItems[index].totalPrice = t
+      this.setState({
+        edit_payableItems: this.state.edit_payableItems,
+      });
+    }
+
+  };
+  edit_payableUnitPriceChange = (index) => (e) => {
+    if (decimalValue(e.target.value)) {
+      this.state.payableItems[index].unitPrice = e.target.value;
+      let t = e.target.value * this.state.payableItems[index].unit
+      this.state.payableItems[index].totalPrice = t
+      this.setState({
+        payableItems: this.state.payableItems,
+      });
+    }
+
+  };
+  edit_payableTotalPriceChange = (index) => (e) => {
+    this.state.payableItems[index].totalPrice = e.target.value;
     this.setState({
       payableItems: this.state.payableItems,
     });
-  }
+  };
 
-};
-edit_payableTotalPriceChange = (index) => (e) => {
-  this.state.payableItems[index].totalPrice = e.target.value;
-  this.setState({
-    payableItems: this.state.payableItems,
-  });
-};
-
-// .....................
+  // .....................
 
   onCreateInvoice = async () => {
     let mobileNo = this.state.phoneNumber.substring(3, 15);
 
     let errorCount = 0;
     let validateInvoiceStatus = inputEmptyValidate(
-        this.state.invoiceStatusData.value
-      ),
+      this.state.invoiceStatusData.value
+    ),
       validateInvoicePeriodFromDate = inputEmptyValidate(
         this.state.invoicePeriodFromDate
       ),
@@ -3874,7 +3873,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
     }
   };
 
-  onUpdateInvoice = async() => {
+  onUpdateInvoice = async () => {
     let mobileNo = this.state.edit_phoneNumber.substring(3, 15);
 
     let errorCount = 0;
@@ -3920,7 +3919,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
     ) {
       toast.error(AlertMessage.MESSAGE.INVOICE.EMPTY_ADDRESS);
       errorCount++;
-    } 
+    }
 
     // this.state.payableItems.map((obj) => {
     //   let validateId = inputEmptyValidate(obj.id),
@@ -3988,7 +3987,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
           ? this.state.edit_invoiceNote
           : "",
         payableItems: this.state.edit_payableItems,
-        invoiceId:this.state.invoiceId
+        invoiceId: this.state.invoiceId
         // invoiceId:this.state.inv
       };
 
@@ -4022,8 +4021,8 @@ edit_payableTotalPriceChange = (index) => (e) => {
       payableItemsTemplate: true,
       invoiceIdTemplate: true,
       invoiceDateTemplate: true,
-      purchaseOrderTemplate:true,
-      clientStatusTemplate:true
+      purchaseOrderTemplate: true,
+      clientStatusTemplate: true
     };
     this.setState({
       // invoiceId:"",
@@ -4089,27 +4088,27 @@ edit_payableTotalPriceChange = (index) => (e) => {
         searchto: "",
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
         clientContractPath:
           this.state.selectedContract.value == null ||
-          this.state.selectedContract.value == undefined
+            this.state.selectedContract.value == undefined
             ? ""
             : this.state.selectedContract.value,
         language: this.state.targetLangId,
@@ -4130,27 +4129,27 @@ edit_payableTotalPriceChange = (index) => (e) => {
         searchto: "",
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
         clientContractPath:
           this.state.selectedContract.value == null ||
-          this.state.selectedContract.value == undefined
+            this.state.selectedContract.value == undefined
             ? ""
             : this.state.selectedContract.value,
         language: this.state.targetLangId,
@@ -4168,7 +4167,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
   onLocationInputChange = async (val) => {
     console.log(")))))))))))))))", val);
     let arrData = [],
-    locationArr=[];
+      locationArr = [];
     let locationData = [];
 
     if (val.length > 0) {
@@ -4179,7 +4178,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
         locationRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         locationRes.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       ) {
-         locationArr = Decoder.decode(locationRes.data.payload);
+        locationArr = Decoder.decode(locationRes.data.payload);
         locationData = locationArr.data.locaionsuggesion;
         console.log("data:::::", locationData);
         for (let i = 0; i < locationData.length; i++) {
@@ -4189,7 +4188,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
           });
         }
 
-        
+
       }
       this.setState({
         locationArr: arrData,
@@ -4202,7 +4201,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
     // console.log("location value", value)
     this.setState({
       locationData: value,
-      locationDataTxt:value.value
+      locationDataTxt: value.value
     });
   };
 
@@ -4252,16 +4251,16 @@ edit_payableTotalPriceChange = (index) => (e) => {
       appointmentTypeData: {},
       selectedRequester: {},
       locationData: {},
-      locationDataTxt:"",
+      locationDataTxt: "",
       selectedContract: {},
       leiData: {},
       targetLangData: [],
-      targetLangId:[]
+      targetLangId: []
     });
   };
   onBillingNotesChange = (e) => {
     this.setState({
-        billingNote: e.target.value,
+      billingNote: e.target.value,
     });
   };
 
@@ -4270,25 +4269,25 @@ edit_payableTotalPriceChange = (index) => (e) => {
     const open1 = Boolean(this.state.anchorEl1);
 
     const customStylesDropdown = {
-        control: (styles) => ({
+      control: (styles) => ({
+        ...styles,
+        backgroundColor: "white",
+        boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
+        borderRadius: "10px",
+        height: 45,
+        minHeight: 45,
+      }),
+      option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        const color = "yellow";
+        return {
           ...styles,
-          backgroundColor: "white",
-          boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
-          borderRadius: "10px",
-          height: 45,
-          minHeight: 45,
-        }),
-        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-          const color = "yellow";
-          return {
-            ...styles,
-            color: isFocused ? "grey" : "white",
-            //   backgroundColor: isDisabled ? "red" : "white",
-            color: "#000",
-            cursor: isDisabled ? "not-allowed" : "default",
-          };
-        },
-      };
+          color: isFocused ? "grey" : "white",
+          //   backgroundColor: isDisabled ? "red" : "white",
+          color: "#000",
+          cursor: isDisabled ? "not-allowed" : "default",
+        };
+      },
+    };
     return (
       <React.Fragment>
         <ToastContainer hideProgressBar theme="colored" />
@@ -4302,26 +4301,26 @@ edit_payableTotalPriceChange = (index) => (e) => {
                 <div className="vn_frm">
                   {this.state.isVerifiedJobs ? <React.Fragment>
                     <span
-                    style={{
-                      width: "20%",
-                      paddingLeft: "5px",
-                      fontSize: "14px",
-                    }}
-                  >
-                    Job ID
-                  </span>
-                  </React.Fragment>:<React.Fragment>
-                  <span
-                    style={{
-                      width: "30%",
-                      paddingLeft: "5px",
-                      fontSize: "14px",
-                    }}
-                  >
-                    Invoice ID
-                  </span>
-                    </React.Fragment>}
-                 
+                      style={{
+                        width: "20%",
+                        paddingLeft: "5px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Job ID
+                    </span>
+                  </React.Fragment> : <React.Fragment>
+                    <span
+                      style={{
+                        width: "30%",
+                        paddingLeft: "5px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Invoice ID
+                    </span>
+                  </React.Fragment>}
+
                   <InputText
                     placeholder="Search"
                     className="inputfield"
@@ -4347,7 +4346,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                       optionData={this.state.vendorArr}
                       value={this.state.selectedVendor}
                       onSelectChange={(value) => this.vendorChange(value)}
-                      // isDisabled = {true}
+                    // isDisabled = {true}
                     ></SelectBox>
                   </div>
                 </div>
@@ -4361,7 +4360,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     placeholder="Search"
                     class="inputfield"
                     onChange={this.inputChange}
-                    style={{ width: "80%",marginLeft:"30px" }}
+                    style={{ width: "80%", marginLeft: "30px" }}
                   />
                 </div>
               </div>
@@ -4528,10 +4527,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                   open={open1}
                   onClose={this.handleMenuClose}
                 >
-                  <MenuItem disableRipple onClick={this.onVoidClick}>
-                    {/* <EditIcon /> */}
-                    Void
-                  </MenuItem>
+               
                   <MenuItem disableRipple onClick={this.onEmailClick}>
                     {/* <FileCopyIcon /> */}
                     Email
@@ -4600,7 +4596,6 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     <th style={{ width: "10%" }}>Service</th>
                     <th style={{ width: "10%" }}>Client(Bill To)</th>
                     <th style={{ width: "10%" }}>Vendor</th>
-                    <th style={{ width: "10%" }}>Vendor Type</th>
                     <th style={{ width: "12%" }}>Actual Date</th>
                     <th style={{ width: "10%" }}>Status</th>
                     <th style={{ width: "9%" }}>Total Amount</th>
@@ -4654,7 +4649,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       //   this.showDetails(data, i)
                                       // }
                                       style={{
-                                        paddingLeft: "5px",
+                                        paddingLeft: "10px",
                                         paddingTop: "4px",
                                       }}
                                     >
@@ -4669,7 +4664,6 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             <td style={{ width: "10%" }}>{data.serviceType}</td>
                             <td style={{ width: "10%" }}>{data.clientName}</td>
                             <td style={{ width: "10%" }}>{data.vendorName}</td>
-                            <td style={{ width: "10%" }}> {data.vendotType}</td>
                             <td style={{ width: "12%" }}>
                               {SetDateFormat(data.endTime) +
                                 " | " +
@@ -4685,13 +4679,13 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               ) : data.status === 1 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Verified
+                                    Invoiceable
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 2 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Invoice Created
+                                    Invoiced
                                   </span>
                                 </React.Fragment>
                               ) : (
@@ -4800,13 +4794,13 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               {data.status === 0 ? (
                                 <React.Fragment>
                                   <span className="progress-btn yellow">
-                                    Raised
+                                    Invoicable
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 1 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Received
+                                    Invoiced
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 2 ? (
@@ -4818,19 +4812,19 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               ) : data.status === 3 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Payment Failed
+                                    Failed
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 4 ? (
                                 <React.Fragment>
                                   <span className="progress-btn yellow">
-                                    Rejected
+                                    Cancelled
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 5 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Void
+                                    Received and Approved
                                   </span>
                                 </React.Fragment>
                               ) : (
@@ -4840,17 +4834,17 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             <td style={{ width: "11%" }}>$ {data.amount}</td>
                             <td style={{ width: "11%" }}>
                               <div>
-                              <img
-                                      src={ImageName.IMAGE_NAME.EDIT_SQUARE}
-                                      style={{ cursor: "pointer" ,marginRight:"5px"}}
-                                      onClick={() => this.onEditInvoiceModal(data)}
-                                    />
+                                <img
+                                  src={ImageName.IMAGE_NAME.EDIT_SQUARE}
+                                  style={{ cursor: "pointer", marginRight: "5px" }}
+                                  onClick={() => this.onEditInvoiceModal(data)}
+                                />
                                 <a href="javascript:void(0)">
                                   <img
                                     src={
                                       ImageName.IMAGE_NAME.DOWNLOAD_SHEET_ICON
                                     }
-                                    style={{ marginLeft:"5px"}}
+                                    style={{ marginLeft: "5px" }}
                                     onClick={() => this.onDownloadInvoice(data)}
                                   />
                                 </a>
@@ -4881,7 +4875,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
 
         {/* .....................filter-modal........................... */}
 
-<div
+        <div
           id="filter-model"
           className="modal fade modelwindow filter-pop"
           role="dialog"
@@ -4962,11 +4956,11 @@ edit_payableTotalPriceChange = (index) => (e) => {
                         </li>
                       ) : (
                         <li
-                        data-related="tble-data-i"
-                        style={{ padding: "20px 20px" }}
-                      >
-                        Billing Note
-                      </li>
+                          data-related="tble-data-i"
+                          style={{ padding: "20px 20px" }}
+                        >
+                          Billing Note
+                        </li>
                       )}
                       <li
                         data-related="tble-data-j"
@@ -5055,7 +5049,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                     style={{ fontSize: "20px" }}
                                   >
                                     {" "}
-                                   TARGET LANGUAGE
+                                    TARGET LANGUAGE
                                   </div>
                                   <div className="bts-drop">
                                     <MultiSelectBox
@@ -5130,7 +5124,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                   </div>
                                   <div
                                     class="dropdwn"
-                                    // style={{ marginLeft: "25%" }}
+                                  // style={{ marginLeft: "25%" }}
                                   >
                                     <div className="tr-3">
                                       <Select
@@ -5170,7 +5164,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               className="lable-text"
                               style={{ fontSize: "20px" }}
                             >
-                               {this.state.isVerifiedJobs ? "SCHEDULE DATE" : "INVOICE DATE "}
+                              {this.state.isVerifiedJobs ? "SCHEDULE DATE" : "INVOICE DATE "}
                             </div>
                             <div className="row">
                               {/* <div className="col-md-10">
@@ -5305,7 +5299,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="tab-app-information" id="tble-data-j">
                   <div className="jobfilterpop table-listing-app">
                     <div className="table-responsive_cus table-style-a">
@@ -5350,40 +5344,41 @@ edit_payableTotalPriceChange = (index) => (e) => {
                 </div>
 
                 {this.state.isVerifiedJobs ? <React.Fragment>
-                    <div className="tab-app-information" id="tble-data-i">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div
-                                class="lable-text"
-                                style={{ fontSize: "20px" }}
-                              >
-                                CONTRACT TYPE{" "}
+                  <div className="tab-app-information" id="tble-data-i">
+                    <div className="jobfilterpop table-listing-app">
+                      <div className="table-responsive_cus table-style-a">
+                        <div className="filter-jeneral-wrap">
+                          <div className="create-row-app">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div
+                                  class="lable-text"
+                                  style={{ fontSize: "20px" }}
+                                >
+                                  CONTRACT TYPE{" "}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-8">
-                              <div
-                                class="dropdwn"
-                                style={{ cursor: "pointer" }}
-                              >
-                                <SelectBox
-                                  // styles={customStyles}
-                                  optionData={contractTypeArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
-                                  value={this.state.selectedContract}
-                                  placeholder="Select"
-                                  onSelectChange={(value) => {
-                                    this.onContractChange(value);
-                                  }}
-                                />
+                            <div className="row">
+                              <div className="col-md-8">
+                                <div
+                                  class="dropdwn"
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <SelectBox
+                                    // styles={customStyles}
+                                    optionData={contractTypeArr}
+                                    // components={{
+                                    //   DropdownIndicator,
+                                    //   IndicatorSeparator: () => null,
+                                    // }}
+                                    value={this.state.selectedContract}
+                                    placeholder="Select"
+                                    onSelectChange={(value) => {
+                                      this.onContractChange(value);
+                                    }}
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -5391,42 +5386,42 @@ edit_payableTotalPriceChange = (index) => (e) => {
                       </div>
                     </div>
                   </div>
-                </div>
                 </React.Fragment> : <React.Fragment>
-                <div className="tab-app-information" id="tble-data-i">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div
-                                class="lable-text"
-                                style={{ fontSize: "20px" }}
-                              >
-                                BILLING NOTE{" "}
+                  <div className="tab-app-information" id="tble-data-i">
+                    <div className="jobfilterpop table-listing-app">
+                      <div className="table-responsive_cus table-style-a">
+                        <div className="filter-jeneral-wrap">
+                          <div className="create-row-app">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div
+                                  class="lable-text"
+                                  style={{ fontSize: "20px" }}
+                                >
+                                  BILLING NOTE{" "}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-8">
-                              <div
-                                class="dropdwn"
-                                style={{ cursor: "pointer" }}
-                              >
-                               <textarea
-                              placeholder=""
-                              className="in-textarea min"
-                              value={this.state.billingNote}
-                              onChange={(value) => {
-                                this.onBillingNotesChange(value);
-                              }}
-                              style={{
-                                borderRadius: "10px",
-                                resize: "none",
-                                width: "120%",
-                              }}
-                            ></textarea>
+                            <div className="row">
+                              <div className="col-md-8">
+                                <div
+                                  class="dropdwn"
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <textarea
+                                    placeholder=""
+                                    className="in-textarea min"
+                                    value={this.state.billingNote}
+                                    onChange={(value) => {
+                                      this.onBillingNotesChange(value);
+                                    }}
+                                    style={{
+                                      borderRadius: "10px",
+                                      resize: "none",
+                                      width: "120%",
+                                    }}
+                                  ></textarea>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -5434,16 +5429,15 @@ edit_payableTotalPriceChange = (index) => (e) => {
                       </div>
                     </div>
                   </div>
-                </div>
-                    </React.Fragment>}
+                </React.Fragment>}
 
-                
+
               </div>
             </div>
           </div>
         </div>
 
-       
+
 
         {/* ........................invoice modal................ */}
 
@@ -5592,21 +5586,21 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     ) : (
                       <React.Fragment />
                     )}
-                     {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
+                    {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -5672,10 +5666,10 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                     <div style={{ width: "20%" }}>
                                       <a style={{ float: "right" }}>
                                         <DatePicker
-                                         dropdownMode="select"
-                                         showMonthDropdown
-                                         showYearDropdown
-                                         adjustDateOnChange
+                                          dropdownMode="select"
+                                          showMonthDropdown
+                                          showYearDropdown
+                                          adjustDateOnChange
                                           onChange={(date) =>
                                             this.invoiceFormDateChange(date)
                                           }
@@ -5719,10 +5713,10 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                     <div style={{ width: "20%" }}>
                                       <a style={{ float: "right" }}>
                                         <DatePicker
-                                         dropdownMode="select"
-                                         showMonthDropdown
-                                         showYearDropdown
-                                         adjustDateOnChange
+                                          dropdownMode="select"
+                                          showMonthDropdown
+                                          showYearDropdown
+                                          adjustDateOnChange
                                           onChange={(date) =>
                                             this.invoiceToDateChange(date)
                                           }
@@ -5767,18 +5761,18 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
@@ -6108,9 +6102,9 @@ edit_payableTotalPriceChange = (index) => (e) => {
           </div>
         </div>
 
-       {/* ......................preview.invoice modal................ */}
+        {/* ......................preview.invoice modal................ */}
 
-       <div
+        <div
           id="previewInvoice-model"
           class="modal fade modelwindow"
           role="dialog"
@@ -6225,21 +6219,21 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     )}
                   </div>
                   <div className="row">
-                  {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
+                    {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.preview_purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.preview_purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -6300,7 +6294,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       FROM {this.state.preview_invoicePeriodFromDate}
+                                        FROM {this.state.preview_invoicePeriodFromDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6344,7 +6338,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       TO {this.state.preview_invoicePeriodToDate}
+                                        TO {this.state.preview_invoicePeriodToDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6395,22 +6389,22 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.preview_clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.preview_clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
-                   
+
                   </div>
                   {this.state.showHide.billingAddressTemplate ? (
                     <React.Fragment>
@@ -6747,9 +6741,9 @@ edit_payableTotalPriceChange = (index) => (e) => {
           </div>
         </div>
 
-         {/* ......................edit.invoice modal................ */}
+        {/* ......................edit.invoice modal................ */}
 
-         <div
+        <div
           id="editInvoice-model"
           class="modal fade modelwindow"
           role="dialog"
@@ -6864,21 +6858,21 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     )}
                   </div>
                   <div className="row">
-                  {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
+                    {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.edit_purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.edit_purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -6900,7 +6894,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             onSelectChange={(value) =>
                               this.edit_onInvoiceStatusChange(value)
                             }
-                            // isDisabled
+                            isDisabled={true}
                           />
                         </div>
                       </div>
@@ -6939,7 +6933,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       From {this.state.edit_invoicePeriodFromDate}
+                                        From {this.state.edit_invoicePeriodFromDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6949,7 +6943,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                           showMonthDropdown
                                           showYearDropdown
                                           adjustDateOnChange
-                                          
+
                                           onChange={(date) =>
                                             this.edit_invoiceFormDateChange(date)
                                           }
@@ -6987,7 +6981,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       To {this.state.edit_invoicePeriodToDate}
+                                        To {this.state.edit_invoicePeriodToDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6997,7 +6991,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                           showMonthDropdown
                                           showYearDropdown
                                           adjustDateOnChange
-                                         minDate={new Date(this.state.edit_invoicePeriodFromDate)}
+                                          minDate={new Date(this.state.edit_invoicePeriodFromDate)}
                                           onChange={(date) =>
                                             this.edit_invoiceToDateChange(date)
                                           }
@@ -7042,18 +7036,18 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.edit_clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.edit_clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
@@ -7096,7 +7090,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             <span className="invoiceLabel">Phone Number</span>
                             <div className="dropdwn" style={{ width: "185%" }}>
                               <InputText
-                              
+
                                 placeholder=""
                                 className="inputfield"
                                 value={this.state.edit_phoneNumber}
@@ -7149,7 +7143,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               onChange={(value) => {
                                 this.onEditInvoiceNotesChange(value);
                               }}
-                              
+
                               style={{
                                 borderRadius: "10px",
                                 resize: "none",
@@ -7262,7 +7256,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                             boxShadow: "2px",
                                             resize: "none",
                                           }}
-                                         
+
                                           onChange={this.edit_payableDescriptionChange(
                                             key
                                           )}
@@ -7508,13 +7502,13 @@ edit_payableTotalPriceChange = (index) => (e) => {
                       <span className="invoiceLabel">State</span>
                       <div className="dropdwn">
                         <SelectBox
-                        //   styles={customStyles}
+                          //   styles={customStyles}
                           name="select"
                           placeholder="Select"
-                        //   components={{
-                        //     DropdownIndicator,
-                        //     IndicatorSeparator: () => null,
-                        //   }}
+                          //   components={{
+                          //     DropdownIndicator,
+                          //     IndicatorSeparator: () => null,
+                          //   }}
                           value={this.state.stateData}
                           optionData={this.state.stateArr}
                           onSelectChange={(value) => this.onStateChange(value)}
@@ -7981,8 +7975,8 @@ edit_payableTotalPriceChange = (index) => (e) => {
           </div>
         </div>
 
-         {/* ..................Email modal................................. */}
-         <div
+        {/* ..................Email modal................................. */}
+        <div
           id="email-model"
           className="modal fade modelwindow"
           role="dialog"
@@ -8020,7 +8014,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             <div className="dropdwn selct">
                               <input
                                 className="inputfield"
-                                style={{width:"100%"}}
+                                style={{ width: "100%" }}
                                 value={this.state.bulkEmail}
                                 onChange={(e) => {
                                   this.onBulkEmailChange(e);

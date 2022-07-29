@@ -208,11 +208,11 @@ const reqData = {
 
 const invoiceStatusArr = [
   {
-    label: "Raised",
+    label: "Invoiceable",
     value: 0,
   },
   {
-    label: "Received",
+    label: "Invoiced",
     value: 1,
   },
   {
@@ -220,15 +220,15 @@ const invoiceStatusArr = [
     value: 2,
   },
   {
-    label: "Payment Failed",
+    label: "Failed",
     value: 3,
   },
   {
-    label: "Rejected",
+    label: "Cancelled",
     value: 4,
   },
   {
-    label: "Void",
+    label: "Reviewed and Approved",
     value: 5,
   },
 ];
@@ -4107,10 +4107,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                   open={open1}
                   onClose={this.handleMenuClose}
                 >
-                  <MenuItem disableRipple onClick={this.onVoidClick}>
-                    {/* <EditIcon /> */}
-                    Void
-                  </MenuItem>
+                
                   <MenuItem disableRipple onClick={this.onEmailClick}>
                     {/* <FileCopyIcon /> */}
                     Email
@@ -4179,7 +4176,6 @@ edit_payableTotalPriceChange = (index) => (e) => {
                     <th style={{ width: "10%" }}>Service</th>
                     <th style={{ width: "10%" }}>Client(Bill To)</th>
                     <th style={{ width: "10%" }}>Vendor</th>
-                    <th style={{ width: "10%" }}>Vendor Type</th>
                     <th style={{ width: "12%" }}>Actual Date</th>
                     <th style={{ width: "10%" }}>Status</th>
                     <th style={{ width: "9%" }}>Total Amount</th>
@@ -4233,7 +4229,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                       //   this.showDetails(data, i)
                                       // }
                                       style={{
-                                        paddingLeft: "5px",
+                                        paddingLeft: "10px",
                                         paddingTop: "4px",
                                       }}
                                     >
@@ -4248,7 +4244,6 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             <td style={{ width: "10%" }}>{data.serviceType}</td>
                             <td style={{ width: "10%" }}>{data.clientName}</td>
                             <td style={{ width: "10%" }}>{data.vendorName}</td>
-                            <td style={{ width: "10%" }}> {data.vendotType}</td>
                             <td style={{ width: "12%" }}>
                               {SetDateFormat(data.endTime) +
                                 " | " +
@@ -4264,13 +4259,13 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               ) : data.status === 1 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Verified
+                                    Invoicable
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 2 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Invoice Created
+                                    Invoiced
                                   </span>
                                 </React.Fragment>
                               ) : (
@@ -4376,16 +4371,16 @@ edit_payableTotalPriceChange = (index) => (e) => {
                                 SetTimeFormat(data.invoiceDate)}
                             </td>
                             <td style={{ width: "10%" }}>
-                              {data.status === 0 ? (
+                            {data.status === 0 ? (
                                 <React.Fragment>
                                   <span className="progress-btn yellow">
-                                    Raised
+                                    Invoicable
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 1 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Received
+                                    Invoiced
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 2 ? (
@@ -4397,19 +4392,19 @@ edit_payableTotalPriceChange = (index) => (e) => {
                               ) : data.status === 3 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Payment Failed
+                                    Failed
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 4 ? (
                                 <React.Fragment>
                                   <span className="progress-btn yellow">
-                                    Rejected
+                                    Cancelled
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 5 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Void
+                                    Received and Approved
                                   </span>
                                 </React.Fragment>
                               ) : (
@@ -6448,7 +6443,7 @@ edit_payableTotalPriceChange = (index) => (e) => {
                             onSelectChange={(value) =>
                               this.edit_onInvoiceStatusChange(value)
                             }
-                            // isDisabled
+                            isDisabled={true}
                           />
                         </div>
                       </div>

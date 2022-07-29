@@ -18,6 +18,8 @@ import { timeValidator } from '../../../../validators';
 import { styled } from "@mui/system";
 import history from "../../../../history";
 import LotteLoader from '../../../Loader/LotteLoader';
+import { COMMON } from '../../../../services/constant/connpmData';
+import ClientStatusList from './ClientStatusList';
 
 
 const customStyles = {
@@ -434,7 +436,7 @@ export default class HistoryJobs extends React.Component {
       // targetLangId:languageObjId,
       industryArr: industryArr,
       appointmentTypeArr: appointmentArr,
-      statusArr: statusArrData,
+      statusArr: COMMON.CLIENT_JOB_STATUS,
       leiArr: leiArr,
       // isLoad: false,
     });
@@ -447,7 +449,7 @@ export default class HistoryJobs extends React.Component {
       res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
     ) {
       const decodeData = Decoder.decode(res.data.payload);
-      consoleLog("Assigned:::", decodeData.data);
+      // consoleLog("Assigned:::", decodeData.data);
       let listDetails = [];
       if (decodeData.data.jobList.length > 0) {
         listDetails = decodeData.data.jobList;
@@ -502,6 +504,7 @@ export default class HistoryJobs extends React.Component {
   exLeft = () => {
     this.setState({
       current_page: 1,
+      isLoad : true
     });
     let fetchData = {
       limit: JSON.stringify(this.state.limit),
@@ -544,6 +547,7 @@ export default class HistoryJobs extends React.Component {
     let totalPage = this.state.total_page;
     this.setState({
       current_page: totalPage,
+      isLoad : true
     });
     let fetchData = {
       limit: JSON.stringify(this.state.limit),
@@ -588,6 +592,7 @@ export default class HistoryJobs extends React.Component {
       currentPage--;
       this.setState({
         current_page: currentPage,
+        isLoad : true
       });
       let fetchData = {
         limit: JSON.stringify(this.state.limit),
@@ -634,6 +639,7 @@ export default class HistoryJobs extends React.Component {
       currentPage++;
       this.setState({
         current_page: currentPage,
+        isLoad : true
       });
       let fetchData = {
         limit: JSON.stringify(this.state.limit),
@@ -678,7 +684,8 @@ export default class HistoryJobs extends React.Component {
     this.setState({
       limit: parseInt(value.value),
       selectedDisplayData: value,
-      current_page: 1
+      current_page: 1,
+      isLoad : true
     });
 
     let limit = value.value;
@@ -910,6 +917,7 @@ export default class HistoryJobs extends React.Component {
     this.resetData();
     this.setState({
       current_page: 1,
+      isLoad: true
     });
 
     let fetchData = {
@@ -939,6 +947,9 @@ export default class HistoryJobs extends React.Component {
     this.closeFilterModal();
   };
   onFilterApply = () => {
+    this.setState({
+      isLoad: true
+    })
     let modHour =
       this.state.hour_fiter +
       ":" +
@@ -1310,114 +1321,7 @@ export default class HistoryJobs extends React.Component {
                                           </td>
                                           {/* <td style={{ width: "8%" }}></td> */}
                                           <td style={{ width: "8%" }}>
-                                            {item.status === 0 ? (
-                                              <React.Fragment>
-                                                <span className="progress-btn yellow">
-                                                  Pending
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 1 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn sky"
-                                                >
-                                                  Quote Received
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 2 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn green"
-                                                >
-                                                  Quote Accepted
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 3 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn sky"
-                                                >
-                                                  Quote Accepted
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 4 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn blue"
-                                                >
-                                                  Quote Accepted
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 5 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn red"
-                                                >
-                                                  Quote Accepted
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 6 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn blue"
-                                                >
-                                                  In Progress
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 7 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn red"
-                                                >
-                                                  Quote Rejected
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 8 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn green"
-                                                >
-                                                  Vendor Assigned
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 9 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn yellow"
-                                                >
-                                                  In Progress
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 10 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn green"
-                                                >
-                                                  completed
-                                                </span>
-                                              </React.Fragment>
-                                            ) : item.status === 11 ? (
-                                              <React.Fragment>
-                                                <span
-                                                  href="#"
-                                                  className="progress-btn red"
-                                                >
-                                                  cancelled
-                                                </span>
-                                              </React.Fragment>
-                                            ) : (
-                                              <React.Fragment></React.Fragment>
-                                            )}
+                                            <ClientStatusList value={item} />
                                           </td>
                                           <td style={{ width: "5%" }}>
 

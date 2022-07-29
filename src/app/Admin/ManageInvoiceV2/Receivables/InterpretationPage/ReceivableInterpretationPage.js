@@ -156,15 +156,15 @@ const StyledMenuBtn = styled((props) => (
 
 
 const contractTypeArr = [
-    {
-      label: "Contract",
-      value: "1",
-    },
-    {
-      label: "Non-Contract",
-      value: "0",
-    },
-  ];
+  {
+    label: "Contract",
+    value: "1",
+  },
+  {
+    label: "Non-Contract",
+    value: "0",
+  },
+];
 
 // .......................for react select icon.............................................
 
@@ -199,12 +199,13 @@ const reqData = {
 };
 
 const invoiceStatusArr = [
+
   {
-    label: "Raised",
+    label: "Invoiceable",
     value: 0,
   },
   {
-    label: "Received",
+    label: "Invoiced",
     value: 1,
   },
   {
@@ -212,15 +213,15 @@ const invoiceStatusArr = [
     value: 2,
   },
   {
-    label: "Payment Failed",
+    label: "Failed",
     value: 3,
   },
   {
-    label: "Rejected",
+    label: "Cancelled",
     value: 4,
   },
   {
-    label: "Void",
+    label: "Reviewed and Approved",
     value: 5,
   },
 ];
@@ -291,8 +292,8 @@ export default class ReceivableInterpretationPage extends React.Component {
       phoneNumber: "",
       invoiceEmail: "",
       invoiceNote: "",
-      clientStatus:"",
-      purchaseOrder:"",
+      clientStatus: "",
+      purchaseOrder: "",
       payableItems: [],
       imagePath: "images/profile-pic.png",
       adminPhoto: "",
@@ -315,26 +316,26 @@ export default class ReceivableInterpretationPage extends React.Component {
       preview_payableItems: [
 
       ],
-        // ...for edit invoice modal......
-        invoiceEditId:"",
-        edit_clientId:"",
-        edit_invoiceId: "",
-        edit_invoiceDate: "",
-        edit_dueDate: "2022-01-25",
-        edit_invoiceStatusArr: [],
-        edit_invoiceStatusData: {},
-        edit_invoicePeriodFromDate: "",
-        edit_invoicePeriodToDate: "",
-        edit_clientName: "",
-        edit_billingAddress: "",
-        edit_phoneNumber: "",
-        edit_invoiceEmail: "",
-        edit_invoiceNote: "",
-        edit_clientStatus: "",
-        edit_purchaseOrder: "",
-        edit_payableItems: [
-  
-        ],
+      // ...for edit invoice modal......
+      invoiceEditId: "",
+      edit_clientId: "",
+      edit_invoiceId: "",
+      edit_invoiceDate: "",
+      edit_dueDate: "2022-01-25",
+      edit_invoiceStatusArr: [],
+      edit_invoiceStatusData: {},
+      edit_invoicePeriodFromDate: "",
+      edit_invoicePeriodToDate: "",
+      edit_clientName: "",
+      edit_billingAddress: "",
+      edit_phoneNumber: "",
+      edit_invoiceEmail: "",
+      edit_invoiceNote: "",
+      edit_clientStatus: "",
+      edit_purchaseOrder: "",
+      edit_payableItems: [
+
+      ],
 
 
       // .........adminInfo..............
@@ -448,8 +449,8 @@ export default class ReceivableInterpretationPage extends React.Component {
       mainInvoiceId: "",
 
       tempId: 0,
-      mainId:[],
-      invoiceArrId:[],
+      mainId: [],
+      invoiceArrId: [],
 
       appointmentTypeArr: [],
       appointmentTypeData: {},
@@ -467,8 +468,8 @@ export default class ReceivableInterpretationPage extends React.Component {
       selectedClient: {},
       selectedContract: {},
       locationDataTxt: "",
-      billingNote:"",
-      bulkEmail:""
+      billingNote: "",
+      bulkEmail: ""
     };
   }
 
@@ -512,7 +513,7 @@ export default class ReceivableInterpretationPage extends React.Component {
         classInstance.closeChooseTemplateModal();
       } else if (event.target === previewInvoiceModal) {
         classInstance.closePreviewInvoiceModal();
-      }else if (event.target === editInvoiceModal) {
+      } else if (event.target === editInvoiceModal) {
         classInstance.closeEditInvoiceModal();
       } else if (event.target === emailModal) {
         classInstance.closeEmailModal();
@@ -526,11 +527,11 @@ export default class ReceivableInterpretationPage extends React.Component {
       $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk");
     });
     window.$(".filterTab ul li").on("click", function () {
-        $(".filterTab ul li").removeClass("active");
-        $(this).addClass("active");
-        $("div").removeClass("activeLnk1");
-        $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk1");
-      });
+      $(".filterTab ul li").removeClass("active");
+      $(this).addClass("active");
+      $("div").removeClass("activeLnk1");
+      $("div[id=" + $(this).attr("data-related") + "]").addClass("activeLnk1");
+    });
   }
 
   load = async () => {
@@ -542,16 +543,16 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       searchfrom: "",
       appointmentTypeId: "",
-        requester: "",
-        vendorId: "",
-        clientId: "",
-        serviceTypeId: "45",
-        clientContractPath: "",
-        location: "",
-        leiId: "",
-        language: [],
-        status:"",
-        invoiceNote:""
+      requester: "",
+      vendorId: "",
+      clientId: "",
+      serviceTypeId: "45",
+      clientContractPath: "",
+      location: "",
+      leiId: "",
+      language: [],
+      status: "",
+      invoiceNote: ""
     };
 
     let MainData = Object.assign(reqData, resData);
@@ -560,14 +561,14 @@ export default class ReceivableInterpretationPage extends React.Component {
     // ..................variables.................
 
     let appointmentDataArr = [],
-    languageArrData = [],
-    languageResArrData = [],
-    leiDataArr = [],
-    leiArr = [],
-    requesterResData = [],
-    requesterArrData = [],
-    allClientArr = await getClientInfo(),
-    appointmentArr = [];
+      languageArrData = [],
+      languageResArrData = [],
+      leiDataArr = [],
+      leiArr = [],
+      requesterResData = [],
+      requesterArrData = [],
+      allClientArr = await getClientInfo(),
+      appointmentArr = [];
 
 
     // ...............vendor list.........................
@@ -596,114 +597,114 @@ export default class ReceivableInterpretationPage extends React.Component {
     }
 
 
-     //For language dropdown in filter
-     let languageResData = await ApiCall("getlanguagelist");
-     let languagePayload = Decoder.decode(languageResData.data.payload);
-     languageResArrData = languagePayload.data.languagelist;
-     for (let n = 0; n < languageResArrData.length; n++) {
-       languageArrData.push({
-         label: languageResArrData[n].language,
-         value: languageResArrData[n].id,
-       });
-       // if (languageResArrData[n].language === "English") {
-       //   languageObjData.push({
-       //     label: languageResArrData[n].language,
-       //     value: languageResArrData[n].id,
-       //   });
-       //   languageObjId.push(languageResArrData[n].id)
-       // }
-     }
- 
-     let lookupres = await ApiCall("getLookUpData");
-     if (
-       lookupres.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
-       lookupres.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
-     ) {
-       let payload = await Decoder.decode(lookupres.data.payload);
- 
-       appointmentDataArr = payload.data.lookupdata.SCHEDULE_TYPE;
- 
-       // consoleLog("lookup::", payload.data.lookupdata);
- 
-       for (let k = 0; k < appointmentDataArr.length; k++) {
-         appointmentArr.push({
-           label: (
-             <div>
-               <img
-                 src={
-                   appointmentDataArr[k].id === 63
-                     ? ImageName.IMAGE_NAME.F2F
-                     : appointmentDataArr[k].id === 64
-                     ? ImageName.IMAGE_NAME.VRI_ICON
-                     : ImageName.IMAGE_NAME.OPI_ICON
-                 }
-                 height="30px"
-                 width="25px"
-                 style={{ float: "Right" }}
-               />
-               <span style={{ paddingLeft: "5%" }}>
-                 {appointmentDataArr[k].id === 63
-                   ? "Face to Face"
-                   : appointmentDataArr[k].id === 64
-                   ? "Video Remote Interpreting"
-                   : "Over the Phone Interpretation"}
-               </span>
-             </div>
-           ),
-           value: appointmentDataArr[k].id,
-         });
-       }
-     }
- 
-     // .....................lei,,,,,,,,,,,,,,,,,,,,,,,
-     let leiRes = await ApiCall("getAllLeiList");
-     if (
-       leiRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
-       leiRes.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
-     ) {
-       let payload = await Decoder.decode(leiRes.data.payload);
- 
-       leiDataArr = payload.data.leiList;
-       // consoleLog("all lei::", leiDataArr);
-       for (let k = 0; k < leiDataArr.length; k++) {
-         leiArr.push({
-           label: leiDataArr[k].name,
-           value: leiDataArr[k].userId,
-         });
-       }
-     }
- 
-     // ...................requester,,,,,,,,,,,,,,,,,,
- 
-     let requesterRes = await ApiCall("fetchAllRequester");
-     if (
-       requesterRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
-       requesterRes.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
-     ) {
-       let requestPayload = await Decoder.decode(requesterRes.data.payload);
- 
-       // consoleLog("requestArr::", requestPayload);
-       requesterResData = requestPayload.data.requesterList;
-       if (requesterResData.length > 0) {
-         requesterResData.map((obj) => {
-           requesterArrData.push({
-             label: obj.name,
-             value: obj.userId,
-           });
-         });
-       }
-     }
- 
-     this.setState({
-       appointmentTypeArr: appointmentArr,
-       languageArr: languageArrData,
-       leiArr: leiArr,
-       requesterArr: requesterArrData,
-       allClientArr: allClientArr,
-       vendorArr: vendorArrMainData,
-       // targetLangData: languageObjData,
-       phoneNumber: "+" + this.state.countryCode + " ",
-     });
+    //For language dropdown in filter
+    let languageResData = await ApiCall("getlanguagelist");
+    let languagePayload = Decoder.decode(languageResData.data.payload);
+    languageResArrData = languagePayload.data.languagelist;
+    for (let n = 0; n < languageResArrData.length; n++) {
+      languageArrData.push({
+        label: languageResArrData[n].language,
+        value: languageResArrData[n].id,
+      });
+      // if (languageResArrData[n].language === "English") {
+      //   languageObjData.push({
+      //     label: languageResArrData[n].language,
+      //     value: languageResArrData[n].id,
+      //   });
+      //   languageObjId.push(languageResArrData[n].id)
+      // }
+    }
+
+    let lookupres = await ApiCall("getLookUpData");
+    if (
+      lookupres.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
+      lookupres.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
+    ) {
+      let payload = await Decoder.decode(lookupres.data.payload);
+
+      appointmentDataArr = payload.data.lookupdata.SCHEDULE_TYPE;
+
+      // consoleLog("lookup::", payload.data.lookupdata);
+
+      for (let k = 0; k < appointmentDataArr.length; k++) {
+        appointmentArr.push({
+          label: (
+            <div>
+              <img
+                src={
+                  appointmentDataArr[k].id === 63
+                    ? ImageName.IMAGE_NAME.F2F
+                    : appointmentDataArr[k].id === 64
+                      ? ImageName.IMAGE_NAME.VRI_ICON
+                      : ImageName.IMAGE_NAME.OPI_ICON
+                }
+                height="30px"
+                width="25px"
+                style={{ float: "Right" }}
+              />
+              <span style={{ paddingLeft: "5%" }}>
+                {appointmentDataArr[k].id === 63
+                  ? "Face to Face"
+                  : appointmentDataArr[k].id === 64
+                    ? "Video Remote Interpreting"
+                    : "Over the Phone Interpretation"}
+              </span>
+            </div>
+          ),
+          value: appointmentDataArr[k].id,
+        });
+      }
+    }
+
+    // .....................lei,,,,,,,,,,,,,,,,,,,,,,,
+    let leiRes = await ApiCall("getAllLeiList");
+    if (
+      leiRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
+      leiRes.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
+    ) {
+      let payload = await Decoder.decode(leiRes.data.payload);
+
+      leiDataArr = payload.data.leiList;
+      // consoleLog("all lei::", leiDataArr);
+      for (let k = 0; k < leiDataArr.length; k++) {
+        leiArr.push({
+          label: leiDataArr[k].name,
+          value: leiDataArr[k].userId,
+        });
+      }
+    }
+
+    // ...................requester,,,,,,,,,,,,,,,,,,
+
+    let requesterRes = await ApiCall("fetchAllRequester");
+    if (
+      requesterRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
+      requesterRes.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
+    ) {
+      let requestPayload = await Decoder.decode(requesterRes.data.payload);
+
+      // consoleLog("requestArr::", requestPayload);
+      requesterResData = requestPayload.data.requesterList;
+      if (requesterResData.length > 0) {
+        requesterResData.map((obj) => {
+          requesterArrData.push({
+            label: obj.name,
+            value: obj.userId,
+          });
+        });
+      }
+    }
+
+    this.setState({
+      appointmentTypeArr: appointmentArr,
+      languageArr: languageArrData,
+      leiArr: leiArr,
+      requesterArr: requesterArrData,
+      allClientArr: allClientArr,
+      vendorArr: vendorArrMainData,
+      // targetLangData: languageObjData,
+      phoneNumber: "+" + this.state.countryCode + " ",
+    });
 
   };
 
@@ -796,7 +797,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -804,32 +805,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -847,7 +848,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -855,32 +856,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -901,7 +902,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -909,32 +910,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -957,7 +958,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -965,32 +966,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1000,7 +1001,7 @@ export default class ReceivableInterpretationPage extends React.Component {
     this.setState({
       limit: parseInt(dat.value),
       selectedDisplayData: dat,
-      current_page:1
+      current_page: 1
     });
 
     let resData = {
@@ -1010,7 +1011,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1018,32 +1019,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1068,7 +1069,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1076,32 +1077,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1119,7 +1120,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1127,32 +1128,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1173,7 +1174,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1181,32 +1182,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1229,7 +1230,7 @@ export default class ReceivableInterpretationPage extends React.Component {
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1237,32 +1238,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let mainData = Object.assign(reqData, resData);
 
@@ -1272,17 +1273,17 @@ export default class ReceivableInterpretationPage extends React.Component {
     this.setState({
       limit: parseInt(dat.value),
       selectedDisplayData_invoice: dat,
-      current_page_invoice:1
+      current_page_invoice: 1
     });
 
     let fetchData = {
       limit: dat.value,
-      offset:"0",
+      offset: "0",
       jobId: this.state.id,
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1290,32 +1291,32 @@ export default class ReceivableInterpretationPage extends React.Component {
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
     let returnData = Object.assign(reqData, fetchData);
 
@@ -1421,166 +1422,166 @@ export default class ReceivableInterpretationPage extends React.Component {
       selectedTemplateData: {},
     });
   };
-//..............................
+  //..............................
 
-onEditInvoiceModal = async(data) => {
-let arr = [];
-  // this.openEditInvoiceModal();
+  onEditInvoiceModal = async (data) => {
+    let arr = [];
+    // this.openEditInvoiceModal();
 
-  this.setState({
-    invoiceEditId:data.invoiceId,
-    invoiceId:data.id,
-    jobId:data.jobId,
-    edit_clientId:data.clientId
-  })
+    this.setState({
+      invoiceEditId: data.invoiceId,
+      invoiceId: data.id,
+      jobId: data.jobId,
+      edit_clientId: data.clientId
+    })
 
-  let resInvoice = await ApiCall("fetchTemplateListByUserId", {
-    userId: data.clientId,
-  });
+    let resInvoice = await ApiCall("fetchTemplateListByUserId", {
+      userId: data.clientId,
+    });
 
-  if (
-    resInvoice.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
-    resInvoice.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
-  ) {
-    let decodeDataInvoice = Decoder.decode(resInvoice.data.payload);
-
-    // consoleLog("responce invoice", decodeDataInvoice);
     if (
-      decodeDataInvoice.data != null ||
-      decodeDataInvoice.data != undefined ||
-      decodeDataInvoice.data != [] ||
-      decodeDataInvoice.data != {} ||
-      decodeDataInvoice.data != ""
+      resInvoice.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
+      resInvoice.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
     ) {
-      this.openEditInvoiceModal();
+      let decodeDataInvoice = Decoder.decode(resInvoice.data.payload);
 
-      decodeDataInvoice.data.map((obj) => {
-        arr.push({
-          label: obj.templateName,
-          value: obj.id,
+      // consoleLog("responce invoice", decodeDataInvoice);
+      if (
+        decodeDataInvoice.data != null ||
+        decodeDataInvoice.data != undefined ||
+        decodeDataInvoice.data != [] ||
+        decodeDataInvoice.data != {} ||
+        decodeDataInvoice.data != ""
+      ) {
+        this.openEditInvoiceModal();
+
+        decodeDataInvoice.data.map((obj) => {
+          arr.push({
+            label: obj.templateName,
+            value: obj.id,
+          });
+
+          if (obj.isPrimary == 1) {
+            let content = [];
+            content = JSON.parse(obj.content);
+
+            let showHideObj = {
+              dueDateTemplate: false,
+              invoicePeriodTemplate: false,
+              billingAddressTemplate: false,
+              phoneNumberTemplate: false,
+              emailTemplate: false,
+              invoiceNotesTemplate: false,
+              // payableItemsTemplate: false,
+              invoiceIdTemplate: false,
+              invoiceDateTemplate: false,
+              purchaseOrderTemplate: false,
+              clientStatusTemplate: false
+            };
+
+            content.map((obj1) => {
+              if (obj1.name === "Due Date") {
+                showHideObj.dueDateTemplate = true;
+              } else if (obj1.name === "Invoice Period") {
+                showHideObj.invoicePeriodTemplate = true;
+              } else if (obj1.name === "Billing Address") {
+                showHideObj.billingAddressTemplate = true;
+              } else if (obj1.name === "Phone Number") {
+                showHideObj.phoneNumberTemplate = true;
+              } else if (obj1.name === "Email") {
+                showHideObj.emailTemplate = true;
+              } else if (obj1.name === "Invoice Notes") {
+                showHideObj.invoiceNotesTemplate = true;
+              } else if (obj1.name === "Invoice #") {
+                showHideObj.invoiceIdTemplate = true;
+              } else if (obj1.name === "Invoice Date") {
+                showHideObj.invoiceDateTemplate = true;
+              } else if (obj1.name === "Purchase Order") {
+                showHideObj.purchaseOrderTemplate = true;
+              } else if (obj1.name === "Invoice Date") {
+                showHideObj.clientStatusTemplate = true;
+              }
+            });
+            // consoleLog("content::", showHideObj);
+            this.setState({
+              showHide: showHideObj,
+            });
+          }
         });
 
-        if (obj.isPrimary == 1) {
-          let content = [];
-          content = JSON.parse(obj.content);
-
-          let showHideObj = {
-            dueDateTemplate: false,
-            invoicePeriodTemplate: false,
-            billingAddressTemplate: false,
-            phoneNumberTemplate: false,
-            emailTemplate: false,
-            invoiceNotesTemplate: false,
-            // payableItemsTemplate: false,
-            invoiceIdTemplate: false,
-            invoiceDateTemplate: false,
-            purchaseOrderTemplate:false,
-            clientStatusTemplate:false
-          };
-
-          content.map((obj1) => {
-            if (obj1.name === "Due Date") {
-              showHideObj.dueDateTemplate = true;
-            } else if (obj1.name === "Invoice Period") {
-              showHideObj.invoicePeriodTemplate = true;
-            } else if (obj1.name === "Billing Address") {
-              showHideObj.billingAddressTemplate = true;
-            } else if (obj1.name === "Phone Number") {
-              showHideObj.phoneNumberTemplate = true;
-            } else if (obj1.name === "Email") {
-              showHideObj.emailTemplate = true;
-            } else if (obj1.name === "Invoice Notes") {
-              showHideObj.invoiceNotesTemplate = true;
-            } else if (obj1.name === "Invoice #") {
-              showHideObj.invoiceIdTemplate = true;
-            } else if (obj1.name === "Invoice Date") {
-              showHideObj.invoiceDateTemplate = true;
-            }else if (obj1.name === "Purchase Order") {
-              showHideObj.purchaseOrderTemplate = true;
-            } else if (obj1.name === "Invoice Date") {
-              showHideObj.clientStatusTemplate = true;
-            }
-          });
-          // consoleLog("content::", showHideObj);
-          this.setState({
-            showHide: showHideObj,
-          });
-        }
-      });
-
-      this.setState({
-        templateArr: arr,
-      });
-    } else {
-      this.setState({
-        showHide: {
-          dueDateTemplate: true,
-          invoicePeriodTemplate: true,
-          billingAddressTemplate: true,
-          phoneNumberTemplate: true,
-          emailTemplate: true,
-          invoiceNotesTemplate: true,
-          // payableItemsTemplate: true,
-          invoiceIdTemplate: true,
-          invoiceDateTemplate: true,
-          purchaseOrderTemplate:true,
-          clientStatusTemplate:true
-        },
-      });
+        this.setState({
+          templateArr: arr,
+        });
+      } else {
+        this.setState({
+          showHide: {
+            dueDateTemplate: true,
+            invoicePeriodTemplate: true,
+            billingAddressTemplate: true,
+            phoneNumberTemplate: true,
+            emailTemplate: true,
+            invoiceNotesTemplate: true,
+            // payableItemsTemplate: true,
+            invoiceIdTemplate: true,
+            invoiceDateTemplate: true,
+            purchaseOrderTemplate: true,
+            clientStatusTemplate: true
+          },
+        });
+      }
     }
-  }
 
-  let statusObj = {};
+    let statusObj = {};
 
-  let resData = await ApiCall("fetchInvoiceByJobId", { jobId: data.jobId, invoiceId: data.invoiceId })
-  // consoleLog("preview data", resData);
-  if (
-    resData.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
-    resData.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
-  ) {
-    let decodeData = Decoder.decode(resData.data.payload);
-    let previewData = decodeData.data.invoiceData[0];
-    let payableData = decodeData.data.payableItems;
-    consoleLog("payable data ", payableData);
+    let resData = await ApiCall("fetchInvoiceByJobId", { jobId: data.jobId, invoiceId: data.invoiceId })
+    // consoleLog("preview data", resData);
     if (
-      previewData != null ||
-      previewData != undefined ||
-      previewData != [] ||
-      previewData != {} ||
-      previewData != ""
+      resData.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
+      resData.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
     ) {
-      invoiceStatusArr.map((obj) => {
-        if (obj.value === previewData.status) {
-          statusObj = {
-            label: obj.label,
-            value: obj.value
+      let decodeData = Decoder.decode(resData.data.payload);
+      let previewData = decodeData.data.invoiceData[0];
+      let payableData = decodeData.data.payableItems;
+      consoleLog("payable data ", payableData);
+      if (
+        previewData != null ||
+        previewData != undefined ||
+        previewData != [] ||
+        previewData != {} ||
+        previewData != ""
+      ) {
+        invoiceStatusArr.map((obj) => {
+          if (obj.value === previewData.status) {
+            statusObj = {
+              label: obj.label,
+              value: obj.value
+            }
           }
-        }
-      })
+        })
 
-      this.setState({
-        edit_invoiceStatusData: statusObj,
-        edit_invoiceId: previewData.invoiceId,
-        edit_dueDate: SetScheduleDate(previewData.dueDate),
-        edit_phoneNumber: "+" + previewData.countryCode + " " + previewData.mobile,
-        edit_clientName: previewData.clientName,
-        edit_invoicePeriodFromDate: SetUSAdateFormat(previewData.fromDate),
-        edit_invoicePeriodToDate: SetUSAdateFormat(previewData.toDate),
-        edit_billingAddress: previewData.billAddress,
-        edit_invoiceNote: previewData.invoiceNote,
-        edit_invoiceEmail: previewData.email,
-        edit_invoiceDate: SetScheduleDate(previewData.invoiceDate),
+        this.setState({
+          edit_invoiceStatusData: statusObj,
+          edit_invoiceId: previewData.invoiceId,
+          edit_dueDate: SetScheduleDate(previewData.dueDate),
+          edit_phoneNumber: "+" + previewData.countryCode + " " + previewData.mobile,
+          edit_clientName: previewData.clientName,
+          edit_invoicePeriodFromDate: SetUSAdateFormat(previewData.fromDate),
+          edit_invoicePeriodToDate: SetUSAdateFormat(previewData.toDate),
+          edit_billingAddress: previewData.billAddress,
+          edit_invoiceNote: previewData.invoiceNote,
+          edit_invoiceEmail: previewData.email,
+          edit_invoiceDate: SetScheduleDate(previewData.invoiceDate),
 
-        edit_purchaseOrder:previewData.purchaseOrder,
-        edit_clientStatus:previewData.isContract == 0 ? "Non Contract":"Contract",
-       
-        edit_payableItems: payableData
-      })
+          edit_purchaseOrder: previewData.purchaseOrder,
+          edit_clientStatus: previewData.isContract == 0 ? "Non Contract" : "Contract",
+
+          edit_payableItems: payableData
+        })
+      }
     }
+
+
   }
-
-
-}
 
   // ................
 
@@ -1623,9 +1624,9 @@ let arr = [];
 
     if (brr.length > 1) {
       toast.error("Please select only one row");
-    } else if(brr.length < 1){
+    } else if (brr.length < 1) {
       toast.error("Please select a row")
-    }else {
+    } else {
 
 
 
@@ -1687,8 +1688,8 @@ let arr = [];
                 // payableItemsTemplate: false,
                 invoiceIdTemplate: false,
                 invoiceDateTemplate: false,
-                purchaseOrderTemplate:false,
-                clientStatusTemplate:false
+                purchaseOrderTemplate: false,
+                clientStatusTemplate: false
               };
 
               content.map((obj1) => {
@@ -1708,7 +1709,7 @@ let arr = [];
                   showHideObj.invoiceIdTemplate = true;
                 } else if (obj1.name === "Invoice Date") {
                   showHideObj.invoiceDateTemplate = true;
-                }else if (obj1.name === "Purchase Order") {
+                } else if (obj1.name === "Purchase Order") {
                   showHideObj.purchaseOrderTemplate = true;
                 } else if (obj1.name === "Client Status") {
                   showHideObj.clientStatusTemplate = true;
@@ -1736,8 +1737,8 @@ let arr = [];
               // payableItemsTemplate: true,
               invoiceIdTemplate: true,
               invoiceDateTemplate: true,
-              purchaseOrderTemplate:true,
-              clientStatusTemplate:true
+              purchaseOrderTemplate: true,
+              clientStatusTemplate: true
             },
           });
         }
@@ -1783,8 +1784,8 @@ let arr = [];
             preview_invoiceNote: previewData.invoiceNote,
             preview_invoiceEmail: previewData.email,
             preview_invoiceDate: SetScheduleDate(previewData.invoiceDate),
-            preview_purchaseOrder:previewData.purchaseOrder,
-            preview_clientStatus:previewData.isContract == 0 ? "Non Contract":"Contract",
+            preview_purchaseOrder: previewData.purchaseOrder,
+            preview_clientStatus: previewData.isContract == 0 ? "Non Contract" : "Contract",
             preview_payableItems: payableData
           })
         }
@@ -1833,7 +1834,7 @@ let arr = [];
       clientName: clientName,
       clientId: clientID,
       invoiceId: arrId,
-      mainId:mainId
+      mainId: mainId
     });
 
     if (brr.length < 1) {
@@ -1900,8 +1901,8 @@ let arr = [];
                 // payableItemsTemplate: false,
                 invoiceIdTemplate: false,
                 invoiceDateTemplate: false,
-                purchaseOrderTemplate:false,
-                clientStatusTemplate:false
+                purchaseOrderTemplate: false,
+                clientStatusTemplate: false
               };
 
               content.map((obj1) => {
@@ -1951,8 +1952,8 @@ let arr = [];
               // payableItemsTemplate: true,
               invoiceIdTemplate: true,
               invoiceDateTemplate: true,
-              purchaseOrderTemplate:true,
-                clientStatusTemplate:true
+              purchaseOrderTemplate: true,
+              clientStatusTemplate: true
             },
           });
         }
@@ -2017,8 +2018,8 @@ let arr = [];
                   "+" + userInfo.adminCountryCode + " " + userInfo.adminPhone,
                 invoiceEmail: userInfo.email,
                 billingAddress: billingInfo.address,
-                clientStatus:userInfo.isContract == 0 ? "Non Contract":"Contract",
-                purchaseOrder:userInfo.purchaseOrder
+                clientStatus: userInfo.isContract == 0 ? "Non Contract" : "Contract",
+                purchaseOrder: userInfo.purchaseOrder
               });
             }
           } else {
@@ -2064,8 +2065,8 @@ let arr = [];
                   "+" + userInfo.adminCountryCode + " " + userInfo.adminPhone,
                 invoiceEmail: userInfo.email,
                 billingAddress: billingInfo.address,
-                clientStatus:userInfo.isContract == 0 ? "Non Contract":"Contract",
-                purchaseOrder:userInfo.purchaseOrder
+                clientStatus: userInfo.isContract == 0 ? "Non Contract" : "Contract",
+                purchaseOrder: userInfo.purchaseOrder
               });
             }
           }
@@ -2230,161 +2231,161 @@ let arr = [];
   // .......for filter modal.................
 
   onFilterApply = () => {
-      if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: "0",
-            jobId: this.state.id,
-            search: this.state.input,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let mainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(mainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: "0",
-            jobId: this.state.id,
-            search: this.state.input,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let mainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(mainData);
-      }
-  
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: "0",
+        jobId: this.state.id,
+        search: this.state.input,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let mainData = Object.assign(reqData, resData);
+
+      this.getListDetails(mainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: "0",
+        jobId: this.state.id,
+        search: this.state.input,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let mainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(mainData);
+    }
+
 
     this.setState({
-     current_page:1
+      current_page: 1
     });
     this.closeFilterModal();
   };
 
   onResetFilter = () => {
-      if(this.state.isVerifiedJobs){
-        this.resetData();
-        this.setState({
-          formDate: "",
-          toDate: "",
-          current_page: 1,
-          selectedDisplayData: {
-            label: "20",
-            value: "20",
-          },
-        });
-    
-        this.load();
-      } else {
-        this.resetData();
-        this.setState({
-            formDate_invoice: "",
-            toDate_invoice: "",
-            current_page_invoice: 1,
-            selectedDisplayData_invoice: {
-              label: "20",
-              value: "20",
-            },
-          });
+    if (this.state.isVerifiedJobs) {
+      this.resetData();
+      this.setState({
+        formDate: "",
+        toDate: "",
+        current_page: 1,
+        selectedDisplayData: {
+          label: "20",
+          value: "20",
+        },
+      });
 
-          let resInvoiceData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset_invoice.toString(),
-            search: "",
-            jobId: "",
-            searchto: "",
-            searchfrom: "",
-            appointmentTypeId: "",
-            requester: "",
-          
-            clientId: "",
-            serviceTypeId: "45",
-            clientContractPath: "",
-            location: "",
-            leiId: "",
-            language: [],
-            status:""
-        
-          };
-    
-          let MainInvoiceData = Object.assign(reqData, resInvoiceData);
-    
-          this.getinvoiceDetails(MainInvoiceData);
-      
-      }
-     
+      this.load();
+    } else {
+      this.resetData();
+      this.setState({
+        formDate_invoice: "",
+        toDate_invoice: "",
+        current_page_invoice: 1,
+        selectedDisplayData_invoice: {
+          label: "20",
+          value: "20",
+        },
+      });
+
+      let resInvoiceData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset_invoice.toString(),
+        search: "",
+        jobId: "",
+        searchto: "",
+        searchfrom: "",
+        appointmentTypeId: "",
+        requester: "",
+
+        clientId: "",
+        serviceTypeId: "45",
+        clientContractPath: "",
+        location: "",
+        leiId: "",
+        language: [],
+        status: ""
+
+      };
+
+      let MainInvoiceData = Object.assign(reqData, resInvoiceData);
+
+      this.getinvoiceDetails(MainInvoiceData);
+
+    }
+
 
     this.closeFilterModal();
   };
@@ -2398,7 +2399,7 @@ let arr = [];
       search: this.state.input,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -2406,32 +2407,32 @@ let arr = [];
       searchto: "",
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
       clientContractPath:
         this.state.selectedContract.value == null ||
-        this.state.selectedContract.value == undefined
+          this.state.selectedContract.value == undefined
           ? ""
           : this.state.selectedContract.value,
       language: this.state.targetLangId,
-      invoiceNote:this.state.billingNote,
-      status:""
+      invoiceNote: this.state.billingNote,
+      status: ""
     };
 
     let mainData = Object.assign(reqData, resData);
@@ -2439,13 +2440,13 @@ let arr = [];
     this.getinvoiceDetails(mainData);
 
     this.setState({
-      current_page_invoice:1
+      current_page_invoice: 1
     });
     this.closeFilterModal_invoice();
   };
 
   onResetFilter_invoice = () => {
-      this.resetData();
+    this.resetData();
     this.setState({
       formDate_invoice: "",
       toDate_invoice: "",
@@ -2462,203 +2463,203 @@ let arr = [];
   };
 
   onIdChange = (val) => {
-      if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: val,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(MainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: val,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(MainData);
-      }
-    
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: val,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getListDetails(MainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: val,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(MainData);
+    }
+
     this.setState({
       id: val,
     });
   };
 
   clientChange = (value) => {
-    if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(MainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(MainData);
-      }
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getListDetails(MainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(MainData);
+    }
     // console.log("selected Client",value);
     this.setState({
       selectedClient: value,
@@ -2666,101 +2667,101 @@ let arr = [];
   };
 
   inputChange = (e) => {
-    if(this.state.isVerifiedJobs){
-        let resData = {
-            limit: this.state.limit,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getListDetails(MainData);
-      } else {
-        let resData = {
-            limit: this.state.limit_invoice,
-            offset: this.state.offset.toString(),
-            search: this.state.input,
-            jobId: this.state.id,
-            clientId:
-              this.state.selectedClient.value == null ||
-              this.state.selectedClient.value == undefined
-                ? ""
-                : this.state.selectedClient.value,
-            searchfrom:
-              this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-            searchto: "",
-            location:
-              this.state.locationDataTxt == null ||
-              this.state.locationDataTxt == undefined
-                ? ""
-                : this.state.locationDataTxt,
-            requester:
-              this.state.selectedRequester.value == null ||
-              this.state.selectedRequester.value == undefined
-                ? ""
-                : this.state.selectedRequester.value,
-            appointmentTypeId:
-              this.state.appointmentTypeData.value == null ||
-              this.state.appointmentTypeData.value == undefined
-                ? ""
-                : this.state.appointmentTypeData.value,
-            leiId:
-              this.state.leiData.value == null ||
-              this.state.leiData.value == undefined
-                ? ""
-                : this.state.leiData.value,
-            clientContractPath:
-              this.state.selectedContract.value == null ||
-              this.state.selectedContract.value == undefined
-                ? ""
-                : this.state.selectedContract.value,
-            language: this.state.targetLangId,
-            invoiceNote:this.state.billingNote,
-            status:""
-          };
-      
-          let MainData = Object.assign(reqData, resData);
-      
-          this.getinvoiceDetails(MainData);
-      }
+    if (this.state.isVerifiedJobs) {
+      let resData = {
+        limit: this.state.limit,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getListDetails(MainData);
+    } else {
+      let resData = {
+        limit: this.state.limit_invoice,
+        offset: this.state.offset.toString(),
+        search: this.state.input,
+        jobId: this.state.id,
+        clientId:
+          this.state.selectedClient.value == null ||
+            this.state.selectedClient.value == undefined
+            ? ""
+            : this.state.selectedClient.value,
+        searchfrom:
+          this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
+        searchto: "",
+        location:
+          this.state.locationDataTxt == null ||
+            this.state.locationDataTxt == undefined
+            ? ""
+            : this.state.locationDataTxt,
+        requester:
+          this.state.selectedRequester.value == null ||
+            this.state.selectedRequester.value == undefined
+            ? ""
+            : this.state.selectedRequester.value,
+        appointmentTypeId:
+          this.state.appointmentTypeData.value == null ||
+            this.state.appointmentTypeData.value == undefined
+            ? ""
+            : this.state.appointmentTypeData.value,
+        leiId:
+          this.state.leiData.value == null ||
+            this.state.leiData.value == undefined
+            ? ""
+            : this.state.leiData.value,
+        clientContractPath:
+          this.state.selectedContract.value == null ||
+            this.state.selectedContract.value == undefined
+            ? ""
+            : this.state.selectedContract.value,
+        language: this.state.targetLangId,
+        invoiceNote: this.state.billingNote,
+        status: ""
+      };
+
+      let MainData = Object.assign(reqData, resData);
+
+      this.getinvoiceDetails(MainData);
+    }
 
     this.setState({
       input: e.target.value,
@@ -2857,12 +2858,12 @@ let arr = [];
   };
   onEditInvoiceNotesChange = (e) => {
     this.setState({
-      edit_invoiceNote:e.target.value
+      edit_invoiceNote: e.target.value
     })
   }
   onBillingNotesChange = (e) => {
     this.setState({
-        billingNote: e.target.value,
+      billingNote: e.target.value,
     });
   };
   onInvoicePhoneChange = (value) => {
@@ -3113,7 +3114,7 @@ let arr = [];
 
   onBulkEmailChange = (e) => {
     this.setState({
-      bulkEmail:e.target.value
+      bulkEmail: e.target.value
     })
   }
   openOpenEmailModal = () => {
@@ -3122,17 +3123,17 @@ let arr = [];
   emailClose = () => {
     this.closeEmailModal();
     this.setState({
-      bulkEmail:""
+      bulkEmail: ""
     })
   }
 
-  onEmailSubmit = async() => {
+  onEmailSubmit = async () => {
     var errorCount = 0;
     let arr = this.state.bulkEmail.split(",");
-    consoleLog("emailArr:::",arr);
+    consoleLog("emailArr:::", arr);
 
     arr.map((obj) => {
-      if(emailValidator(obj).status == false){
+      if (emailValidator(obj).status == false) {
         toast.error(emailValidator(obj).message, {
           hideProgressBar: true,
         });
@@ -3140,45 +3141,45 @@ let arr = [];
       }
     })
 
-    if(errorCount === 0){
+    if (errorCount === 0) {
       let obj = {
-        invoiceId:this.state.invoiceArrId,
-        emailArr:arr
+        invoiceId: this.state.invoiceArrId,
+        emailArr: arr
       }
-      consoleLog("request data emailll:::",obj)
-  
-      let res = await ApiCall("bulkActionToDownloadEmail",obj);
+      consoleLog("request data emailll:::", obj)
+
+      let res = await ApiCall("bulkActionToDownloadEmail", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       ) {
-        consoleLog("________download mail",res)
+        consoleLog("________download mail", res)
         this.emailClose();
       } else {
-        toast.error("error occured!!",{ hideProgressBar:true})
+        toast.error("error occured!!", { hideProgressBar: true })
       }
     }
 
-   
+
   }
 
-  onVoidClick = async() => {
+  onVoidClick = async () => {
     // consoleLog("lenght",this.state.invoiceArrId.length)
     // consoleLog("arr id::",this.state.invoiceArrId)
-    if(this.state.invoiceArrId.length < 1){
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       let obj = {
-        invoiceId:this.state.invoiceArrId
+        invoiceId: this.state.invoiceArrId
       }
       // consoleLog("arr id::",obj)
-  
-      let res = await ApiCall("bulkActionToVoid",obj);
+
+      let res = await ApiCall("bulkActionToVoid", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       ) {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         toast.success("Invoice Status Change Successfully !!");
         let resInvoiceData = {
           limit: this.state.limit_invoice,
@@ -3188,20 +3189,20 @@ let arr = [];
           searchto: "",
           searchfrom: "",
         };
-  
+
         let MainInvoiceData = Object.assign(reqData, resInvoiceData);
-  
+
         this.getinvoiceDetails(MainInvoiceData);
         this.handleMenuClose();
       } else {
         toast.error("Error Occured !!")
       }
     }
-    
-   
+
+
   };
-  onEmailClick = async() => {
-    if(this.state.invoiceArrId.length < 1){
+  onEmailClick = async () => {
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       this.openOpenEmailModal()
@@ -3215,21 +3216,21 @@ let arr = [];
       //   res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       // ) {
       //   consoleLog("________download mail",res)
-        // window.scrollTo(0,0);
-        // toast.success("Invoice Status Change Successfully !!");
-        // let resInvoiceData = {
-        //   limit: this.state.limit_invoice,
-        //   offset: this.state.offset_invoice.toString(),
-        //   search: "",
-        //   jobId: "",
-        //   searchto: "",
-        //   searchfrom: "",
-        // };
-  
-        // let MainInvoiceData = Object.assign(reqData, resInvoiceData);
-  
-        // this.getinvoiceDetails(MainInvoiceData);
-        this.handleMenuClose();
+      // window.scrollTo(0,0);
+      // toast.success("Invoice Status Change Successfully !!");
+      // let resInvoiceData = {
+      //   limit: this.state.limit_invoice,
+      //   offset: this.state.offset_invoice.toString(),
+      //   search: "",
+      //   jobId: "",
+      //   searchto: "",
+      //   searchfrom: "",
+      // };
+
+      // let MainInvoiceData = Object.assign(reqData, resInvoiceData);
+
+      // this.getinvoiceDetails(MainInvoiceData);
+      this.handleMenuClose();
       // } else {
       //   toast.error("Error Occured !!")
       // }
@@ -3237,15 +3238,15 @@ let arr = [];
     }
   }
 
-  onDownloadClick = async() => {
-    if(this.state.invoiceArrId.length < 1){
+  onDownloadClick = async () => {
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       let obj = {
-        invoiceId:this.state.invoiceArrId
+        invoiceId: this.state.invoiceArrId
       }
 
-      let res = await ApiCall("bulkActionToDownload",obj);
+      let res = await ApiCall("bulkActionToDownload", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
@@ -3253,7 +3254,7 @@ let arr = [];
 
         let decodeData = Decoder.decode(res.data.payload)
 
-        consoleLog("________download",decodeData)
+        consoleLog("________download", decodeData)
         window.open(decodeData.data.url, "_blank");
         this.handleMenuClose();
       } else {
@@ -3262,21 +3263,21 @@ let arr = [];
 
     }
   }
-  onPaidClick = async() => {
+  onPaidClick = async () => {
     // consoleLog("lenght",this.state.invoiceArrId.length)
-    if(this.state.invoiceArrId.length < 1){
+    if (this.state.invoiceArrId.length < 1) {
       toast.error("Please select atleast one row !!")
     } else {
       let obj = {
-        invoiceId:this.state.invoiceArrId
+        invoiceId: this.state.invoiceArrId
       }
-  
-      let res = await ApiCall("bulkActionToPaid",obj);
+
+      let res = await ApiCall("bulkActionToPaid", obj);
       if (
         res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
         res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
       ) {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         toast.success("Invoice Status Change Successfully !!");
         let resInvoiceData = {
           limit: this.state.limit_invoice,
@@ -3286,17 +3287,17 @@ let arr = [];
           searchto: "",
           searchfrom: "",
         };
-  
+
         let MainInvoiceData = Object.assign(reqData, resInvoiceData);
-  
+
         this.getinvoiceDetails(MainInvoiceData);
         this.handleMenuClose();
       } else {
         toast.error("Error Occured !!")
       }
     }
-    
-   
+
+
   };
 
   subTypeChange = (id) => (e) => {
@@ -3435,8 +3436,8 @@ let arr = [];
           payableItemsTemplate: false,
           invoiceIdTemplate: false,
           invoiceDateTemplate: false,
-          clientStatusTemplate:false,
-          purchaseOrderTemplate:false
+          clientStatusTemplate: false,
+          purchaseOrderTemplate: false
         };
         templateData.map((obj) => {
           if (obj.name === "Due Date") {
@@ -3457,7 +3458,7 @@ let arr = [];
             showHideObj.invoiceIdTemplate = true;
           } else if (obj.name === "Invoice Date") {
             showHideObj.invoiceDateTemplate = true;
-          }else if (obj.name === "Purchase Order") {
+          } else if (obj.name === "Purchase Order") {
             showHideObj.purchaseOrderTemplate = true;
           } else if (obj.name === "Client Status") {
             showHideObj.clientStatusTemplate = true;
@@ -3592,15 +3593,15 @@ let arr = [];
         searchfrom: "",
         appointmentTypeId: "",
         requester: "",
-      
+
         clientId: "",
         serviceTypeId: "45",
         clientContractPath: "",
         location: "",
         leiId: "",
         language: [],
-        status:""
-    
+        status: ""
+
       };
 
       let MainInvoiceData = Object.assign(reqData, resInvoiceData);
@@ -3616,7 +3617,7 @@ let arr = [];
     let payableData = this.state.payableItems;
     let data = {
       id: "",
-      payableReceivableId:"",
+      payableReceivableId: "",
       serviceType: "",
       description: "",
       unit: "",
@@ -3638,9 +3639,9 @@ let arr = [];
     let payableData = this.state.edit_payableItems;
     let data = {
       id: "",
-      payableReceivableId:"",
+      payableReceivableId: "",
       serviceType: "",
-      joinId:"",
+      joinId: "",
       description: "",
       unit: "",
       unitPrice: "",
@@ -3664,11 +3665,11 @@ let arr = [];
       payableItems: this.state.payableItems,
     });
   };
-  onDeleteParticulars_Edit = async(item,index) => {
-    consoleLog("item",item)
+  onDeleteParticulars_Edit = async (item, index) => {
+    consoleLog("item", item)
     this.state.edit_payableItems.splice(index, 1);
     this.setState({
- 
+
       edit_payableItems: this.state.edit_payableItems,
     });
 
@@ -3680,13 +3681,13 @@ let arr = [];
     //   res.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
     //   res.respondcode === ErrorCode.ERROR.ERROR_CODE.SUCCESS
     // ) {
-     
+
     // } else {
     //   toast.error("Error Occured")
     // }
     // }
   };
-  
+
   receivableTypeChange = (val, id) => (e) => {
     let selectedArr = this.state.selectedListData;
     let brr = [];
@@ -3715,7 +3716,7 @@ let arr = [];
       invoiceData: arr,
       isChecked: arr[id].isSelected,
       selectedListData: selectedArr,
-      invoiceArrId:getInvoiceIdFromArray(val,this.state.invoiceArrId)
+      invoiceArrId: getInvoiceIdFromArray(val, this.state.invoiceArrId)
     });
   };
 
@@ -3770,9 +3771,9 @@ let arr = [];
     });
   };
 
-   // ...............for edit payable item Array...........
+  // ...............for edit payable item Array...........
 
-   payableIdChange = (index) => (e) => {
+  payableIdChange = (index) => (e) => {
     this.state.edit_payableItems[index].id = e.target.value;
     this.setState({
       edit_payableItems: this.state.edit_payableItems,
@@ -3948,7 +3949,7 @@ let arr = [];
           ? this.state.invoiceNote
           : "",
         payableItems: this.state.payableItems,
-        
+
       };
 
       // console.log("create dataaaa:::", data);
@@ -3970,7 +3971,7 @@ let arr = [];
     }
   };
 
-  onUpdateInvoice = async() => {
+  onUpdateInvoice = async () => {
     let mobileNo = this.state.edit_phoneNumber.substring(3, 15);
 
     let errorCount = 0;
@@ -4016,7 +4017,7 @@ let arr = [];
     ) {
       toast.error(AlertMessage.MESSAGE.INVOICE.EMPTY_ADDRESS);
       errorCount++;
-    } 
+    }
 
     // this.state.payableItems.map((obj) => {
     //   let validateId = inputEmptyValidate(obj.id),
@@ -4084,7 +4085,7 @@ let arr = [];
           ? this.state.edit_invoiceNote
           : "",
         payableItems: this.state.edit_payableItems,
-        invoiceId:this.state.invoiceId
+        invoiceId: this.state.invoiceId
         // invoiceId:this.state.inv
       };
 
@@ -4118,8 +4119,8 @@ let arr = [];
       payableItemsTemplate: true,
       invoiceIdTemplate: true,
       invoiceDateTemplate: true,
-      purchaseOrderTemplate:true,
-      clientStatusTemplate:true
+      purchaseOrderTemplate: true,
+      clientStatusTemplate: true
     };
     this.setState({
       // invoiceId:"",
@@ -4208,7 +4209,7 @@ let arr = [];
     // console.log("location value", value)
     this.setState({
       locationData: value,
-      locationDataTxt:value.value
+      locationDataTxt: value.value
     });
   };
 
@@ -4257,11 +4258,11 @@ let arr = [];
       appointmentTypeData: {},
       selectedRequester: {},
       locationData: {},
-      locationDataTxt:"",
+      locationDataTxt: "",
       selectedContract: {},
       leiData: {},
       targetLangData: [],
-      targetLangId:[]
+      targetLangId: []
     });
   };
 
@@ -4269,314 +4270,311 @@ let arr = [];
     const open = Boolean(this.state.anchorEl); //used in MenuButton open
     const open1 = Boolean(this.state.anchorEl1);
     const customStylesDropdown = {
-        control: (styles) => ({
+      control: (styles) => ({
+        ...styles,
+        backgroundColor: "white",
+        boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
+        borderRadius: "10px",
+        height: 45,
+        minHeight: 45,
+      }),
+      option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        const color = "yellow";
+        return {
           ...styles,
-          backgroundColor: "white",
-          boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
-          borderRadius: "10px",
-          height: 45,
-          minHeight: 45,
-        }),
-        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-          const color = "yellow";
-          return {
-            ...styles,
-            color: isFocused ? "grey" : "white",
-            //   backgroundColor: isDisabled ? "red" : "white",
-            color: "#000",
-            cursor: isDisabled ? "not-allowed" : "default",
-          };
-        },
-      };
+          color: isFocused ? "grey" : "white",
+          //   backgroundColor: isDisabled ? "red" : "white",
+          color: "#000",
+          cursor: isDisabled ? "not-allowed" : "default",
+        };
+      },
+    };
 
     return (
       <React.Fragment>
         <ToastContainer hideProgressBar theme="colored" />
         {/* <div class="component-wrapper vewaljobs invoc_pge"> */}
-         
-          {/* <div class="listing-component-app"> */}
-            <div class="vendor-info _fl sdw">
-              <div class="vn-form _fl">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div className="vn_frm">
-                      {this.state.isVerifiedJobs ? <React.Fragment>
-                        <span
-                        style={{
-                          width: "20%",
-                         
-                          paddingLeft: "5px",
-                          fontSize: "14px",
-                        }}
-                      >
-                       Job ID
-                        
-                      </span>
-                      </React.Fragment>:<React.Fragment>
-                      <span
-                        style={{
-                          width: "30%",
-                         
-                          paddingLeft: "5px",
-                          fontSize: "14px",
-                        }}
-                      >
-                       Invoice ID
-                        
-                      </span>
-                        </React.Fragment>}
-                     
-                      <InputText
-                        placeholder="Search"
-                        className="inputfield"
-                        value={this.state.id}
-                        onTextChange={(value) => {
-                          this.onIdChange(value);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-4">
 
-                  <div className="vn_frm">
-                  
-                    <React.Fragment>
-                      <span
-                        style={{
-                          // width: "10%",
-                          // paddingLeft: "5px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Client
-                      </span>
+        {/* <div class="listing-component-app"> */}
+        <div class="vendor-info _fl sdw">
+          <div class="vn-form _fl">
+            <div class="row">
+              <div class="col-md-4">
+                <div className="vn_frm">
+                  {this.state.isVerifiedJobs ? <React.Fragment>
+                    <span
+                      style={{
+                        width: "20%",
 
-                      <div className="dropdwn" style={{ marginLeft: "60px" }}>
-                        <SelectBox
-                          optionData={this.state.allClientArr}
-                          value={this.state.selectedClient}
-                          onSelectChange={(value) => this.clientChange(value)}
-                          // isDisabled = {true}
-                        ></SelectBox>
-                      </div>
-                    </React.Fragment>
-                
-                </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="vn_frm ">
-                      <input
-                        type="text"
-                        value={this.state.input}
-                        name=""
-                        placeholder="Search"
-                        class="inputfield"
-                        onChange={this.inputChange}
-                        style={{ width: "80%",marginLeft:"30px" }}
-                      />
-                    </div>
-                  </div>
+                        paddingLeft: "5px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Job ID
+
+                    </span>
+                  </React.Fragment> : <React.Fragment>
+                    <span
+                      style={{
+                        width: "30%",
+
+                        paddingLeft: "5px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Invoice ID
+
+                    </span>
+                  </React.Fragment>}
+
+                  <InputText
+                    placeholder="Search"
+                    className="inputfield"
+                    value={this.state.id}
+                    onTextChange={(value) => {
+                      this.onIdChange(value);
+                    }}
+                  />
                 </div>
               </div>
+              <div className="col-md-4">
 
-              <div className="vn-form _fl" style={{ marginTop: "50px" }}>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="_fl verificaiton-doc-tab ven">
-                      <ul>
-                        <li
-                          class="active"
-                          data-related="tble-data-a"
-                          onClick={() => {
-                            this.onTabClick("verifiedJobs");
-                          }}
-                        >
-                          Verified Jobs
-                        </li>
-                        <li
-                          data-related="tble-data-b"
-                          onClick={() => {
-                            this.onTabClick("invoices");
-                          }}
-                        >
-                          Invoices
-                        </li>
-                      </ul>
+                <div className="vn_frm">
+
+                  <React.Fragment>
+                    <span
+                      style={{
+                        // width: "10%",
+                        // paddingLeft: "5px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Client
+                    </span>
+
+                    <div className="dropdwn" style={{ marginLeft: "60px" }}>
+                      <SelectBox
+                        optionData={this.state.allClientArr}
+                        value={this.state.selectedClient}
+                        onSelectChange={(value) => this.clientChange(value)}
+                      // isDisabled = {true}
+                      ></SelectBox>
                     </div>
-                  </div>
-                  <div className="col-md-4"></div>
-                  <div className="col-md-2"></div>
-                  <div className="col-md-2">
-                    {this.state.isVerifiedJobs ? (
-                      <React.Fragment>
+                  </React.Fragment>
 
-                        <a
-                          href="javascript:void(0)"
-                          class="progress-btn sky"
-                          style={{
-                            textAlign: "center",
-                            textDecoration: "none",
-                            fontSize: "12px",
-                            // pointerEvents:this.state.isChecked ? "" : "none"
-                          }}
-                          onClick={this.openCreateInvoiceModal}
-                        >
-                          Create Invoice
-                        </a>
-                      </React.Fragment>
-                    ) : (
-                      <React.Fragment>
-                        <a
-                          href="javascript:void(0)"
-                          class="progress-btn previewInvoiceBtn"
-                          onClick={this.openPrevInvoiceModal}
-                        >
-                          Preview Invoice
-                        </a>
-                      </React.Fragment>
-                    )}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="vn_frm ">
+                  <input
+                    type="text"
+                    value={this.state.input}
+                    name=""
+                    placeholder="Search"
+                    class="inputfield"
+                    onChange={this.inputChange}
+                    style={{ width: "80%", marginLeft: "30px" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="vn-form _fl" style={{ marginTop: "50px" }}>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="_fl verificaiton-doc-tab ven">
+                  <ul>
+                    <li
+                      class="active"
+                      data-related="tble-data-a"
+                      onClick={() => {
+                        this.onTabClick("verifiedJobs");
+                      }}
+                    >
+                      Verified Jobs
+                    </li>
+                    <li
+                      data-related="tble-data-b"
+                      onClick={() => {
+                        this.onTabClick("invoices");
+                      }}
+                    >
+                      Invoices
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-md-4"></div>
+              <div className="col-md-2"></div>
+              <div className="col-md-2">
+                {this.state.isVerifiedJobs ? (
+                  <React.Fragment>
+
+                    <a
+                      href="javascript:void(0)"
+                      class="progress-btn sky"
+                      style={{
+                        textAlign: "center",
+                        textDecoration: "none",
+                        fontSize: "12px",
+                        // pointerEvents:this.state.isChecked ? "" : "none"
+                      }}
+                      onClick={this.openCreateInvoiceModal}
+                    >
+                      Create Invoice
+                    </a>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <a
+                      href="javascript:void(0)"
+                      class="progress-btn previewInvoiceBtn"
+                      onClick={this.openPrevInvoiceModal}
+                    >
+                      Preview Invoice
+                    </a>
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {this.state.isVerifiedJobs ? (
+          <React.Fragment>
+            <div class="table-filter-app-b">
+              <div class="filter-btn">
+                <a
+                  href={"javascript:void(0)"}
+                  onClick={this.openFilterModal}
+                >
+                  Filter
+                </a>
+              </div>
+              <div className="filter-pagination">
+                <button className="prev_btn" onClick={this.exLeft}></button>
+                <button className="prv_btn" onClick={this.prev}>
+                  {" "}
+                  {"<"}
+                </button>
+                <span className="num" onChange={(e) => this.clickChange(e)}>
+                  {this.state.current_page}
+                </span>
+                <button className="nxt_btn" onClick={this.next}>
+                  {">"}
+                </button>
+                <button
+                  className="next_btn"
+                  onClick={this.exRigth}
+                ></button>
+
+              </div>
+
+
+
+              <div className="table-filter-box">
+                {/* <div class="table-filter-box"> */}
+
+                <div class="tble-short">
+                  <span class="lbl">Display</span>
+                  <div
+                    class="dropdwn"
+                    style={{
+                      width: "70px",
+                      fontSize: "12px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <PaginationDropdown
+                      optionData={CommonData.COMMON.DISPLAY_ARR}
+                      value={this.state.selectedDisplayData}
+                      placeholder="Select"
+                      onSelectChange={(value) => {
+                        this.onChangeLimit(value);
+                      }}
+                    />
                   </div>
                 </div>
               </div>
             </div>
+          </React.Fragment>
+        ) : this.state.isInvoices ? (
+          <React.Fragment>
+            <div class="table-filter-app-b">
+              <div class="filter-btn">
+                <a
+                  href={"javascript:void(0)"}
+                  onClick={this.openFilterModal}
+                >
+                  Filter
+                </a>
+              </div>
+              <div className="filter-pagination">
+                <button
+                  className="prev_btn"
+                  onClick={this.exLeft_invoice}
+                ></button>
+                <button className="prv_btn" onClick={this.prev_invoice}>
+                  {" "}
+                  {"<"}
+                </button>
+                <span
+                  className="num"
+                  onChange={(e) => this.clickChange_invoice(e)}
+                >
+                  {this.state.current_page_invoice}
+                </span>
+                <button className="nxt_btn" onClick={this.next_invoice}>
+                  {">"}
+                </button>
+                <button
+                  className="next_btn"
+                  onClick={this.exRigth_invoice}
+                ></button>
+              </div>
+              <div className="" style={{ float: "left" }}>
+                <Button
+                  id="demo-customized-button"
+                  aria-controls={
+                    open1 ? "demo-customized-menu" : undefined
+                  }
+                  aria-haspopup="true"
+                  aria-expanded={open1 ? "true" : undefined}
+                  variant="contained"
+                  disableElevation
+                  onClick={this.menuBtnhandleClick_b}
+                  endIcon={<KeyboardArrowDownIcon />}
+                >
+                  Bulk Action
+                </Button>
+                <StyledMenuBtn
+                  id="demo-customized-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "demo-customized-button",
+                  }}
+                  anchorEl={this.state.anchorEl1}
+                  open={open1}
+                  onClose={this.handleMenuClose}
+                >
+                 
+                  <MenuItem disableRipple onClick={this.onEmailClick}>
+                    {/* <FileCopyIcon /> */}
+                    Email
+                  </MenuItem>
 
-            {this.state.isVerifiedJobs ? (
-              <React.Fragment>
-                <div class="table-filter-app-b">
-                  <div class="filter-btn">
-                    <a
-                      href={"javascript:void(0)"}
-                      onClick={this.openFilterModal}
-                    >
-                      Filter
-                    </a>
-                  </div>
-                  <div className="filter-pagination">
-                    <button className="prev_btn" onClick={this.exLeft}></button>
-                    <button className="prv_btn" onClick={this.prev}>
-                      {" "}
-                      {"<"}
-                    </button>
-                    <span className="num" onChange={(e) => this.clickChange(e)}>
-                      {this.state.current_page}
-                    </span>
-                    <button className="nxt_btn" onClick={this.next}>
-                      {">"}
-                    </button>
-                    <button
-                      className="next_btn"
-                      onClick={this.exRigth}
-                    ></button>
+                  <MenuItem disableRipple onClick={this.onDownloadClick}>
+                    {/* <ArchiveIcon /> */}
+                    Download
+                  </MenuItem>
+                  <MenuItem disableRipple onClick={() => this.onPaidClick()}>
+                    {/* <MoreHorizIcon /> */}
+                    Paid
+                  </MenuItem>
+                </StyledMenuBtn>
+                {/* </div> */}
 
-                  </div>
-                  
-
-
-                  <div className="table-filter-box">
-                    {/* <div class="table-filter-box"> */}
-
-                    <div class="tble-short">
-                      <span class="lbl">Display</span>
-                      <div
-                        class="dropdwn"
-                        style={{
-                          width: "70px",
-                          fontSize: "12px",
-                          textAlign: "center",
-                        }}
-                      >
-                        <PaginationDropdown
-                          optionData={CommonData.COMMON.DISPLAY_ARR}
-                          value={this.state.selectedDisplayData}
-                          placeholder="Select"
-                          onSelectChange={(value) => {
-                            this.onChangeLimit(value);
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </React.Fragment>
-            ) : this.state.isInvoices ? (
-              <React.Fragment>
-                <div class="table-filter-app-b">
-                  <div class="filter-btn">
-                    <a
-                      href={"javascript:void(0)"}
-                      onClick={this.openFilterModal}
-                    >
-                      Filter
-                    </a>
-                  </div>
-                  <div className="filter-pagination">
-                    <button
-                      className="prev_btn"
-                      onClick={this.exLeft_invoice}
-                    ></button>
-                    <button className="prv_btn" onClick={this.prev_invoice}>
-                      {" "}
-                      {"<"}
-                    </button>
-                    <span
-                      className="num"
-                      onChange={(e) => this.clickChange_invoice(e)}
-                    >
-                      {this.state.current_page_invoice}
-                    </span>
-                    <button className="nxt_btn" onClick={this.next_invoice}>
-                      {">"}
-                    </button>
-                    <button
-                      className="next_btn"
-                      onClick={this.exRigth_invoice}
-                    ></button>
-                  </div>
-                  <div className="" style={{ float: "left" }}>
-                    <Button
-                      id="demo-customized-button"
-                      aria-controls={
-                        open1 ? "demo-customized-menu" : undefined
-                      }
-                      aria-haspopup="true"
-                      aria-expanded={open1 ? "true" : undefined}
-                      variant="contained"
-                      disableElevation
-                      onClick={this.menuBtnhandleClick_b}
-                      endIcon={<KeyboardArrowDownIcon />}
-                    >
-                      Bulk Action
-                    </Button>
-                    <StyledMenuBtn
-                      id="demo-customized-menu"
-                      MenuListProps={{
-                        "aria-labelledby": "demo-customized-button",
-                      }}
-                      anchorEl={this.state.anchorEl1}
-                      open={open1}
-                      onClose={this.handleMenuClose}
-                    >
-                      <MenuItem disableRipple onClick={() => this.onVoidClick()}>
-                        {/* <EditIcon /> */}
-                        Void
-                      </MenuItem>
-                      <MenuItem disableRipple onClick={this.onEmailClick}>
-                        {/* <FileCopyIcon /> */}
-                        Email
-                      </MenuItem>
-
-                      <MenuItem disableRipple onClick={this.onDownloadClick}>
-                        {/* <ArchiveIcon /> */}
-                        Download
-                      </MenuItem>
-                      <MenuItem disableRipple onClick={() => this.onPaidClick()}>
-                        {/* <MoreHorizIcon /> */}
-                        Paid
-                      </MenuItem>
-                    </StyledMenuBtn>
-                    {/* </div> */}
-
-                    {/* <Select
+                {/* <Select
                         styles={bulkStyles}
                         name="select"
                         placeholder="BULK ACTION"
@@ -4588,368 +4586,357 @@ let arr = [];
                         options={bulkArr}
                         onChange={(value) => this.onBulkChange(value)}
                       /> */}
-                  </div>
-                  <div class="table-filter-box">
-                    <div class="tble-short">
-                      <span class="lbl">Display</span>
-                      <div
-                        class="dropdwn"
-                        style={{
-                          width: "70px",
-                          fontSize: "12px",
-                          textAlign: "center",
-                        }}
-                      >
-                        <PaginationDropdown
-                          optionData={CommonData.COMMON.DISPLAY_ARR}
-                          value={this.state.selectedDisplayData_invoice}
-                          placeholder="Select"
-                          onSelectChange={(value) => {
-                            this.onChangeLimit_invoice(value);
-                          }}
-                        />
-                      </div>
-                    </div>
+              </div>
+              <div class="table-filter-box">
+                <div class="tble-short">
+                  <span class="lbl">Display</span>
+                  <div
+                    class="dropdwn"
+                    style={{
+                      width: "70px",
+                      fontSize: "12px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <PaginationDropdown
+                      optionData={CommonData.COMMON.DISPLAY_ARR}
+                      value={this.state.selectedDisplayData_invoice}
+                      placeholder="Select"
+                      onSelectChange={(value) => {
+                        this.onChangeLimit_invoice(value);
+                      }}
+                    />
                   </div>
                 </div>
-              </React.Fragment>
-            ) : (
-              <React.Fragment />
-            )}
+              </div>
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment />
+        )}
 
-            <div class="tab-app-information activeLnk" id="tble-data-a">
-              <div className="table-listing-app">
-                <div className="table-responsive">
-                  <table
-                    width="100%"
-                    cellspacing="0"
-                    cellpadding="0"
-                    border="0"
-                  >
-                    <tbody>
-                      <tr>
-                        <th style={{ width: "8%" }}>
-                          <strong>Job ID</strong>
-                        </th>
-                        <th style={{ width: "10%" }}>Service</th>
-                        <th style={{ width: "10%" }}>Client(Bill To)</th>
-                        {/* <th style={{ width: "10%" }}>Vendor</th> */}
-                        {/* <th style={{ width: "10%" }}>Vendor Type</th> */}
-                        <th style={{ width: "12%" }}>Actual Date</th>
-                        <th style={{ width: "10%" }}>Status</th>
-                        <th style={{ width: "11%" }}>Total Amount</th>
-                      </tr>
-                    </tbody>
-                    <tbody>
-                      {this.state.listData.length > 0 ? (
+        <div class="tab-app-information activeLnk" id="tble-data-a">
+          <div className="table-listing-app">
+            <div className="table-responsive">
+              <table
+                width="100%"
+                cellspacing="0"
+                cellpadding="0"
+                border="0"
+              >
+                <tbody>
+                  <tr>
+                    <th style={{ width: "8%" }}>
+                      <strong>Job ID</strong>
+                    </th>
+                    <th style={{ width: "10%" }}>Service</th>
+                    <th style={{ width: "10%" }}>Client(Bill To)</th>
+                    {/* <th style={{ width: "10%" }}>Vendor</th> */}
+                    {/* <th style={{ width: "10%" }}>Vendor Type</th> */}
+                    <th style={{ width: "12%" }}>Actual Date</th>
+                    <th style={{ width: "10%" }}>Status</th>
+                    <th style={{ width: "11%" }}>Total Amount</th>
+                  </tr>
+                </tbody>
+                <tbody>
+                  {this.state.listData.length > 0 ? (
+                    <React.Fragment>
+                      {this.state.listData.map((data, i) => (
                         <React.Fragment>
-                          {this.state.listData.map((data, i) => (
-                            <React.Fragment>
-                              <tr>
-                                <td style={{ width: "8%" }}
+                          <tr>
+                            <td style={{ width: "8%" }}
 
-                                  data-toggle="tooltip"
-                                  data-placement="top"
-                                  title={data.jobId}>
-                                  {data.status === 0 ? <div
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title={data.jobId}>
+                              {data.status === 0 ? <div
+                                // onClick={() =>
+                                //   this.showDetails(data, i)
+                                // }
+                                style={{
+                                  paddingLeft: "5px",
+                                  paddingTop: "4px",
+                                  fontSize: "14px"
+                                }}
+                              >
+                                {data.jobId.length > 12
+                                  ? textTruncate(data.jobId, 12)
+                                  : data.jobId}
+                              </div> : <label className="custom_check2">
+                                <input
+                                  type="checkbox"
+                                  name={i}
+                                  checked={data.isSelected}
+                                  onChange={this.receivableTypeChange(
+                                    data,
+                                    i
+                                  )}
+                                />
+                                <span
+                                  className="checkmark2"
+                                  style={{ padding: "10px" }}
+                                ></span>
+                                <strong>
+                                  <div
                                     // onClick={() =>
                                     //   this.showDetails(data, i)
                                     // }
                                     style={{
                                       paddingLeft: "5px",
                                       paddingTop: "4px",
-                                      fontSize: "14px"
                                     }}
                                   >
                                     {data.jobId.length > 12
                                       ? textTruncate(data.jobId, 12)
                                       : data.jobId}
-                                  </div> : <label className="custom_check2">
-                                    <input
-                                      type="checkbox"
-                                      name={i}
-                                      checked={data.isSelected}
-                                      onChange={this.receivableTypeChange(
-                                        data,
-                                        i
-                                      )}
-                                    />
-                                    <span
-                                      className="checkmark2"
-                                      style={{ padding: "10px" }}
-                                    ></span>
-                                    <strong>
-                                      <div
-                                        // onClick={() =>
-                                        //   this.showDetails(data, i)
-                                        // }
-                                        style={{
-                                          paddingLeft: "5px",
-                                          paddingTop: "4px",
-                                        }}
-                                      >
-                                        {data.jobId.length > 12
-                                          ? textTruncate(data.jobId, 12)
-                                          : data.jobId}
-                                      </div>
-                                    </strong>
-                                  </label>}
+                                  </div>
+                                </strong>
+                              </label>}
 
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {data.serviceType}
-                                </td>
-                                <td style={{ width: "10%" }}
-                                  data-toggle="tooltip"
-                                  data-placement="top"
-                                  title={data.clientName}>
-                                  {data.clientName.length > 15 ? textTruncate(data.clientName, 15) : data.clientName}
-                                </td>
-                                {/* <td style={{ width: "10%" }}
+                            </td>
+                            <td style={{ width: "10%" }}>
+                              {data.serviceType}
+                            </td>
+                            <td style={{ width: "10%" }}
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title={data.clientName}>
+                              {data.clientName.length > 15 ? textTruncate(data.clientName, 15) : data.clientName}
+                            </td>
+                            {/* <td style={{ width: "10%" }}
                                   data-toggle="tooltip"
                                   data-placement="top"
                                   title={data.vendorName}>
                                   {data.vendorName.length > 15 ? textTruncate(data.vendorName, 15) : data.vendorName}
                                 </td> */}
-                                {/* <td style={{ width: "10%" }}>
+                            {/* <td style={{ width: "10%" }}>
                                   {" "}
                                   {data.vendotType}
                                 </td> */}
-                                <td style={{ width: "12%" }}>
-                                  {SetDateFormat(data.endTime) +
-                                    " | " +
-                                    SetTimeFormat(data.endTime)}
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {data.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Pending
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Verified
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 2 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Invoice Created
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment />
-                                  )}
+                            <td style={{ width: "12%" }}>
+                              {SetDateFormat(data.endTime) +
+                                " | " +
+                                SetTimeFormat(data.endTime)}
+                            </td>
+                            <td style={{ width: "10%" }}>
+                              {data.status === 0 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Pending
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 1 ? (
+                                <React.Fragment>
+                                  <span
+                                    href="#"
+                                    className="progress-btn sky"
+                                  >
+                                    Invoicable
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 2 ? (
+                                <React.Fragment>
+                                  <span
+                                    href="#"
+                                    className="progress-btn sky"
+                                  >
+                                    Invoiced
+                                  </span>
+                                </React.Fragment>
+                              ) : (
+                                <React.Fragment />
+                              )}
 
-                                  {/* <a href="#" class="progress-btn sky">Verified</a> */}
-                                </td>
-                                <td style={{ width: "11%" }}>
-                                  $ {data.totalAmount}
-                                </td>
-                              </tr>
-                            </React.Fragment>
-                          ))}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <tr style={{ textAlign: "center" }}>
-                            <td colSpan="8">
-                              <center style={{ fontSize: "20px" }}>
-                                No data found !!!
-                              </center>
+                              {/* <a href="#" class="progress-btn sky">Verified</a> */}
+                            </td>
+                            <td style={{ width: "11%" }}>
+                              $ {data.totalAmount}
                             </td>
                           </tr>
                         </React.Fragment>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="tab-app-information" id="tble-data-b">
-              <div className="table-listing-app">
-                <div className="table-responsive">
-                  <table
-                    width="100%"
-                    cellspacing="0"
-                    cellpadding="0"
-                    border="0"
-                  >
-                    <tbody>
-                      <tr>
-                        <th style={{ width: "8%" }}>
-                          <strong>Invoice ID</strong>
-                        </th>
-                        <th style={{ width: "15%" }}>Client(Bill To)</th>
-                        {/* <th style={{ width: "10%" }}>Vendor</th>
-                        <th style={{ width: "10%" }}>Vendor Type</th> */}
-                        <th style={{ width: "12%" }}>Actual Date</th>
-                        <th style={{ width: "10%" }}>Status</th>
-                        <th style={{ width: "11%" }}>Total Amount</th>
-                        <th style={{ width: "11%" }}>Action</th>
+                      ))}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <tr style={{ textAlign: "center" }}>
+                        <td colSpan="8">
+                          <center style={{ fontSize: "20px" }}>
+                            No data found !!!
+                          </center>
+                        </td>
                       </tr>
-                    </tbody>
-                    <tbody>
-                      {this.state.invoiceData.length > 0 ? (
+                    </React.Fragment>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="tab-app-information" id="tble-data-b">
+          <div className="table-listing-app">
+            <div className="table-responsive">
+              <table
+                width="100%"
+                cellspacing="0"
+                cellpadding="0"
+                border="0"
+              >
+                <tbody>
+                  <tr>
+                    <th style={{ width: "8%" }}>
+                      <strong>Invoice ID</strong>
+                    </th>
+                    <th style={{ width: "15%" }}>Client(Bill To)</th>
+                    {/* <th style={{ width: "10%" }}>Vendor</th>
+                        <th style={{ width: "10%" }}>Vendor Type</th> */}
+                    <th style={{ width: "12%" }}>Actual Date</th>
+                    <th style={{ width: "10%" }}>Status</th>
+                    <th style={{ width: "11%" }}>Total Amount</th>
+                    <th style={{ width: "11%" }}>Action</th>
+                  </tr>
+                </tbody>
+                <tbody>
+                  {this.state.invoiceData.length > 0 ? (
+                    <React.Fragment>
+                      {this.state.invoiceData.map((data, i) => (
                         <React.Fragment>
-                          {this.state.invoiceData.map((data, i) => (
-                            <React.Fragment>
-                              <tr>
-                                <td style={{ width: "8%" }}
-                                  data-toggle="tooltip"
-                                  data-placement="top"
-                                  title={data.invoiceId}
-                                >
-                                  {/* {data.jobId} */}
-                                  <label className="custom_check2">
-                                    <input
-                                      type="checkbox"
-                                      name={i}
-                                      checked={data.isSelected}
-                                      onChange={this.receivableInvoiceTypeChange(
-                                        data,
-                                        i
-                                      )}
-                                    />
-                                    <span
-                                      className="checkmark2"
-                                      style={{ padding: "10px" }}
-                                    ></span>
-                                    <strong>
-                                      <div
-                                        style={{
-                                          paddingLeft: "5px",
-                                          paddingTop: "4px",
-                                        }}
-                                      >
-                                        {data.invoiceId.length > 15
-                                          ? textTruncate(data.invoiceId, 15)
-                                          : data.invoiceId}
+                          <tr>
+                            <td style={{ width: "8%" }}
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title={data.invoiceId}
+                            >
+                              {/* {data.jobId} */}
+                              <label className="custom_check2">
+                                <input
+                                  type="checkbox"
+                                  name={i}
+                                  checked={data.isSelected}
+                                  onChange={this.receivableInvoiceTypeChange(
+                                    data,
+                                    i
+                                  )}
+                                />
+                                <span
+                                  className="checkmark2"
+                                  style={{ padding: "10px" }}
+                                ></span>
+                                <strong>
+                                  <div
+                                    style={{
+                                      paddingLeft: "5px",
+                                      paddingTop: "4px",
+                                    }}
+                                  >
+                                    {data.invoiceId.length > 15
+                                      ? textTruncate(data.invoiceId, 15)
+                                      : data.invoiceId}
 
-                                      </div>
-                                    </strong>
-                                  </label>
-                                </td>
-                                {/* <td style={{ width: "10%" }}>
+                                  </div>
+                                </strong>
+                              </label>
+                            </td>
+                            {/* <td style={{ width: "10%" }}>
                                   {data.serviceType}
                                 </td> */}
-                                <td style={{ width: "15%" }}>
-                                  {data.clientName}
-                                </td>
-                                {/* <td style={{ width: "10%" }}>
+                            <td style={{ width: "15%" }}>
+                              {data.clientName}
+                            </td>
+                            {/* <td style={{ width: "10%" }}>
                                   {data.vendorName}
                                 </td>
                                 <td style={{ width: "10%" }}>
                                   {" "}
                                   {data.vendotType}
                                 </td> */}
-                                <td style={{ width: "12%" }}>
-                                  {SetDateFormat(data.invoiceDate) +
-                                    " | " +
-                                    SetTimeFormat(data.invoiceDate)}
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {data.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Raised
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Received
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 2 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Paid
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 3 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Payment Failed
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 4 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Rejected
-                                      </span>
-                                    </React.Fragment>
-                                  ) : data.status === 5 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Void
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment />
-                                  )}
-
-                                  {/* <a href="#" class="progress-btn sky">Verified</a> */}
-                                </td>
-                                <td style={{ width: "11%" }}>
-                                  $ {data.amount}
-                                </td>
-                                <td style={{ width: "11%" }}>
-                                  <div>
+                            <td style={{ width: "12%" }}>
+                              {SetDateFormat(data.invoiceDate) +
+                                " | " +
+                                SetTimeFormat(data.invoiceDate)}
+                            </td>
+                            <td style={{ width: "10%" }}>
+                              {data.status === 0 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Invoicable
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 1 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Invoiced
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 2 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Paid
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 3 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Failed
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 4 ? (
+                                <React.Fragment>
+                                  <span className="progress-btn yellow">
+                                    Cancelled
+                                  </span>
+                                </React.Fragment>
+                              ) : data.status === 5 ? (
+                                <React.Fragment>
+                                  <span href="#" className="progress-btn sky">
+                                    Received and Approved
+                                  </span>
+                                </React.Fragment>
+                              ) : (
+                                <React.Fragment />
+                              )}
+                            </td>
+                            <td style={{ width: "11%" }}>
+                              $ {data.amount}
+                            </td>
+                            <td style={{ width: "11%" }}>
+                              <div>
+                                <img
+                                  src={ImageName.IMAGE_NAME.EDIT_SQUARE}
+                                  style={{ cursor: "pointer", marginRight: "5px" }}
+                                  onClick={() => this.onEditInvoiceModal(data)}
+                                />
+                                <a href="javascript:void(0)">
                                   <img
-                                      src={ImageName.IMAGE_NAME.EDIT_SQUARE}
-                                      style={{ cursor: "pointer" ,marginRight:"5px"}}
-                                      onClick={() => this.onEditInvoiceModal(data)}
-                                    />
-                                    <a href="javascript:void(0)">
-                                      <img
-                                        src={ImageName.IMAGE_NAME.DOWNLOAD_SHEET_ICON}
-                                        style={{ marginLeft:"5px"}}
-                                        onClick={() =>
-                                          this.onDownloadInvoice(data)
-                                        }
-                                      />
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </React.Fragment>
-                          ))}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <tr style={{ textAlign: "center" }}>
-                            <td colSpan="8">
-                              <center style={{ fontSize: "20px" }}>
-                                No data found !!!
-                              </center>
+                                    src={ImageName.IMAGE_NAME.DOWNLOAD_SHEET_ICON}
+                                    style={{ marginLeft: "5px" }}
+                                    onClick={() =>
+                                      this.onDownloadInvoice(data)
+                                    }
+                                  />
+                                </a>
+                              </div>
                             </td>
                           </tr>
                         </React.Fragment>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                      ))}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <tr style={{ textAlign: "center" }}>
+                        <td colSpan="8">
+                          <center style={{ fontSize: "20px" }}>
+                            No data found !!!
+                          </center>
+                        </td>
+                      </tr>
+                    </React.Fragment>
+                  )}
+                </tbody>
+              </table>
             </div>
-          {/* </div>
+          </div>
+        </div>
+        {/* </div>
         </div> */}
 
         {/* .................filter.modal................................. */}
@@ -5034,11 +5021,11 @@ let arr = [];
                         </li>
                       ) : (
                         <li
-                        data-related="tble-data-i"
-                        style={{ padding: "20px 20px" }}
-                      >
-                        Billing Note
-                      </li>
+                          data-related="tble-data-i"
+                          style={{ padding: "20px 20px" }}
+                        >
+                          Billing Note
+                        </li>
                       )}
                       <li
                         data-related="tble-data-j"
@@ -5127,7 +5114,7 @@ let arr = [];
                                     style={{ fontSize: "20px" }}
                                   >
                                     {" "}
-                                   TARGET LANGUAGE
+                                    TARGET LANGUAGE
                                   </div>
                                   <div className="bts-drop">
                                     <MultiSelectBox
@@ -5202,7 +5189,7 @@ let arr = [];
                                   </div>
                                   <div
                                     class="dropdwn"
-                                    // style={{ marginLeft: "25%" }}
+                                  // style={{ marginLeft: "25%" }}
                                   >
                                     <div className="tr-3">
                                       <Select
@@ -5242,7 +5229,7 @@ let arr = [];
                               className="lable-text"
                               style={{ fontSize: "20px" }}
                             >
-                               {this.state.isVerifiedJobs ? "SCHEDULE DATE" : "INVOICE DATE "}
+                              {this.state.isVerifiedJobs ? "SCHEDULE DATE" : "INVOICE DATE "}
                             </div>
                             <div className="row">
                               {/* <div className="col-md-10">
@@ -5377,7 +5364,7 @@ let arr = [];
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="tab-app-information" id="tble-data-j">
                   <div className="jobfilterpop table-listing-app">
                     <div className="table-responsive_cus table-style-a">
@@ -5422,40 +5409,41 @@ let arr = [];
                 </div>
 
                 {this.state.isVerifiedJobs ? <React.Fragment>
-                    <div className="tab-app-information" id="tble-data-i">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div
-                                class="lable-text"
-                                style={{ fontSize: "20px" }}
-                              >
-                                CONTRACT TYPE{" "}
+                  <div className="tab-app-information" id="tble-data-i">
+                    <div className="jobfilterpop table-listing-app">
+                      <div className="table-responsive_cus table-style-a">
+                        <div className="filter-jeneral-wrap">
+                          <div className="create-row-app">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div
+                                  class="lable-text"
+                                  style={{ fontSize: "20px" }}
+                                >
+                                  CONTRACT TYPE{" "}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-8">
-                              <div
-                                class="dropdwn"
-                                style={{ cursor: "pointer" }}
-                              >
-                                <SelectBox
-                                  // styles={customStyles}
-                                  optionData={contractTypeArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
-                                  value={this.state.selectedContract}
-                                  placeholder="Select"
-                                  onSelectChange={(value) => {
-                                    this.onContractChange(value);
-                                  }}
-                                />
+                            <div className="row">
+                              <div className="col-md-8">
+                                <div
+                                  class="dropdwn"
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <SelectBox
+                                    // styles={customStyles}
+                                    optionData={contractTypeArr}
+                                    // components={{
+                                    //   DropdownIndicator,
+                                    //   IndicatorSeparator: () => null,
+                                    // }}
+                                    value={this.state.selectedContract}
+                                    placeholder="Select"
+                                    onSelectChange={(value) => {
+                                      this.onContractChange(value);
+                                    }}
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -5463,42 +5451,42 @@ let arr = [];
                       </div>
                     </div>
                   </div>
-                </div>
                 </React.Fragment> : <React.Fragment>
-                <div className="tab-app-information" id="tble-data-i">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div
-                                class="lable-text"
-                                style={{ fontSize: "20px" }}
-                              >
-                                BILLING NOTE{" "}
+                  <div className="tab-app-information" id="tble-data-i">
+                    <div className="jobfilterpop table-listing-app">
+                      <div className="table-responsive_cus table-style-a">
+                        <div className="filter-jeneral-wrap">
+                          <div className="create-row-app">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div
+                                  class="lable-text"
+                                  style={{ fontSize: "20px" }}
+                                >
+                                  BILLING NOTE{" "}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-8">
-                              <div
-                                class="dropdwn"
-                                style={{ cursor: "pointer" }}
-                              >
-                               <textarea
-                              placeholder=""
-                              className="in-textarea min"
-                              value={this.state.billingNote}
-                              onChange={(value) => {
-                                this.onBillingNotesChange(value);
-                              }}
-                              style={{
-                                borderRadius: "10px",
-                                resize: "none",
-                                width: "120%",
-                              }}
-                            ></textarea>
+                            <div className="row">
+                              <div className="col-md-8">
+                                <div
+                                  class="dropdwn"
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <textarea
+                                    placeholder=""
+                                    className="in-textarea min"
+                                    value={this.state.billingNote}
+                                    onChange={(value) => {
+                                      this.onBillingNotesChange(value);
+                                    }}
+                                    style={{
+                                      borderRadius: "10px",
+                                      resize: "none",
+                                      width: "120%",
+                                    }}
+                                  ></textarea>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -5506,10 +5494,9 @@ let arr = [];
                       </div>
                     </div>
                   </div>
-                </div>
-                    </React.Fragment>}
+                </React.Fragment>}
 
-                
+
               </div>
             </div>
           </div>
@@ -5664,23 +5651,23 @@ let arr = [];
                       <React.Fragment />
                     )}
 
-                
+
 
                     {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -5746,10 +5733,10 @@ let arr = [];
                                     <div style={{ width: "20%" }}>
                                       <a style={{ float: "right" }}>
                                         <DatePicker
-                                         dropdownMode="select"
-                                         showMonthDropdown
-                                         showYearDropdown
-                                         adjustDateOnChange
+                                          dropdownMode="select"
+                                          showMonthDropdown
+                                          showYearDropdown
+                                          adjustDateOnChange
                                           onChange={(date) =>
                                             this.invoiceFormDateChange(date)
                                           }
@@ -5793,10 +5780,10 @@ let arr = [];
                                     <div style={{ width: "20%" }}>
                                       <a style={{ float: "right" }}>
                                         <DatePicker
-                                         dropdownMode="select"
-                                         showMonthDropdown
-                                         showYearDropdown
-                                         adjustDateOnChange
+                                          dropdownMode="select"
+                                          showMonthDropdown
+                                          showYearDropdown
+                                          adjustDateOnChange
                                           onChange={(date) =>
                                             this.invoiceToDateChange(date)
                                           }
@@ -5841,22 +5828,22 @@ let arr = [];
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
-                   
+
                   </div>
                   {this.state.showHide.billingAddressTemplate ? (
                     <React.Fragment>
@@ -6306,21 +6293,21 @@ let arr = [];
                     )}
                   </div>
                   <div className="row">
-                  {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
+                    {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.preview_purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.preview_purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -6381,7 +6368,7 @@ let arr = [];
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       FROM {this.state.preview_invoicePeriodFromDate}
+                                        FROM {this.state.preview_invoicePeriodFromDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6425,7 +6412,7 @@ let arr = [];
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       TO {this.state.preview_invoicePeriodToDate}
+                                        TO {this.state.preview_invoicePeriodToDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -6476,22 +6463,22 @@ let arr = [];
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.preview_clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.preview_clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
-                   
+
                   </div>
                   {this.state.showHide.billingAddressTemplate ? (
                     <React.Fragment>
@@ -6827,9 +6814,9 @@ let arr = [];
             </div>
           </div>
         </div>
-         {/* ......................edit.invoice modal................ */}
+        {/* ......................edit.invoice modal................ */}
 
-         <div
+        <div
           id="editInvoice-model"
           class="modal fade modelwindow"
           role="dialog"
@@ -6944,21 +6931,21 @@ let arr = [];
                     )}
                   </div>
                   <div className="row">
-                  {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
+                    {this.state.showHide.purchaseOrderTemplate === true ? (<React.Fragment>
                       <div className="col-md-3">
-                          <div className="form_rbx">
-                            {" "}
-                            <span className="invoiceLabel">Purchase Order</span>
-                            <input
-                              placeholder=""
-                              className="inputfield"
-                              value={this.state.edit_purchaseOrder}
-                              disabled
-                              style={{ width: "120%" }}
-                            />
-                          </div>
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Purchase Order</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.edit_purchaseOrder}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
                         </div>
-                    </React.Fragment>) : (<React.Fragment/>)}
+                      </div>
+                    </React.Fragment>) : (<React.Fragment />)}
                   </div>
 
                   <div className="row">
@@ -6980,7 +6967,7 @@ let arr = [];
                             onSelectChange={(value) =>
                               this.edit_onInvoiceStatusChange(value)
                             }
-                            // isDisabled
+                            isDisabled={true}
                           />
                         </div>
                       </div>
@@ -7019,7 +7006,7 @@ let arr = [];
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       From {this.state.edit_invoicePeriodFromDate}
+                                        From {this.state.edit_invoicePeriodFromDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -7029,7 +7016,7 @@ let arr = [];
                                           showMonthDropdown
                                           showYearDropdown
                                           adjustDateOnChange
-                                          
+
                                           onChange={(date) =>
                                             this.edit_invoiceFormDateChange(date)
                                           }
@@ -7067,7 +7054,7 @@ let arr = [];
                                       style={{ width: "80%", padding: "8px" }}
                                     >
                                       <span>
-                                       To {this.state.edit_invoicePeriodToDate}
+                                        To {this.state.edit_invoicePeriodToDate}
                                       </span>
                                     </div>
                                     <div style={{ width: "20%" }}>
@@ -7077,7 +7064,7 @@ let arr = [];
                                           showMonthDropdown
                                           showYearDropdown
                                           adjustDateOnChange
-                                         minDate={new Date(this.state.edit_invoicePeriodFromDate)}
+                                          minDate={new Date(this.state.edit_invoicePeriodFromDate)}
                                           onChange={(date) =>
                                             this.edit_invoiceToDateChange(date)
                                           }
@@ -7122,18 +7109,18 @@ let arr = [];
                     {this.state.showHide.clientStatusTemplate ? (<React.Fragment>
                       <div className="col-md-1"></div>
                       <div className="col-md-3">
-                    <div className="form_rbx">
-                        {" "}
-                        <span className="invoiceLabel">Client status</span>
-                        <input
-                          placeholder=""
-                          className="inputfield"
-                          value={this.state.edit_clientStatus}
-                          disabled
-                          style={{ width: "120%" }}
-                        />
+                        <div className="form_rbx">
+                          {" "}
+                          <span className="invoiceLabel">Client status</span>
+                          <input
+                            placeholder=""
+                            className="inputfield"
+                            value={this.state.edit_clientStatus}
+                            disabled
+                            style={{ width: "120%" }}
+                          />
+                        </div>
                       </div>
-                    </div>
                     </React.Fragment>) : (<React.Fragment>
 
                     </React.Fragment>)}
@@ -7176,7 +7163,7 @@ let arr = [];
                             <span className="invoiceLabel">Phone Number</span>
                             <div className="dropdwn" style={{ width: "185%" }}>
                               <InputText
-                              
+
                                 placeholder=""
                                 className="inputfield"
                                 value={this.state.edit_phoneNumber}
@@ -7229,7 +7216,7 @@ let arr = [];
                               onChange={(value) => {
                                 this.onEditInvoiceNotesChange(value);
                               }}
-                              
+
                               style={{
                                 borderRadius: "10px",
                                 resize: "none",
@@ -7342,7 +7329,7 @@ let arr = [];
                                             boxShadow: "2px",
                                             resize: "none",
                                           }}
-                                         
+
                                           onChange={this.edit_payableDescriptionChange(
                                             key
                                           )}
@@ -7437,7 +7424,7 @@ let arr = [];
                                         <img
                                           src={ImageName.IMAGE_NAME.TRASH_BTN}
                                           onClick={() =>
-                                            this.onDeleteParticulars_Edit(item,key)
+                                            this.onDeleteParticulars_Edit(item, key)
                                           }
                                           style={{
                                             cursor: "pointer",
@@ -7588,13 +7575,13 @@ let arr = [];
                       <span className="invoiceLabel">State</span>
                       <div className="dropdwn">
                         <SelectBox
-                        //   styles={customStyles}
+                          //   styles={customStyles}
                           name="select"
                           placeholder="Select"
-                        //   components={{
-                        //     DropdownIndicator,
-                        //     IndicatorSeparator: () => null,
-                        //   }}
+                          //   components={{
+                          //     DropdownIndicator,
+                          //     IndicatorSeparator: () => null,
+                          //   }}
                           value={this.state.stateData}
                           optionData={this.state.stateArr}
                           onSelectChange={(value) => this.onStateChange(value)}
@@ -8061,8 +8048,8 @@ let arr = [];
           </div>
         </div>
 
-         {/* ..................Email modal................................. */}
-         <div
+        {/* ..................Email modal................................. */}
+        <div
           id="email-model"
           className="modal fade modelwindow"
           role="dialog"
@@ -8100,7 +8087,7 @@ let arr = [];
                             <div className="dropdwn selct">
                               <input
                                 className="inputfield"
-                                style={{width:"100%"}}
+                                style={{ width: "100%" }}
                                 value={this.state.bulkEmail}
                                 onChange={(e) => {
                                   this.onBulkEmailChange(e);

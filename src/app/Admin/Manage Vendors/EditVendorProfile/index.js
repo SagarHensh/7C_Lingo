@@ -50,6 +50,12 @@ import 'moment-timezone';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ServiceInfo from "./ServiceInfo";
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { passWordRandomGenerate } from "../Vendor List/function";
+import VendorMenuPages from "./VendorMenuPages";
 // ..........................style for react select........................
 
 const customStyles = {
@@ -70,6 +76,38 @@ const customStyles = {
     };
   },
 };
+
+//Style for option button................
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 // .......................for react select icon.............................................
 
@@ -342,6 +380,7 @@ export default class EditVendorProfile extends React.Component {
       vendorLocationArr: [],
       vendorLocationData: {},
       vendorProfileLocation: [],
+      anchorEl: null
     };
   }
 
@@ -896,7 +935,7 @@ export default class EditVendorProfile extends React.Component {
         whatsappNumber:
           "+" + this.state.countryCode + " " + payload.data[0].whatsapp,
         genderId: payload.data[0].genderTypeId,
-        dob: payload.data[0].dob== null ? "" : SetUSAdateFormat(payload.data[0].dob),
+        dob: payload.data[0].dob == null ? "" : SetUSAdateFormat(payload.data[0].dob),
         workArr: workArr,
         workExperience: payload.data[0].experience,
         bio: payload.data[0].bio,
@@ -2772,7 +2811,18 @@ export default class EditVendorProfile extends React.Component {
       vendorLocationData: value,
     });
   };
+  //................funct for menuBtn on click................
+  menuBtnhandleClick = (event) => {
+    this.setState({
+      anchorEl: event.currentTarget,
+    });
+  };
 
+  handleMenuClose = () => {
+    this.setState({
+      anchorEl: null,
+    });
+  };
   render() {
     const customStylesDropdown = {
       control: (styles) => ({
@@ -2794,6 +2844,7 @@ export default class EditVendorProfile extends React.Component {
         };
       },
     };
+    // const open = Boolean(this.state.anchorEl); //used in MenuButton open
     return (
       <React.Fragment>
         {/* <div className="wrapper"> */}
@@ -2811,7 +2862,14 @@ export default class EditVendorProfile extends React.Component {
             {" "}
             <Link to="/adminDashboard">Dashboard</Link> / <Link to="/adminVendorList">Vendors</Link> / Vendor Profile
           </div>
-          <div className="vender-head _fl"> Vendor Profile </div>
+          <div className="row">
+            <div className="col-md-8">
+              <div className="vender-head _fl"> Vendor Profile </div>
+            </div>
+            {/* <div className="col-md-4">
+              <VendorMenuPages value={this.state.showId}/>
+            </div> */}
+          </div>
           <div className="myaccount-section-wrap _fl">
             <div className="row">
               <div className="col-md-9">

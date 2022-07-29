@@ -1514,8 +1514,12 @@ export default class JobDetails extends React.Component {
                             <th width="50%" align="right">
                               &nbsp;
                               {this.state.otherService === 1 ?
-                                <Button variant="contained" onClick={() => this.joinVideo(this.state.appointmentType, this.state.jobId)}>Join</Button>
-                                : "NO"}
+                                <React.Fragment>
+                                  {this.state.quoteStatus === 8 || this.state.quoteStatus === 9 ?
+                                    <Button variant="contained" onClick={() => this.joinVideo(this.state.appointmentType, this.state.jobId)}>Join</Button>
+                                    : "Not yet assigned to a interpreter"
+                                  }
+                                </React.Fragment> : "NO"}
                             </th>
                           </tr>
                           {this.state.otherService === 0 ? (

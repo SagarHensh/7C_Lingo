@@ -33,8 +33,30 @@ import {
 } from "../../../../services/common-function";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { Functions } from "@mui/icons-material";
 import axios from "axios";
+
+
+const customStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "white",
+    boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
+    borderRadius: "6px",
+    height: 50,
+    minHeight: 50,
+    textAlign: "center",
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    const color = "yellow";
+    return {
+      ...styles,
+      color: isFocused ? "grey" : "white",
+      color: "#000",
+      cursor: isDisabled ? "not-allowed" : "default",
+    };
+  },
+};
+
 
 const cancelationArr = [
   {
@@ -83,7 +105,7 @@ const projectcancelationArr = [
   //   label: "Other Service being utilized",
   //   value: "5",
   // },
- 
+
 ];
 
 
@@ -268,6 +290,7 @@ export default class ClientRfqList extends React.Component {
       selectedRequester: {},
       locationArr: [],
       locationData: {},
+      leiArr: [],
       leiData: {},
       locationDataTxt: "",
 
@@ -371,6 +394,7 @@ export default class ClientRfqList extends React.Component {
       language: [],
       jobId: "",
       leiId: "",
+      leiDob: "",
     };
     this.listApi(data);
 
@@ -440,8 +464,8 @@ export default class ClientRfqList extends React.Component {
                   appointmentDataArr[k].id === 63
                     ? ImageName.IMAGE_NAME.F2F
                     : appointmentDataArr[k].id === 64
-                    ? ImageName.IMAGE_NAME.VRI_ICON
-                    : ImageName.IMAGE_NAME.OPI_ICON
+                      ? ImageName.IMAGE_NAME.VRI_ICON
+                      : ImageName.IMAGE_NAME.OPI_ICON
                 }
                 height="30px"
                 width="25px"
@@ -451,8 +475,8 @@ export default class ClientRfqList extends React.Component {
                 {appointmentDataArr[k].id === 63
                   ? "Face to Face"
                   : appointmentDataArr[k].id === 64
-                  ? "Video Remote Interpreting"
-                  : "Over the Phone Interpretation"}
+                    ? "Video Remote Interpreting"
+                    : "Over the Phone Interpretation"}
               </span>
             </div>
           ),
@@ -627,7 +651,7 @@ export default class ClientRfqList extends React.Component {
   // .........................translation list api,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
   getTranslationList = async (data) => {
-    consoleLog("req:::translation",data)
+    consoleLog("req:::translation", data)
     const translationRes = await ApiCall("getPendingTranslationRFQList", data);
     if (
       translationRes.error === ErrorCode.ERROR.ERROR.WITHOUT_ERROR &&
@@ -653,7 +677,7 @@ export default class ClientRfqList extends React.Component {
   };
 
   getTrainingList = async (data) => {
-    consoleLog("req:::training",data)
+    consoleLog("req:::training", data)
     // ....................training..........................
     const trainingRes = await ApiCall("getPendingTrainingRFQList", data);
     if (
@@ -700,36 +724,36 @@ export default class ClientRfqList extends React.Component {
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       serviceType: "",
       rfqId: this.state.id,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       language: this.state.targetLangId,
       jobId: "",
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
     };
@@ -758,36 +782,36 @@ export default class ClientRfqList extends React.Component {
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       serviceType: "",
       rfqId: this.state.id,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       language: this.state.targetLangId,
       jobId: "",
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
     };
@@ -813,36 +837,36 @@ export default class ClientRfqList extends React.Component {
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       serviceType: "",
       rfqId: this.state.id,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       language: this.state.targetLangId,
       jobId: "",
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
     };
@@ -870,36 +894,36 @@ export default class ClientRfqList extends React.Component {
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       serviceType: "",
       rfqId: this.state.id,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       language: this.state.targetLangId,
       jobId: "",
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
     };
@@ -928,36 +952,36 @@ export default class ClientRfqList extends React.Component {
         this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       serviceType: "",
       rfqId: this.state.id,
       appointmentTypeId:
         this.state.appointmentTypeData.value == null ||
-        this.state.appointmentTypeData.value == undefined
+          this.state.appointmentTypeData.value == undefined
           ? ""
           : this.state.appointmentTypeData.value,
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       location:
         this.state.locationDataTxt == null ||
-        this.state.locationDataTxt == undefined
+          this.state.locationDataTxt == undefined
           ? ""
           : this.state.locationDataTxt,
       language: this.state.targetLangId,
       jobId: "",
       leiId:
         this.state.leiData.value == null ||
-        this.state.leiData.value == undefined
+          this.state.leiData.value == undefined
           ? ""
           : this.state.leiData.value,
     };
@@ -987,12 +1011,12 @@ export default class ClientRfqList extends React.Component {
       offset: "0",
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       orderby: "",
@@ -1018,12 +1042,12 @@ export default class ClientRfqList extends React.Component {
       offset: "0",
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       orderby: "",
@@ -1054,12 +1078,12 @@ export default class ClientRfqList extends React.Component {
       offset: JSON.stringify((totalPage - 1) * this.state.translation_limit),
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       orderby: "",
@@ -1092,12 +1116,12 @@ export default class ClientRfqList extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.translation_limit),
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       orderby: "",
@@ -1134,12 +1158,12 @@ export default class ClientRfqList extends React.Component {
       offset: JSON.stringify((currentPage - 1) * this.state.translation_limit),
       status:
         this.state.statusData.value == null ||
-        this.state.statusData.value == undefined
+          this.state.statusData.value == undefined
           ? ""
           : this.state.statusData.value,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       orderby: "",
@@ -1174,10 +1198,10 @@ export default class ClientRfqList extends React.Component {
     let fetchData = {
       limit: dat.value,
       offset: "0",
-      rfqId:this.state.id,
+      rfqId: this.state.id,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1185,22 +1209,22 @@ export default class ClientRfqList extends React.Component {
       searchto: "",
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       trainingCatId:
         this.state.selectedTrainingCategory.value == null ||
-        this.state.selectedTrainingCategory.value == undefined
+          this.state.selectedTrainingCategory.value == undefined
           ? ""
           : this.state.selectedTrainingCategory.value,
       trainingFormatId:
         this.state.selectedFormat.value == null ||
-        this.state.selectedFormat.value == undefined
+          this.state.selectedFormat.value == undefined
           ? ""
           : this.state.selectedFormat.value,
       courseId:
         this.state.selectedCourse.value == null ||
-        this.state.selectedCourse.value == undefined
+          this.state.selectedCourse.value == undefined
           ? ""
           : this.state.selectedCourse.value,
     };
@@ -1215,10 +1239,10 @@ export default class ClientRfqList extends React.Component {
     let fetchData = {
       limit: JSON.stringify(this.state.training_limit),
       offset: "0",
-      rfqId:this.state.id,
+      rfqId: this.state.id,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1226,22 +1250,22 @@ export default class ClientRfqList extends React.Component {
       searchto: "",
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       trainingCatId:
         this.state.selectedTrainingCategory.value == null ||
-        this.state.selectedTrainingCategory.value == undefined
+          this.state.selectedTrainingCategory.value == undefined
           ? ""
           : this.state.selectedTrainingCategory.value,
       trainingFormatId:
         this.state.selectedFormat.value == null ||
-        this.state.selectedFormat.value == undefined
+          this.state.selectedFormat.value == undefined
           ? ""
           : this.state.selectedFormat.value,
       courseId:
         this.state.selectedCourse.value == null ||
-        this.state.selectedCourse.value == undefined
+          this.state.selectedCourse.value == undefined
           ? ""
           : this.state.selectedCourse.value,
     };
@@ -1261,10 +1285,10 @@ export default class ClientRfqList extends React.Component {
     let fetchData = {
       limit: JSON.stringify(this.state.training_limit),
       offset: JSON.stringify((totalPage - 1) * this.state.training_limit),
-      rfqId:this.state.id,
+      rfqId: this.state.id,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1272,22 +1296,22 @@ export default class ClientRfqList extends React.Component {
       searchto: "",
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       trainingCatId:
         this.state.selectedTrainingCategory.value == null ||
-        this.state.selectedTrainingCategory.value == undefined
+          this.state.selectedTrainingCategory.value == undefined
           ? ""
           : this.state.selectedTrainingCategory.value,
       trainingFormatId:
         this.state.selectedFormat.value == null ||
-        this.state.selectedFormat.value == undefined
+          this.state.selectedFormat.value == undefined
           ? ""
           : this.state.selectedFormat.value,
       courseId:
         this.state.selectedCourse.value == null ||
-        this.state.selectedCourse.value == undefined
+          this.state.selectedCourse.value == undefined
           ? ""
           : this.state.selectedCourse.value,
     };
@@ -1307,10 +1331,10 @@ export default class ClientRfqList extends React.Component {
     let fetchData = {
       limit: JSON.stringify(this.state.training_limit),
       offset: JSON.stringify((currentPage - 1) * this.state.training_limit),
-      rfqId:this.state.id,
+      rfqId: this.state.id,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1318,22 +1342,22 @@ export default class ClientRfqList extends React.Component {
       searchto: "",
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       trainingCatId:
         this.state.selectedTrainingCategory.value == null ||
-        this.state.selectedTrainingCategory.value == undefined
+          this.state.selectedTrainingCategory.value == undefined
           ? ""
           : this.state.selectedTrainingCategory.value,
       trainingFormatId:
         this.state.selectedFormat.value == null ||
-        this.state.selectedFormat.value == undefined
+          this.state.selectedFormat.value == undefined
           ? ""
           : this.state.selectedFormat.value,
       courseId:
         this.state.selectedCourse.value == null ||
-        this.state.selectedCourse.value == undefined
+          this.state.selectedCourse.value == undefined
           ? ""
           : this.state.selectedCourse.value,
     };
@@ -1355,10 +1379,10 @@ export default class ClientRfqList extends React.Component {
     let fetchData = {
       limit: JSON.stringify(this.state.training_limit),
       offset: JSON.stringify((currentPage - 1) * this.state.training_limit),
-      rfqId:this.state.id,
+      rfqId: this.state.id,
       clientId:
         this.state.selectedClient.value == null ||
-        this.state.selectedClient.value == undefined
+          this.state.selectedClient.value == undefined
           ? ""
           : this.state.selectedClient.value,
       searchfrom:
@@ -1366,22 +1390,22 @@ export default class ClientRfqList extends React.Component {
       searchto: "",
       requester:
         this.state.selectedRequester.value == null ||
-        this.state.selectedRequester.value == undefined
+          this.state.selectedRequester.value == undefined
           ? ""
           : this.state.selectedRequester.value,
       trainingCatId:
         this.state.selectedTrainingCategory.value == null ||
-        this.state.selectedTrainingCategory.value == undefined
+          this.state.selectedTrainingCategory.value == undefined
           ? ""
           : this.state.selectedTrainingCategory.value,
       trainingFormatId:
         this.state.selectedFormat.value == null ||
-        this.state.selectedFormat.value == undefined
+          this.state.selectedFormat.value == undefined
           ? ""
           : this.state.selectedFormat.value,
       courseId:
         this.state.selectedCourse.value == null ||
-        this.state.selectedCourse.value == undefined
+          this.state.selectedCourse.value == undefined
           ? ""
           : this.state.selectedCourse.value,
     };
@@ -1652,7 +1676,7 @@ export default class ClientRfqList extends React.Component {
     });
   };
   onCancelDataChange = (data) => {
-    consoleLog("data",data)
+    consoleLog("data", data)
     if (data.value === 1) {
       this.setState({
         isSelected: "true",
@@ -1674,7 +1698,7 @@ export default class ClientRfqList extends React.Component {
       cancellationData: data,
     });
   };
-  onCancelProjectDataChange= (data) => {
+  onCancelProjectDataChange = (data) => {
     if (data.value === 1) {
       this.setState({
         isSelected: "true",
@@ -1742,34 +1766,34 @@ export default class ClientRfqList extends React.Component {
         searchto: "",
         searchfrom:
           this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
-        clientId:this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
+        clientId: this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
         serviceType: "",
         rfqId: this.state.id,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         language: this.state.targetLangId,
         jobId: "",
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
       };
@@ -1777,7 +1801,7 @@ export default class ClientRfqList extends React.Component {
       this.listApi(resData);
     } else if (this.state.isTranslation) {
       this.closeTranslationModal();
-  
+
       this.setState({
         translation_current_page: 1,
         translation_selectedDisplayData: {
@@ -1790,10 +1814,10 @@ export default class ClientRfqList extends React.Component {
         offset: "0",
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
-            clientId:this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
+        clientId: this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
         orderby: "",
         direc: "",
         searchFrom:
@@ -1808,7 +1832,7 @@ export default class ClientRfqList extends React.Component {
       this.getTranslationList(resData);
     } else if (this.state.isTraining) {
       this.closeTrainingModal();
-      
+
       this.setState({
         training_current_page: 1,
         training_selectedDisplayData: {
@@ -1821,29 +1845,29 @@ export default class ClientRfqList extends React.Component {
         offset: "0",
         direc: "",
         orderby: "",
-        clientId:this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
+        clientId: this.state.selectedClient.value == null || this.state.selectedClient.value == undefined ? "" : this.state.selectedClient.value,
         rfqId: this.state.id,
         searchfrom:
           this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
         searchto: "",
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         trainingCatId:
           this.state.selectedTrainingCategory.value == null ||
-          this.state.selectedTrainingCategory.value == undefined
+            this.state.selectedTrainingCategory.value == undefined
             ? ""
             : this.state.selectedTrainingCategory.value,
         trainingFormatId:
           this.state.selectedFormat.value == null ||
-          this.state.selectedFormat.value == undefined
+            this.state.selectedFormat.value == undefined
             ? ""
             : this.state.selectedFormat.value,
         courseId:
           this.state.selectedCourse.value == null ||
-          this.state.selectedCourse.value == undefined
+            this.state.selectedCourse.value == undefined
             ? ""
             : this.state.selectedCourse.value,
       };
@@ -1852,7 +1876,7 @@ export default class ClientRfqList extends React.Component {
 
     this.closeFilterModal();
 
-   
+
   };
 
   onResetFilter = () => {
@@ -2022,10 +2046,10 @@ export default class ClientRfqList extends React.Component {
         isInterpretation: true,
         isTranslation: false,
         isTraining: false,
-        current_page:1,
-        selectedDisplayData:{
-          label:"20",
-          value:"20"
+        current_page: 1,
+        selectedDisplayData: {
+          label: "20",
+          value: "20"
         }
       });
       this.load();
@@ -2038,11 +2062,11 @@ export default class ClientRfqList extends React.Component {
         isInterpretation: false,
         isTranslation: true,
         isTraining: false,
-        translation_selectedDisplayData:{
-          label:"20",
-          value:"20"
+        translation_selectedDisplayData: {
+          label: "20",
+          value: "20"
         },
-        translation_current_page:1
+        translation_current_page: 1
       });
 
       let data = {
@@ -2074,11 +2098,11 @@ export default class ClientRfqList extends React.Component {
         isInterpretation: false,
         isTranslation: false,
         isTraining: true,
-        training_selectedDisplayData:{
-          label:"20",
-          value:"20"
+        training_selectedDisplayData: {
+          label: "20",
+          value: "20"
         },
-        training_current_page:1
+        training_current_page: 1
       });
 
       let data = {
@@ -2117,8 +2141,8 @@ export default class ClientRfqList extends React.Component {
     let errorCount = 0;
 
     let validateCancelReason = inputEmptyValidate(
-        this.state.cancellationData.value
-      ),
+      this.state.cancellationData.value
+    ),
       validateJobRescheduled = inputEmptyValidate(this.state.isSelected),
       validateDate = inputEmptyValidate(this.state.appointmentDate),
       validateOtherReason = inputEmptyValidate(this.state.otherReason);
@@ -2138,7 +2162,7 @@ export default class ClientRfqList extends React.Component {
         hideProgressBar: true,
       });
       errorCount++;
-    } else if (validateJobRescheduled === false && this.state.isInterpretation ) {
+    } else if (validateJobRescheduled === false && this.state.isInterpretation) {
       toast.error(AlertMessage.MESSAGE.JOB.EMPTY_JOB_RESCHEDULE_CHECK, {
         hideProgressBar: true,
       });
@@ -2169,7 +2193,7 @@ export default class ClientRfqList extends React.Component {
               ? this.state.otherReason
               : this.state.cancellationData.label,
           isScheduled: this.state.isSelected ? 1 : 0,
-          rescheduleDate:this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
+          rescheduleDate: this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
           rescheduleTime: dt == "00:00" ? "" : dt + ":00",
 
           scheduleNote: this.state.rescheduleNote,
@@ -2182,8 +2206,8 @@ export default class ClientRfqList extends React.Component {
               ? this.state.otherReason
               : this.state.cancellationData.label,
           // isScheduled: this.state.isSelected ? 1 : 0,
-          isScheduled:0,
-          rescheduleDate:this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
+          isScheduled: 0,
+          rescheduleDate: this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
           rescheduleTime: dt == "00:00" ? "" : dt + ":00",
 
           scheduleNote: this.state.rescheduleNote,
@@ -2196,8 +2220,8 @@ export default class ClientRfqList extends React.Component {
               ? this.state.otherReason
               : this.state.cancellationData.label,
           // isScheduled: this.state.isSelected ? 1 : 0,
-          isScheduled:0,
-          rescheduleDate:this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
+          isScheduled: 0,
+          rescheduleDate: this.state.appointmentDate == "" ? "" : SetDOBFormat(this.state.appointmentDate),
           rescheduleTime: dt == "00:00" ? "" : dt + ":00",
 
           scheduleNote: this.state.rescheduleNote,
@@ -2214,7 +2238,7 @@ export default class ClientRfqList extends React.Component {
       //   toast.success(AlertMessage.MESSAGE.JOB.CANCEL, {
       //     hideProgressBar: true,
       //   });
-        
+
       //   this.declineClose();
       //   this.load();
       //   let transdata = {
@@ -2387,36 +2411,36 @@ export default class ClientRfqList extends React.Component {
           this.state.formDate == "" ? "" : SetScheduleDate(this.state.formDate),
         clientId:
           this.state.selectedClient.value == null ||
-          this.state.selectedClient.value == undefined
+            this.state.selectedClient.value == undefined
             ? ""
             : this.state.selectedClient.value,
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
         serviceType: "",
         rfqId: val,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         language: this.state.targetLangId,
         jobId: "",
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
       };
@@ -2427,16 +2451,16 @@ export default class ClientRfqList extends React.Component {
         limit: this.state.translation_limit,
         offset: JSON.stringify(
           (this.state.translation_current_page - 1) *
-            this.state.translation_limit
+          this.state.translation_limit
         ),
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
         clientId:
           this.state.selectedClient.value == null ||
-          this.state.selectedClient.value == undefined
+            this.state.selectedClient.value == undefined
             ? ""
             : this.state.selectedClient.value,
         orderby: "",
@@ -2462,7 +2486,7 @@ export default class ClientRfqList extends React.Component {
         orderby: "",
         clientId:
           this.state.selectedClient.value == null ||
-          this.state.selectedClient.value == undefined
+            this.state.selectedClient.value == undefined
             ? ""
             : this.state.selectedClient.value,
         searchfrom:
@@ -2470,22 +2494,22 @@ export default class ClientRfqList extends React.Component {
         searchto: "",
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         trainingCatId:
           this.state.selectedTrainingCategory.value == null ||
-          this.state.selectedTrainingCategory.value == undefined
+            this.state.selectedTrainingCategory.value == undefined
             ? ""
             : this.state.selectedTrainingCategory.value,
         trainingFormatId:
           this.state.selectedFormat.value == null ||
-          this.state.selectedFormat.value == undefined
+            this.state.selectedFormat.value == undefined
             ? ""
             : this.state.selectedFormat.value,
         courseId:
           this.state.selectedCourse.value == null ||
-          this.state.selectedCourse.value == undefined
+            this.state.selectedCourse.value == undefined
             ? ""
             : this.state.selectedCourse.value,
       };
@@ -2512,31 +2536,31 @@ export default class ClientRfqList extends React.Component {
         clientId: value.value,
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
         serviceType: "",
         rfqId: this.state.id,
         appointmentTypeId:
           this.state.appointmentTypeData.value == null ||
-          this.state.appointmentTypeData.value == undefined
+            this.state.appointmentTypeData.value == undefined
             ? ""
             : this.state.appointmentTypeData.value,
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         location:
           this.state.locationDataTxt == null ||
-          this.state.locationDataTxt == undefined
+            this.state.locationDataTxt == undefined
             ? ""
             : this.state.locationDataTxt,
         language: this.state.targetLangId,
         jobId: "",
         leiId:
           this.state.leiData.value == null ||
-          this.state.leiData.value == undefined
+            this.state.leiData.value == undefined
             ? ""
             : this.state.leiData.value,
       };
@@ -2547,14 +2571,14 @@ export default class ClientRfqList extends React.Component {
         limit: this.state.translation_limit,
         offset: JSON.stringify(
           (this.state.translation_current_page - 1) *
-            this.state.translation_limit
+          this.state.translation_limit
         ),
         status:
           this.state.statusData.value == null ||
-          this.state.statusData.value == undefined
+            this.state.statusData.value == undefined
             ? ""
             : this.state.statusData.value,
-            clientId: value.value,
+        clientId: value.value,
         orderby: "",
         direc: "",
         searchFrom:
@@ -2582,22 +2606,22 @@ export default class ClientRfqList extends React.Component {
         searchto: "",
         requester:
           this.state.selectedRequester.value == null ||
-          this.state.selectedRequester.value == undefined
+            this.state.selectedRequester.value == undefined
             ? ""
             : this.state.selectedRequester.value,
         trainingCatId:
           this.state.selectedTrainingCategory.value == null ||
-          this.state.selectedTrainingCategory.value == undefined
+            this.state.selectedTrainingCategory.value == undefined
             ? ""
             : this.state.selectedTrainingCategory.value,
         trainingFormatId:
           this.state.selectedFormat.value == null ||
-          this.state.selectedFormat.value == undefined
+            this.state.selectedFormat.value == undefined
             ? ""
             : this.state.selectedFormat.value,
         courseId:
           this.state.selectedCourse.value == null ||
-          this.state.selectedCourse.value == undefined
+            this.state.selectedCourse.value == undefined
             ? ""
             : this.state.selectedCourse.value,
       };
@@ -2708,19 +2732,19 @@ export default class ClientRfqList extends React.Component {
       selectedRequester: {},
       locationData: {},
       locationDataTxt: "",
-     
+
       leiData: {},
       targetLangData: [],
       targetLangId: [],
-      selectedServiceType:[],
-      selectedServiceTypeId:[],
-     
-      sourceLangData:[],
-      sourceLangId:[],
+      selectedServiceType: [],
+      selectedServiceTypeId: [],
 
-      selectedFormat:{},
-      selectedTrainingCategory:{},
-      selectedCourse:{},
+      sourceLangData: [],
+      sourceLangId: [],
+
+      selectedFormat: {},
+      selectedTrainingCategory: {},
+      selectedCourse: {},
     });
   };
 
@@ -2892,7 +2916,7 @@ export default class ClientRfqList extends React.Component {
                           optionData={this.state.allClientArr}
                           value={this.state.selectedClient}
                           onSelectChange={(value) => this.clientChange(value)}
-                          // isDisabled = {true}
+                        // isDisabled = {true}
                         ></SelectBox>
                       </div>
                     </div>
@@ -2924,7 +2948,7 @@ export default class ClientRfqList extends React.Component {
                         Filter
                       </a>
                     </div>
-                   
+
                     {this.state.isInterpretation ? (
                       <React.Fragment>
                         <div className="filter-pagination">
@@ -3257,171 +3281,171 @@ export default class ClientRfqList extends React.Component {
                     </tr>
                     {this.state.listData.length > 0 ? <React.Fragment>
                       {this.state.listData.map((item, key) => (
-                      <tr key={key}>
-                        <td colSpan="9">
-                          <div className="tble-row_t">
-                            <table
-                              width="100%"
-                              border="0"
-                              cellPadding="0"
-                              cellSpacing="0"
-                            >
-                              <tr>
-                                <td style={{ width: "9%" }}>
-                                  {item.requestId}
-                                </td>
+                        <tr key={key}>
+                          <td colSpan="9">
+                            <div className="tble-row_t">
+                              <table
+                                width="100%"
+                                border="0"
+                                cellPadding="0"
+                                cellSpacing="0"
+                              >
+                                <tr>
+                                  <td style={{ width: "9%" }}>
+                                    {item.requestId}
+                                  </td>
 
-                                <td style={{ width: "9%" }}>
-                                  {item.clientName}
-                                </td>
-                                {/* {item.email.length > 20 ? ( */}
+                                  <td style={{ width: "9%" }}>
+                                    {item.clientName}
+                                  </td>
+                                  {/* {item.email.length > 20 ? ( */}
 
-                                {/* ) : ( */}
-                                <td style={{ width: "9%" }}>
-                                  {/* {phoneNumberFormat(item.lei, 2)} */}
-                                  {item.leiName}
-                                </td>
-                                {/* )} */}
+                                  {/* ) : ( */}
+                                  <td style={{ width: "9%" }}>
+                                    {/* {phoneNumberFormat(item.lei, 2)} */}
+                                    {item.leiName}
+                                  </td>
+                                  {/* )} */}
 
-                                <td style={{ width: "9%" }}>
-                                  <div className="f2f">
-                                    {item.appointmenttype}
-                                  </div>
-                                </td>
-                                <td style={{ width: "13%" }}>
-                                  {SetDateFormat(item.date)}
-                                  {"|"}
-                                  {item.time}
-                                </td>
-                                <td style={{ width: "14%" }}>
-                                  {item.location === null ||
-                                  item.location === undefined ||
-                                  item.location === ""
-                                    ? "N/A"
-                                    : item.location}
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {" "}
-                                  {item.sourceLanguage} {">"}
-                                  {<br />} {item.targetLanguage}
-                                </td>
-                                {/* <td style={{ width: "6%" }}> </td> */}
+                                  <td style={{ width: "9%" }}>
+                                    <div className="f2f">
+                                      {item.appointmenttype}
+                                    </div>
+                                  </td>
+                                  <td style={{ width: "13%" }}>
+                                    {SetDateFormat(item.date)}
+                                    {"|"}
+                                    {item.time}
+                                  </td>
+                                  <td style={{ width: "14%" }}>
+                                    {item.location === null ||
+                                      item.location === undefined ||
+                                      item.location === ""
+                                      ? "N/A"
+                                      : item.location}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {" "}
+                                    {item.sourceLanguage} {">"}
+                                    {<br />} {item.targetLanguage}
+                                  </td>
+                                  {/* <td style={{ width: "6%" }}> </td> */}
 
-                                <td style={{ width: "11%" }}>
-                                  {item.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Pending
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
+                                  <td style={{ width: "11%" }}>
+                                    {item.status === 0 ? (
+                                      <React.Fragment>
+                                        <span className="progress-btn yellow">
+                                          Pending
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 1 ? (
+                                      <React.Fragment>
+                                        <span
+                                          href="#"
+                                          className="progress-btn sky"
+                                        >
+                                          Approved
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 2 ? (
+                                      <React.Fragment>
+                                        <span
+                                          href="#"
+                                          className="progress-btn red"
+                                        >
+                                          Cancelled
+                                        </span>
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment></React.Fragment>
+                                    )}
+                                  </td>
+
+                                  <td style={{ width: "5%" }}>
+                                    {item.status === 2 ? <React.Fragment>
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open_cancel ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick_cancel(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl_cancel}
+                                        open={open_cancel}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
                                       >
-                                        Approved
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 2 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn red"
+                                        <MenuItem onClick={() => this.goEdit()}>
+                                          View Details
+                                        </MenuItem>
+
+
+                                      </StyledMenu>
+                                    </React.Fragment> : <React.Fragment>
+
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl}
+                                        open={open}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
                                       >
-                                        Cancelled
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment></React.Fragment>
-                                  )}
-                                </td>
+                                        <MenuItem onClick={() => this.goEdit()}>
+                                          View Details
+                                        </MenuItem>
 
-                                <td style={{ width: "5%" }}>
-                                  {item.status === 2 ? <React.Fragment>
-                                    <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open_cancel ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick_cancel(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl_cancel}
-                                    open={open_cancel}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem onClick={() => this.goEdit()}>
-                                      View Details
-                                    </MenuItem>
-
-      
-                                  </StyledMenu>
-                                  </React.Fragment>:<React.Fragment>
-                                    
-                                  <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl}
-                                    open={open}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem onClick={() => this.goEdit()}>
-                                      View Details
-                                    </MenuItem>
-
-                                    {/* <MenuItem onClick={this.onSendQuote}>
+                                        {/* <MenuItem onClick={this.onSendQuote}>
                                       Send Quote
                                     </MenuItem> */}
-                                   
-                                      <MenuItem
-                                        onClick={this.declineModal}
-              
-                                      >
-                                        Cancel
-                                      </MenuItem>
-                                    
-                                  </StyledMenu>
+
+                                        <MenuItem
+                                          onClick={this.declineModal}
+
+                                        >
+                                          Cancel
+                                        </MenuItem>
+
+                                      </StyledMenu>
                                     </React.Fragment>}
-                                 
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                    </React.Fragment>:<React.Fragment>
-                    <tr style={{ textAlign: "center" }}>
+
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </React.Fragment> : <React.Fragment>
+                      <tr style={{ textAlign: "center" }}>
                         <td colSpan="9">
                           <center style={{ fontSize: "20px" }}>
                             No data found !!!
                           </center>
                         </td>
                       </tr>
-                      </React.Fragment>} 
-                    
+                    </React.Fragment>}
+
                   </table>
                 </div>
               </div>
@@ -3496,155 +3520,155 @@ export default class ClientRfqList extends React.Component {
                     </tr>
                     {this.state.translationData.length > 0 ? <React.Fragment>
                       {this.state.translationData.map((item, key) => (
-                      <tr key={key}>
-                        <td colSpan="8">
-                          <div className="tble-row_t">
-                            <table
-                              width="100%"
-                              border="0"
-                              cellPadding="0"
-                              cellSpacing="0"
-                            >
-                              <tr>
-                                <td style={{ width: "10%" }}>
-                                  {item.requestId}
-                                </td>
+                        <tr key={key}>
+                          <td colSpan="8">
+                            <div className="tble-row_t">
+                              <table
+                                width="100%"
+                                border="0"
+                                cellPadding="0"
+                                cellSpacing="0"
+                              >
+                                <tr>
+                                  <td style={{ width: "10%" }}>
+                                    {item.requestId}
+                                  </td>
 
-                                <td style={{ width: "10%" }}>
-                                  {item.clientName}
-                                </td>
+                                  <td style={{ width: "10%" }}>
+                                    {item.clientName}
+                                  </td>
 
-                                <td style={{ width: "10%" }}>
-                                  {SetDateFormat(item.expectedDeadline)}
-                                </td>
-                                <td style={{ width: "15%" }}>
-                                  {" "}
-                                  {item.sourceLanguage === null ||
-                                  item.sourceLanguage === undefined ||
-                                  item.sourceLanguage === ""
-                                    ? "N/A"
-                                    : item.sourceLanguage}
-                                  {"  "} {">"}
-                                  {<br />}{" "}
-                                  {item.targetLanguage === null ||
-                                  item.targetLanguage === undefined ||
-                                  item.targetLanguage === ""
-                                    ? "N/A"
-                                    : item.targetLanguage}
-                                </td>
-                                {/* <td style={{ width: "6%" }}> </td> */}
+                                  <td style={{ width: "10%" }}>
+                                    {SetDateFormat(item.expectedDeadline)}
+                                  </td>
+                                  <td style={{ width: "15%" }}>
+                                    {" "}
+                                    {item.sourceLanguage === null ||
+                                      item.sourceLanguage === undefined ||
+                                      item.sourceLanguage === ""
+                                      ? "N/A"
+                                      : item.sourceLanguage}
+                                    {"  "} {">"}
+                                    {<br />}{" "}
+                                    {item.targetLanguage === null ||
+                                      item.targetLanguage === undefined ||
+                                      item.targetLanguage === ""
+                                      ? "N/A"
+                                      : item.targetLanguage}
+                                  </td>
+                                  {/* <td style={{ width: "6%" }}> </td> */}
 
-                                <td style={{ width: "5%" }}>
-                                  {item.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Pending
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
+                                  <td style={{ width: "5%" }}>
+                                    {item.status === 0 ? (
+                                      <React.Fragment>
+                                        <span className="progress-btn yellow">
+                                          Pending
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 1 ? (
+                                      <React.Fragment>
+                                        <span
+                                          href="#"
+                                          className="progress-btn sky"
+                                        >
+                                          Approved
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 2 ? (
+                                      <React.Fragment>
+                                        <span
+                                          href="#"
+                                          className="progress-btn red"
+                                        >
+                                          Cancelled
+                                        </span>
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment></React.Fragment>
+                                    )}
+                                  </td>
+
+                                  <td style={{ width: "5%" }}>
+                                    {item.status === 2 ? <React.Fragment>
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open1_cancel ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick_b_cancel(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl1_cancel}
+                                        open={open1_cancel}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
                                       >
-                                        Approved
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 2 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn red"
-                                      >
-                                        Cancelled
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment></React.Fragment>
-                                  )}
-                                </td>
-
-                                <td style={{ width: "5%" }}>
-                                  {item.status === 2 ? <React.Fragment>
-                                    <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open1_cancel ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick_b_cancel(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl1_cancel}
-                                    open={open1_cancel}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem
-                                      onClick={() => this.goTranslationEdit()}
-                                    >
-                                      View Details
-                                    </MenuItem>
+                                        <MenuItem
+                                          onClick={() => this.goTranslationEdit()}
+                                        >
+                                          View Details
+                                        </MenuItem>
 
                                       </StyledMenu>
 
-                                  </React.Fragment>:<React.Fragment>
-                                  <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open1 ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick_b(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl1}
-                                    open={open1}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem
-                                      onClick={() => this.goTranslationEdit()}
-                                    >
-                                      View Details
-                                    </MenuItem>
-                                      <MenuItem
-                                        onClick={this.declineModal}  
+                                    </React.Fragment> : <React.Fragment>
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open1 ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick_b(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl1}
+                                        open={open1}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
                                       >
-                                        Cancel
-                                      </MenuItem>
-                                  </StyledMenu>
+                                        <MenuItem
+                                          onClick={() => this.goTranslationEdit()}
+                                        >
+                                          View Details
+                                        </MenuItem>
+                                        <MenuItem
+                                          onClick={this.declineModal}
+                                        >
+                                          Cancel
+                                        </MenuItem>
+                                      </StyledMenu>
                                     </React.Fragment>}
-                                  
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </React.Fragment> : <React.Fragment>
-                    <tr style={{ textAlign: "center" }}>
+                      <tr style={{ textAlign: "center" }}>
                         <td colSpan="6">
                           <center style={{ fontSize: "20px" }}>
                             No data found !!!
                           </center>
                         </td>
                       </tr>
-                      </React.Fragment>}
-                    
+                    </React.Fragment>}
+
                   </table>
                 </div>
               </div>
@@ -3740,158 +3764,158 @@ export default class ClientRfqList extends React.Component {
                     </tr>
                     {this.state.trainingData.length > 0 ? <React.Fragment>
                       {this.state.trainingData.map((item, key) => (
-                      <tr key={key}>
-                        <td colSpan="10">
-                          <div className="tble-row_t">
-                            <table
-                              width="100%"
-                              border="0"
-                              cellPadding="0"
-                              cellSpacing="0"
-                            >
-                              <tr>
-                                <td style={{ width: "10%" }}>
-                                  {item.requestId}
-                                </td>
+                        <tr key={key}>
+                          <td colSpan="10">
+                            <div className="tble-row_t">
+                              <table
+                                width="100%"
+                                border="0"
+                                cellPadding="0"
+                                cellSpacing="0"
+                              >
+                                <tr>
+                                  <td style={{ width: "10%" }}>
+                                    {item.requestId}
+                                  </td>
 
-                                <td style={{ width: "10%" }}>
-                                  {item.clientName}
-                                </td>
-                                {/* {item.email.length > 20 ? ( */}
+                                  <td style={{ width: "10%" }}>
+                                    {item.clientName}
+                                  </td>
+                                  {/* {item.email.length > 20 ? ( */}
 
-                                {/* ) : ( */}
-                                <td style={{ width: "10%" }}>
-                                  {item.requirement}
-                                </td>
-                                {/* )} */}
+                                  {/* ) : ( */}
+                                  <td style={{ width: "10%" }}>
+                                    {item.requirement}
+                                  </td>
+                                  {/* )} */}
 
-                                <td style={{ width: "10%" }}>
-                                  {item.category}
-                                </td>
-                                <td style={{ width: "10%" }}>{item.format}</td>
-                                <td style={{ width: "10%" }}>
-                                  {SetDateFormat(item.scheduleDate)}
-                                </td>
-                                <td style={{ width: "10%" }}>
-                                  {item.duration}
-                                </td>
-                                {/* <td style={{ width: "10%" }}>
+                                  <td style={{ width: "10%" }}>
+                                    {item.category}
+                                  </td>
+                                  <td style={{ width: "10%" }}>{item.format}</td>
+                                  <td style={{ width: "10%" }}>
+                                    {SetDateFormat(item.scheduleDate)}
+                                  </td>
+                                  <td style={{ width: "10%" }}>
+                                    {item.duration}
+                                  </td>
+                                  {/* <td style={{ width: "10%" }}>
                                   {item.requestedOn}
                                 </td> */}
-                                {/* <td style={{ width: "6%" }}> </td> */}
+                                  {/* <td style={{ width: "6%" }}> </td> */}
 
-                                <td style={{ width: "11%" }}>
-                                  {item.status === 0 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn yellow">
-                                        Pending
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 1 ? (
-                                    <React.Fragment>
-                                      <span
-                                        href="#"
-                                        className="progress-btn sky"
-                                      >
-                                        Approved
-                                      </span>
-                                    </React.Fragment>
-                                  ) : item.status === 2 ? (
-                                    <React.Fragment>
-                                      <span className="progress-btn red">
-                                        Cancelled
-                                      </span>
-                                    </React.Fragment>
-                                  ) : (
-                                    <React.Fragment></React.Fragment>
-                                  )}
-                                </td>
+                                  <td style={{ width: "11%" }}>
+                                    {item.status === 0 ? (
+                                      <React.Fragment>
+                                        <span className="progress-btn yellow">
+                                          Pending
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 1 ? (
+                                      <React.Fragment>
+                                        <span
+                                          href="#"
+                                          className="progress-btn sky"
+                                        >
+                                          Approved
+                                        </span>
+                                      </React.Fragment>
+                                    ) : item.status === 2 ? (
+                                      <React.Fragment>
+                                        <span className="progress-btn red">
+                                          Cancelled
+                                        </span>
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment></React.Fragment>
+                                    )}
+                                  </td>
 
-                                <td style={{ width: "5%" }}>
-                                  {item.status === 2 ? <React.Fragment>
-                                    <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open2_cancel ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick_c_cancel(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl2_cancel}
-                                    open={open2_cancel}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem
-                                      onClick={() => this.goTrainingEdit()}
-                                    >
-                                      View Details
-                                    </MenuItem>
-                                  
-                                     
-                                   
-                                  </StyledMenu>
-                                  </React.Fragment>:<React.Fragment>
-                                  <img
-                                    src={ImageName.IMAGE_NAME.MENU_VERTICAL}
-                                    style={{ cursor: "pointer" }}
-                                    id={"basic-button" + key}
-                                    aria-controls={"basic-menu" + key}
-                                    aria-haspopup="true"
-                                    aria-expanded={open2 ? "true" : undefined}
-                                    onClick={(e) =>
-                                      this.menuBtnhandleClick_c(key, e)
-                                    }
-                                  />
-                                  <StyledMenu
-                                    id={"basic-menu" + key}
-                                    anchorEl={this.state.anchorEl2}
-                                    open={open2}
-                                    onClose={this.handleMenuClose}
-                                    MenuListProps={{
-                                      "aria-labelledby": "basic-button" + key,
-                                    }}
-                                  >
-                                    <MenuItem
-                                      onClick={() => this.goTrainingEdit()}
-                                    >
-                                      View Details
-                                    </MenuItem>
-                                  
-                                      <MenuItem
-                                        onClick={this.declineModal}
-                                    
+                                  <td style={{ width: "5%" }}>
+                                    {item.status === 2 ? <React.Fragment>
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open2_cancel ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick_c_cancel(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl2_cancel}
+                                        open={open2_cancel}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
                                       >
-                                        Cancel
-                                      </MenuItem>
-                                   
-                                  </StyledMenu>
+                                        <MenuItem
+                                          onClick={() => this.goTrainingEdit()}
+                                        >
+                                          View Details
+                                        </MenuItem>
+
+
+
+                                      </StyledMenu>
+                                    </React.Fragment> : <React.Fragment>
+                                      <img
+                                        src={ImageName.IMAGE_NAME.MENU_VERTICAL}
+                                        style={{ cursor: "pointer" }}
+                                        id={"basic-button" + key}
+                                        aria-controls={"basic-menu" + key}
+                                        aria-haspopup="true"
+                                        aria-expanded={open2 ? "true" : undefined}
+                                        onClick={(e) =>
+                                          this.menuBtnhandleClick_c(key, e)
+                                        }
+                                      />
+                                      <StyledMenu
+                                        id={"basic-menu" + key}
+                                        anchorEl={this.state.anchorEl2}
+                                        open={open2}
+                                        onClose={this.handleMenuClose}
+                                        MenuListProps={{
+                                          "aria-labelledby": "basic-button" + key,
+                                        }}
+                                      >
+                                        <MenuItem
+                                          onClick={() => this.goTrainingEdit()}
+                                        >
+                                          View Details
+                                        </MenuItem>
+
+                                        <MenuItem
+                                          onClick={this.declineModal}
+
+                                        >
+                                          Cancel
+                                        </MenuItem>
+
+                                      </StyledMenu>
                                     </React.Fragment>}
-                                 
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </React.Fragment> : <React.Fragment>
-                    <tr style={{ textAlign: "center" }}>
+                      <tr style={{ textAlign: "center" }}>
                         <td colSpan="9">
                           <center style={{ fontSize: "20px" }}>
                             No data found !!!
                           </center>
                         </td>
                       </tr>
-                      </React.Fragment>}
-                    
+                    </React.Fragment>}
+
                   </table>
                 </div>
               </div>
@@ -3920,7 +3944,7 @@ export default class ClientRfqList extends React.Component {
                         Filter
                       </a>
                     </div>
-                   
+
                     {this.state.isInterpretation ? (
                       <React.Fragment>
                         <div className="filter-pagination">
@@ -4014,7 +4038,7 @@ export default class ClientRfqList extends React.Component {
                     ) : (
                       <React.Fragment></React.Fragment>
                     )}
-                  
+
                   </div>
                 </div>
                 <div className="col-md-6">
@@ -4106,7 +4130,7 @@ export default class ClientRfqList extends React.Component {
                       ) : (
                         <React.Fragment></React.Fragment>
                       )}
-                     
+
                     </div>
                   </div>
                 </div>
@@ -4116,7 +4140,7 @@ export default class ClientRfqList extends React.Component {
         </div>
 
         {/* ..................modal................................. */}
-        <div
+        {/* <div
           id="filter-model"
           className="modal fade modelwindow filter-pop"
           role="dialog"
@@ -4142,17 +4166,7 @@ export default class ClientRfqList extends React.Component {
                   </button>
                 </div>
               </div>
-              {/* <div className="filter-head _fl">
-                <h3>Filter by</h3>
-                <div className="reset-btn">
-                  <button className="reset">Reset</button>
-                  <button className="apply">Apply</button>
-                  <button className="close-page">
-                    <img src={ImageName.IMAGE_NAME.CLOSE_BTN_2} />
-                    &nbsp;
-                  </button>
-                </div>
-              </div> */}
+
               <div className="modal-body">
                 <div className="job_filt_lfe">
                   <div class="_fl filterTab">
@@ -4204,11 +4218,7 @@ export default class ClientRfqList extends React.Component {
                       >
                         Limited English Individual [LEI]
                       </li>
-                      {/* {this.state.isReceivable ? (
-                        <li data-related="tble-data-k">Contract Type</li>
-                      ) : (
-                        <React.Fragment />
-                      )} */}
+     
                     </ul>
                   </div>
                 </div>
@@ -4236,12 +4246,7 @@ export default class ClientRfqList extends React.Component {
                                   style={{ cursor: "pointer" }}
                                 >
                                   <SelectBox
-                                    // styles={customStyles}
                                     optionData={this.state.appointmentTypeArr}
-                                    // components={{
-                                    //   DropdownIndicator,
-                                    //   IndicatorSeparator: () => null,
-                                    // }}
                                     value={this.state.appointmentTypeData}
                                     placeholder="Select"
                                     onSelectChange={(value) => {
@@ -4265,20 +4270,6 @@ export default class ClientRfqList extends React.Component {
                           <div className="row" style={{ padding: "30px" }}>
                             <div className="col-md-12">
                               <div className="row">
-                                {/* 
-                                <div className="web-form-bx">
-                                  <div className="frm-label">SOURCE LANGUAGE</div>
-                                  <div className="bts-drop">
-                                    <MultiSelectBox
-                                      optionData={this.state.languageArr}
-                                      value={this.state.sourceLangData}
-                                      onSelectChange={(value) =>
-                                        this.onSourceLangChange(value)
-                                      }
-                                    ></MultiSelectBox>
-                                  </div>
-                                </div> */}
-
                                 <div className="web-form-bx">
                                   <div
                                     class="lable-text"
@@ -4352,7 +4343,6 @@ export default class ClientRfqList extends React.Component {
                                   <div
                                     class="lable-text"
                                     style={{
-                                      // paddingLeft: "10px",
                                       fontSize: "14px",
                                     }}
                                   >
@@ -4360,7 +4350,6 @@ export default class ClientRfqList extends React.Component {
                                   </div>
                                   <div
                                     class="dropdwn"
-                                    // style={{ marginLeft: "25%" }}
                                   >
                                     <div className="tr-3">
                                       <Select
@@ -4403,22 +4392,6 @@ export default class ClientRfqList extends React.Component {
                               Date
                             </div>
                             <div className="row">
-                              {/* <div className="col-md-10">
-                                <div className="form-field-app date-input">
-                                  <span style={{ marginTop: "8px" }}>from</span>
-                                  <input
-                                    type="date"
-                                    className="datefield bd"
-                                    placeholder="10/25/2021"
-                                    value={this.state.formDate}
-                                    onChange={this.formDateChange}
-                                    style={{
-                                      textAlign: "center",
-                                      height: "50px",
-                                    }}
-                                  />
-                                </div>
-                              </div> */}
                               <div
                                 className="input-group"
                                 style={{
@@ -4439,7 +4412,6 @@ export default class ClientRfqList extends React.Component {
                                       showMonthDropdown
                                       showYearDropdown
                                       adjustDateOnChange
-                                      // minDate={new Date()}
                                       onChange={(date) =>
                                         this.formDateChange(date)
                                       }
@@ -4448,86 +4420,6 @@ export default class ClientRfqList extends React.Component {
                                   </a>
                                 </div>
                               </div>
-                              {/* <div className="t-time">
-                                <span className="t1">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.hour_fiter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span className="t2">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.min_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span
-                                  className="t3"
-                                  style={{ marginLeft: "2%" }}
-                                >
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.ampm_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                              </div> */}
                             </div>
                           </div>
                         </div>
@@ -4557,12 +4449,7 @@ export default class ClientRfqList extends React.Component {
                                 style={{ cursor: "pointer" }}
                               >
                                 <SelectBox
-                                  // styles={customStyles}
                                   optionData={this.state.statusArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
                                   value={this.state.statusData}
                                   placeholder="Select"
                                   onSelectChange={(value) => {
@@ -4599,12 +4486,7 @@ export default class ClientRfqList extends React.Component {
                                 style={{ cursor: "pointer" }}
                               >
                                 <SelectBox
-                                  // styles={customStyles}
                                   optionData={this.state.leiArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
                                   value={this.state.leiData}
                                   placeholder="Select"
                                   onSelectChange={(value) => {
@@ -4642,12 +4524,7 @@ export default class ClientRfqList extends React.Component {
                                 style={{ cursor: "pointer" }}
                               >
                                 <SelectBox
-                                  // styles={customStyles}
                                   optionData={contractTypeArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
                                   value={this.state.selectedContract}
                                   placeholder="Select"
                                   onSelectChange={(value) => {
@@ -4665,9 +4542,178 @@ export default class ClientRfqList extends React.Component {
               </div>
             </div>
           </div>
+        </div> */}
+        <div id="filter-model" className="modal fade modelwindow" role="dialog">
+          <div className="modal-dialog modal-lg">
+            {/* <!-- Modal content--> */}
+            <div className="modal-content">
+              <div className="filter-head _fl mdf">
+                <h3>Filter by</h3>
+                <div class="reset-btn-dp">
+                  <button class="reset">
+                    <img
+                      src={ImageName.IMAGE_NAME.RESET_BTN}
+                      onClick={this.onResetFilter}
+                    />
+                    Reset
+                  </button>
+                  <button class="apply" data-dismiss="modal">
+                    <img
+                      src={ImageName.IMAGE_NAME.BLUE_TICK}
+                      onClick={this.onFilterApply}
+                    />
+                    Apply
+                  </button>
+                </div>
+              </div>
+
+              <div className="modal-body">
+                <div className="model-info f-model">
+                  <div className="">
+                    <div className="row">
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">APPOINTMENT TYPE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.appointmentTypeArr}
+                              value={this.state.appointmentTypeData}
+                              placeholder="Select"
+                              onSelectChange={(value) => {
+                                this.onAppointmentTypeChange(value);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-1"></div>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">LANGUAGE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <MultiSelectBox
+                              optionData={this.state.languageArr}
+                              value={this.state.targetLangData}
+                              onSelectChange={(value) =>
+                                this.onTargetLangChange(value)
+                              }
+                            ></MultiSelectBox>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">SCHEDULE DATE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+
+                            <div className="input-group jobDatepickerV2">
+                              <div className="jobDatepickerInputTxtV2">
+                                <span className="jobDatepickerInputTxt_span">
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    Date
+                                  </p>{" "}
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    {this.state.formDate}
+                                  </p>
+                                </span>
+                              </div>
+                              <div style={{ width: "20%" }}>
+                                <a style={{ float: "right" }}>
+                                  <DatePicker
+                                    dropdownMode="select"
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    adjustDateOnChange
+                                    onChange={(date) =>
+                                      this.formDateChange(date)
+                                    }
+                                    customInput={<Schedule />}
+                                  />
+                                </a>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-1" />
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">REQUESTER</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.requesterArr}
+                              value={this.state.selectedRequester}
+                              onSelectChange={(value) =>
+                                this.requesterChange(value)
+                              }
+                            ></SelectBox>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">Limited English Individual [LEI]</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.leiArr}
+                              value={this.state.leiData}
+                              placeholder="Select"
+                              onSelectChange={(value) => {
+                                this.onLeiChange(value);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="col-md-1" />
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">LOCATION</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <div className="tr-3">
+                              <Select
+                                options={this.state.locationArr}
+                                components={{
+                                  DropdownIndicator,
+                                  IndicatorSeparator: () => null,
+                                }}
+                                value={this.state.locationData}
+                                placeholder="Select"
+                                onChange={(value) =>
+                                  this.onLocationChange(value)
+                                }
+                                onInputChange={(value) => {
+                                  this.onLocationInputChange(value);
+                                }}
+                                styles={customStylesDropdown}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         {/* ...............translation modal,,,,,,,,,,,,,, */}
-        <div
+        {/* <div
           id="translation-model"
           className="modal fade modelwindow filter-pop"
           role="dialog"
@@ -4693,17 +4739,6 @@ export default class ClientRfqList extends React.Component {
                   </button>
                 </div>
               </div>
-              {/* <div className="filter-head _fl">
-                <h3>Filter by</h3>
-                <div className="reset-btn">
-                  <button className="reset">Reset</button>
-                  <button className="apply">Apply</button>
-                  <button className="close-page">
-                    <img src={ImageName.IMAGE_NAME.CLOSE_BTN_2} />
-                    &nbsp;
-                  </button>
-                </div>
-              </div> */}
               <div className="modal-body">
                 <div className="job_filt_lfe">
                   <div class="_fl filterTab_translation">
@@ -4721,43 +4756,18 @@ export default class ClientRfqList extends React.Component {
                       >
                         Language
                       </li>
-                      {/* <li
-                        data-related="tble-data-f"
-                        style={{ padding: "20px 20px" }}
-                      >
-                        Requester
-                      </li> */}
-                      {/* <li
-                        data-related="tble-data-g"
-                        style={{ padding: "20px 20px" }}
-                      >
-                        Location
-                      </li> */}
                       <li
                         data-related="tble-data-h_translation"
                         style={{ padding: "20px 20px" }}
                       >
                         Deadline
                       </li>
-                      {/*                     
-                        <li
-                          data-related="tble-data-i"
-                          style={{ padding: "20px 20px" }}
-                        >
-                          Contract Type
-                        </li> */}
-
                       <li
                         data-related="tble-data-j_translation"
                         style={{ padding: "20px 20px" }}
                       >
                         Status
                       </li>
-                      {/* {this.state.isReceivable ? (
-                        <li data-related="tble-data-k">Contract Type</li>
-                      ) : (
-                        <React.Fragment />
-                      )} */}
                     </ul>
                   </div>
                 </div>
@@ -4848,41 +4858,7 @@ export default class ClientRfqList extends React.Component {
                     </div>
                   </div>
                 </div>
-                {/* <div className="tab-app-information" id="tble-data-f">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div className="row">
-                                <div className="web-form-bx">
-                                  <div
-                                    c
-                                    className="lable-text"
-                                    style={{ fontSize: "20px" }}
-                                  >
-                                    {" "}
-                                    REQUESTER
-                                  </div>
-                                  <div className="bts-drop">
-                                    <SelectBox
-                                      optionData={this.state.requesterArr}
-                                      value={this.state.selectedRequester}
-                                      onSelectChange={(value) =>
-                                        this.requesterChange(value)
-                                      }
-                                    ></SelectBox>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
+               
                 <div
                   className="tab-app-information"
                   id="tble-data-g_translation"
@@ -4905,8 +4881,7 @@ export default class ClientRfqList extends React.Component {
                                     LOCATION
                                   </div>
                                   <div
-                                    class="dropdwn"
-                                    // style={{ marginLeft: "25%" }}
+                                    className="dropdwn"
                                   >
                                     <div className="tr-3">
                                       <Select
@@ -4986,86 +4961,7 @@ export default class ClientRfqList extends React.Component {
                                     </a>
                                   </div>
                                 </div>
-                                {/* <div className="t-time">
-                                <span className="t1">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.hour_fiter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span className="t2">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.min_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span
-                                  className="t3"
-                                  style={{ marginLeft: "2%" }}
-                                >
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.ampm_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                              </div> */}
+                              
                               </div>
                               <div className="col-md-6">
                                 <div
@@ -5101,86 +4997,7 @@ export default class ClientRfqList extends React.Component {
                                     </a>
                                   </div>
                                 </div>
-                                {/* <div className="t-time">
-                                <span className="t1">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.hour_fiter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span className="t2">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.min_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span
-                                  className="t3"
-                                  style={{ marginLeft: "2%" }}
-                                >
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.ampm_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                              </div> */}
+                               
                               </div>
                             </div>
                           </div>
@@ -5230,56 +5047,188 @@ export default class ClientRfqList extends React.Component {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
+        <div id="translation-model" className="modal fade modelwindow" role="dialog">
+          <div className="modal-dialog modal-lg">
 
-                {/* <div className="tab-app-information" id="tble-data-i">
-                      <div className="jobfilterpop table-listing-app">
-                        <div className="table-responsive_cus table-style-a">
-                          <div className="filter-jeneral-wrap">
-                            <div className="create-row-app">
-                              <div className="row">
-                                <div className="col-md-12">
-                                  <div
-                                    class="lable-text"
-                                    style={{ fontSize: "20px" }}
-                                  >
-                                    CONTRACT TYPE{" "}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="row">
-                                <div className="col-md-8">
-                                  <div
-                                    class="dropdwn"
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    <SelectBox
-                                      // styles={customStyles}
-                                      optionData={contractTypeArr}
-                                      // components={{
-                                      //   DropdownIndicator,
-                                      //   IndicatorSeparator: () => null,
-                                      // }}
-                                      value={this.state.selectedContract}
-                                      placeholder="Select"
-                                      onSelectChange={(value) => {
-                                        this.onContractChange(value);
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+            <div className="modal-content">
+              <div className="filter-head _fl mdf">
+                <h3>Filter by</h3>
+                <div class="reset-btn-dp">
+                  <button class="reset">
+                    <img
+                      src={ImageName.IMAGE_NAME.RESET_BTN}
+                      onClick={this.onResetFilter}
+                    />
+                    Reset
+                  </button>
+                  <button class="apply" data-dismiss="modal">
+                    <img
+                      src={ImageName.IMAGE_NAME.BLUE_TICK}
+                      onClick={this.onFilterApply}
+                    />
+                    Apply
+                  </button>
+                </div>
+              </div>
+
+              <div className="modal-body">
+                <div className="model-info f-model">
+                  <div className="">
+                    <div className="row">
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">SERVICE TYPE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <MultiSelectBox
+                              optionData={this.state.allServiceTypeArr}
+                              value={this.state.selectedServiceType}
+                              onSelectChange={(value) =>
+                                this.serviceChange(value)
+                              }
+                            ></MultiSelectBox>
                           </div>
                         </div>
                       </div>
-                    </div> */}
+                      <div className="col-md-1"></div>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">STATUS</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={statusArr}
+                              value={this.state.statusData}
+                              placeholder="Select"
+                              onSelectChange={(value) => {
+                                this.onStatusChange(value);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">EXPECTED DEADLINE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+
+                            <div className="input-group jobDatepickerV2">
+                              <div className="jobDatepickerInputTxtV2">
+                                <span className="jobDatepickerInputTxt_span">
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    FROM
+                                  </p>{" "}
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    {this.state.formDate}
+                                  </p>
+                                </span>
+                              </div>
+                              <div style={{ width: "20%" }}>
+                                <a style={{ float: "right" }}>
+                                  <DatePicker
+                                    dropdownMode="select"
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    adjustDateOnChange
+                                    // minDate={new Date()}
+                                    onChange={(date) =>
+                                      this.formDateChange(date)
+                                    }
+                                    customInput={<Schedule />}
+                                  />
+                                </a>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-1" />
+                      <div className="col-md-5">
+                        <div className="">
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "33px" }}>
+                            <div className="input-group jobDatepickerV2">
+                              <div className="jobDatepickerInputTxtV2">
+                                <span className="jobDatepickerInputTxt_span">
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    TO
+                                  </p>{" "}
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    {this.state.toDate}
+                                  </p>
+                                </span>
+                              </div>
+                              <div style={{ width: "20%" }}>
+                                <a style={{ float: "right" }}>
+                                  <DatePicker
+                                    dropdownMode="select"
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    adjustDateOnChange
+                                    onChange={(date) =>
+                                      this.toDateChange(date)
+                                    }
+                                    customInput={<Schedule />}
+                                  />
+                                </a>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">SOURCE LANGUAGE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <MultiSelectBox
+                              optionData={this.state.languageArr}
+                              value={this.state.sourceLangData}
+                              onSelectChange={(value) =>
+                                this.onsourceLangChange(value)
+                              }
+                            ></MultiSelectBox>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-1" />
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">TARGET LANGUAGE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <MultiSelectBox
+                              optionData={this.state.languageArr}
+                              value={this.state.targetLangData}
+                              onSelectChange={(value) =>
+                                this.onTargetLangChange(value)
+                              }
+                            ></MultiSelectBox>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* .................training,,,,,,,,,,,,,,,,,,, */}
-        <div
+        {/* <div
           id="training-model"
           className="modal fade modelwindow filter-pop"
           role="dialog"
@@ -5305,17 +5254,7 @@ export default class ClientRfqList extends React.Component {
                   </button>
                 </div>
               </div>
-              {/* <div className="filter-head _fl">
-                <h3>Filter by</h3>
-                <div className="reset-btn">
-                  <button className="reset">Reset</button>
-                  <button className="apply">Apply</button>
-                  <button className="close-page">
-                    <img src={ImageName.IMAGE_NAME.CLOSE_BTN_2} />
-                    &nbsp;
-                  </button>
-                </div>
-              </div> */}
+             
               <div className="modal-body">
                 <div className="job_filt_lfe">
                   <div class="_fl filterTab_training">
@@ -5511,22 +5450,7 @@ export default class ClientRfqList extends React.Component {
                               Date
                             </div>
                             <div className="row">
-                              {/* <div className="col-md-10">
-                                <div className="form-field-app date-input">
-                                  <span style={{ marginTop: "8px" }}>from</span>
-                                  <input
-                                    type="date"
-                                    className="datefield bd"
-                                    placeholder="10/25/2021"
-                                    value={this.state.formDate}
-                                    onChange={this.formDateChange}
-                                    style={{
-                                      textAlign: "center",
-                                      height: "50px",
-                                    }}
-                                  />
-                                </div>
-                              </div> */}
+                              
                               <div
                                 className="input-group"
                                 style={{
@@ -5547,7 +5471,6 @@ export default class ClientRfqList extends React.Component {
                                       showMonthDropdown
                                       showYearDropdown
                                       adjustDateOnChange
-                                      // minDate={new Date()}
                                       onChange={(date) =>
                                         this.formDateChange(date)
                                       }
@@ -5556,86 +5479,7 @@ export default class ClientRfqList extends React.Component {
                                   </a>
                                 </div>
                               </div>
-                              {/* <div className="t-time">
-                                <span className="t1">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.hour_fiter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.hourChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span className="t2">
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChangeUp_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.min_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.minChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                                <span
-                                  className="t3"
-                                  style={{ marginLeft: "2%" }}
-                                >
-                                  <small>
-                                    <img
-                                      src={ImageName.IMAGE_NAME.U_IMG}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                    <br />
-                                    <input
-                                      type="text"
-                                      placeholder=""
-                                      value={this.state.ampm_filter}
-                                      className="tsd2"
-                                      readonly
-                                    />
-                                    <br />
-                                    <img
-                                      src={ImageName.IMAGE_NAME.B_ARROW}
-                                      alt=""
-                                      style={{ cursor: "pointer" }}
-                                      onClick={this.ampmChange_filter}
-                                    />
-                                  </small>
-                                </span>
-                              </div> */}
+                              
                             </div>
                           </div>
                         </div>
@@ -5665,12 +5509,7 @@ export default class ClientRfqList extends React.Component {
                                 style={{ cursor: "pointer" }}
                               >
                                 <SelectBox
-                                  // styles={customStyles}
                                   optionData={this.state.statusArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
                                   value={this.state.statusData}
                                   placeholder="Select"
                                   onSelectChange={(value) => {
@@ -5707,12 +5546,7 @@ export default class ClientRfqList extends React.Component {
                                 style={{ cursor: "pointer" }}
                               >
                                 <SelectBox
-                                  // styles={customStyles}
                                   optionData={this.state.leiArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
                                   value={this.state.leiData}
                                   placeholder="Select"
                                   onSelectChange={(value) => {
@@ -5727,41 +5561,137 @@ export default class ClientRfqList extends React.Component {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
 
-                <div className="tab-app-information" id="tble-data-i_training">
-                  <div className="jobfilterpop table-listing-app">
-                    <div className="table-responsive_cus table-style-a">
-                      <div className="filter-jeneral-wrap">
-                        <div className="create-row-app">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div
-                                class="lable-text"
-                                style={{ fontSize: "20px" }}
-                              >
-                                CONTRACT TYPE{" "}
-                              </div>
-                            </div>
+        <div id="training-model" className="modal fade modelwindow" role="dialog">
+          <div className="modal-dialog modal-lg">
+
+            <div className="modal-content">
+              <div className="filter-head _fl mdf">
+                <h3>Filter by</h3>
+                <div class="reset-btn-dp">
+                  <button class="reset">
+                    <img
+                      src={ImageName.IMAGE_NAME.RESET_BTN}
+                      onClick={this.onResetFilter}
+                    />
+                    Reset
+                  </button>
+                  <button class="apply" data-dismiss="modal">
+                    <img
+                      src={ImageName.IMAGE_NAME.BLUE_TICK}
+                      onClick={this.onFilterApply}
+                    />
+                    Apply
+                  </button>
+                </div>
+              </div>
+
+              <div className="modal-body">
+                <div className="model-info f-model">
+                  <div className="">
+                    <div className="row">
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">TRAINING CATEGORY</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.trainingCategoryArr}
+                              value={this.state.selectedTrainingCategory}
+                              placeholder="Select"
+                              onSelectChange={(value) => {
+                                this.onCategoryChange(value);
+                              }}
+                            />
                           </div>
-                          <div className="row">
-                            <div className="col-md-8">
-                              <div
-                                class="dropdwn"
-                                style={{ cursor: "pointer" }}
-                              >
-                                <SelectBox
-                                  // styles={customStyles}
-                                  optionData={contractTypeArr}
-                                  // components={{
-                                  //   DropdownIndicator,
-                                  //   IndicatorSeparator: () => null,
-                                  // }}
-                                  value={this.state.selectedContract}
-                                  placeholder="Select"
-                                  onSelectChange={(value) => {
-                                    this.onContractChange(value);
-                                  }}
-                                />
+                        </div>
+                      </div>
+                      <div className="col-md-1"></div>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">TRAINING COURSE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.courseArr}
+                              value={this.state.selectedCourse}
+                              onSelectChange={(value) =>
+                                this.onCourseChange(value)
+                              }
+                            ></SelectBox>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">REQUESTER</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.requesterArr}
+                              value={this.state.selectedRequester}
+                              onSelectChange={(value) =>
+                                this.requesterChange(value)
+                              }
+                            ></SelectBox>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-1" />
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">FORMAT</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <SelectBox
+                              optionData={this.state.formatTypeArr}
+                              value={this.state.selectedFormat}
+                              onSelectChange={(value) =>
+                                this.onFormatChange(value)
+                              }
+                            ></SelectBox>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div className="row" style={{ marginTop: "20px" }}>
+                      <div className="col-md-5">
+                        <div className="">
+                          {" "}
+                          <span className="labelTxt">SCHEDULE DATE</span>
+                          <div className="dropdwn" style={{ cursor: "pointer", marginTop: "10px" }}>
+                            <div className="input-group jobDatepickerV2">
+                              <div className="jobDatepickerInputTxtV2">
+                                <span className="jobDatepickerInputTxt_span">
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    DATE
+                                  </p>{" "}
+                                  <p className="jobDatepickerInputTxt_pTag">
+                                    {this.state.formDate}
+                                  </p>
+                                </span>
+                              </div>
+                              <div style={{ width: "20%" }}>
+                                <a style={{ float: "right" }}>
+                                  <DatePicker
+                                    dropdownMode="select"
+                                    showMonthDropdown
+                                    showYearDropdown
+                                    adjustDateOnChange
+                                    onChange={(date) =>
+                                      this.formDateChange(date)
+                                    }
+                                    customInput={<Schedule />}
+                                  />
+                                </a>
                               </div>
                             </div>
                           </div>
@@ -5857,8 +5787,8 @@ export default class ClientRfqList extends React.Component {
           </div>
         </div> */}
 
-       {/* ..................Decline modal................................. */}
-       <div
+        {/* ..................Decline modal................................. */}
+        <div
           id="decline-model"
           className="modal fade modelwindow"
           role="dialog"
@@ -5871,7 +5801,7 @@ export default class ClientRfqList extends React.Component {
                     <h2>
                       Cancel {this.state.isInterpretation ? "Job" : "Project"}
                       <span style={{ fontSize: "17px", marginLeft: "7px" }}>
-                      {this.state.isInterpretation ? "(Interpretation)" : this.state.isTranslation ? "(Translation)" : "(Training)"}  
+                        {this.state.isInterpretation ? "(Interpretation)" : this.state.isTranslation ? "(Translation)" : "(Training)"}
                       </span>
                     </h2>
                     <button className="close-page">
@@ -5896,124 +5826,124 @@ export default class ClientRfqList extends React.Component {
                             <div className="dropdwn selct">
                               {this.state.isInterpretation ? <React.Fragment>
                                 <SelectBox
-                                optionData={cancelationArr}
-                                value={this.state.cancellationData}
-                                onSelectChange={(value) => {
-                                  this.onCancelDataChange(value);
-                                }}
-                              />
-                              </React.Fragment>:<React.Fragment>
-                              <SelectBox
-                                optionData={projectcancelationArr}
-                                value={this.state.cancellationData}
-                                onSelectChange={(value) => {
-                                  this.onCancelProjectDataChange(value);
-                                }}
-                              />
-                                </React.Fragment>}
-                            
+                                  optionData={cancelationArr}
+                                  value={this.state.cancellationData}
+                                  onSelectChange={(value) => {
+                                    this.onCancelDataChange(value);
+                                  }}
+                                />
+                              </React.Fragment> : <React.Fragment>
+                                <SelectBox
+                                  optionData={projectcancelationArr}
+                                  value={this.state.cancellationData}
+                                  onSelectChange={(value) => {
+                                    this.onCancelProjectDataChange(value);
+                                  }}
+                                />
+                              </React.Fragment>}
+
                             </div>
                           </div>
                           {this.state.isInterpretation ? <React.Fragment>
                             {this.state.cancellationData.value == 6 ? <React.Fragment>
                               <div
-                            className="web-form-bx selct"
-                            // hidden={!this.state.isOtherReason}
-                          >
-                            <div className="frm-label lblSize">
-                              Other Reason
-                            </div>
-                            <div
-                              className="form-input-fields"
-                              style={{ marginBottom: "20px" }}
-                            >
-                              <textarea
-                                value={this.state.otherReason}
-                                placeholder=""
-                                className="in-textarea msg min table-style"
-                                onChange={this.onOtherReasonChange}
-                                style={{ resize: "none" }}
-                              ></textarea>
-                            </div>
-                          </div>
-
-                            </React.Fragment>:<React.Fragment/>}
-                         
-                          {this.state.cancellationData.value == 1 ? (
-                            <React.Fragment>
-                              <div className="web-form-bx selct">
+                                className="web-form-bx selct"
+                              // hidden={!this.state.isOtherReason}
+                              >
                                 <div className="frm-label lblSize">
-                                  Is the job rescheduled?
+                                  Other Reason
                                 </div>
-                                <div className="check-field">
-                                  <label className="checkbox_btn">
-                                    <input
-                                      type="radio"
-                                      value="true"
-                                      checked={this.state.isSelected === "true"}
-                                      onChange={this.rescheduledCheck}
-                                    />
-                                    <span className="checkmark3"></span> Yes
-                                  </label>
-                                </div>
-                                <div className="check-field">
-                                  <label className="checkbox_btn">
-                                    <input
-                                      type="radio"
-                                      value="false"
-                                      checked={this.state.isSelected == "false"}
-                                      onChange={this.rescheduledCheck}
-                                    />
-                                    <span className="checkmark3"></span> No
-                                  </label>
+                                <div
+                                  className="form-input-fields"
+                                  style={{ marginBottom: "20px" }}
+                                >
+                                  <textarea
+                                    value={this.state.otherReason}
+                                    placeholder=""
+                                    className="in-textarea msg min table-style"
+                                    onChange={this.onOtherReasonChange}
+                                    style={{ resize: "none" }}
+                                  ></textarea>
                                 </div>
                               </div>
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment />
-                          )}
 
-                          <div
-                            className="web-form-bx"
-                            hidden={
-                              this.state.isSelected == "true" ? false : true
-                            }
-                          >
-                            <div className="frm-label">
-                              Appointment Date & Time
-                            </div>
+                            </React.Fragment> : <React.Fragment />}
+
+                            {this.state.cancellationData.value == 1 ? (
+                              <React.Fragment>
+                                <div className="web-form-bx selct">
+                                  <div className="frm-label lblSize">
+                                    Is the job rescheduled?
+                                  </div>
+                                  <div className="check-field">
+                                    <label className="checkbox_btn">
+                                      <input
+                                        type="radio"
+                                        value="true"
+                                        checked={this.state.isSelected === "true"}
+                                        onChange={this.rescheduledCheck}
+                                      />
+                                      <span className="checkmark3"></span> Yes
+                                    </label>
+                                  </div>
+                                  <div className="check-field">
+                                    <label className="checkbox_btn">
+                                      <input
+                                        type="radio"
+                                        value="false"
+                                        checked={this.state.isSelected == "false"}
+                                        onChange={this.rescheduledCheck}
+                                      />
+                                      <span className="checkmark3"></span> No
+                                    </label>
+                                  </div>
+                                </div>
+                              </React.Fragment>
+                            ) : (
+                              <React.Fragment />
+                            )}
 
                             <div
-                              className="input-group"
-                              style={{
-                                width: "100%",
-                                borderRadius: "9px",
-                                height: "43px",
-                                border: "1px solid #ced4da",
-                                boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
-                              }}
+                              className="web-form-bx"
+                              hidden={
+                                this.state.isSelected == "true" ? false : true
+                              }
                             >
-                              <div style={{ width: "80%", padding: "8px" }}>
-                                <span>{this.state.appointmentDate}</span>
+                              <div className="frm-label">
+                                Appointment Date & Time
                               </div>
-                              <div style={{ width: "20%" }}>
-                                <a style={{ float: "right" }}>
-                                  <DatePicker
-                                    dropdownMode="select"
-                                    showMonthDropdown
-                                    showYearDropdown
-                                    adjustDateOnChange
-                                    minDate={new Date()}
-                                    onChange={(date) =>
-                                      this.appointmentdateChange(date)
-                                    }
-                                    customInput={<Schedule />}
-                                  />
-                                </a>
-                              </div>
-                            </div>
 
-                            {/* <div className="form-input-fields unstyled">
+                              <div
+                                className="input-group"
+                                style={{
+                                  width: "100%",
+                                  borderRadius: "9px",
+                                  height: "43px",
+                                  border: "1px solid #ced4da",
+                                  boxShadow: "0px 0px 4px 0px rgb(0 0 0 / 28%)",
+                                }}
+                              >
+                                <div style={{ width: "80%", padding: "8px" }}>
+                                  <span>{this.state.appointmentDate}</span>
+                                </div>
+                                <div style={{ width: "20%" }}>
+                                  <a style={{ float: "right" }}>
+                                    <DatePicker
+                                      dropdownMode="select"
+                                      showMonthDropdown
+                                      showYearDropdown
+                                      adjustDateOnChange
+                                      minDate={new Date()}
+                                      onChange={(date) =>
+                                        this.appointmentdateChange(date)
+                                      }
+                                      customInput={<Schedule />}
+                                    />
+                                  </a>
+                                </div>
+                              </div>
+
+                              {/* <div className="form-input-fields unstyled">
                               <input
                                 type="date"
                                 id="from_datepicker"
@@ -6027,110 +5957,110 @@ export default class ClientRfqList extends React.Component {
                               />
                             </div> */}
 
-                            <div className="t-time">
-                              <span className="t1">
-                                <small>
-                                  <img
-                                    src={ImageName.IMAGE_NAME.U_IMG}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.hourChange}
-                                  />
-                                  <br />
-                                  <input
-                                    type="text"
-                                    placeholder=""
-                                    value={this.state.hour}
-                                    className="tsd2"
-                                    onChange={this.hourInputChange}
+                              <div className="t-time">
+                                <span className="t1">
+                                  <small>
+                                    <img
+                                      src={ImageName.IMAGE_NAME.U_IMG}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.hourChange}
+                                    />
+                                    <br />
+                                    <input
+                                      type="text"
+                                      placeholder=""
+                                      value={this.state.hour}
+                                      className="tsd2"
+                                      onChange={this.hourInputChange}
                                     // readonly
-                                  />
-                                  <br />
-                                  <img
-                                    src={ImageName.IMAGE_NAME.B_ARROW}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.hourChangeUp}
-                                  />
-                                </small>
-                              </span>
-                              <span className="t2">
-                                <small>
-                                  <img
-                                    src={ImageName.IMAGE_NAME.U_IMG}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.minChange}
-                                  />
-                                  <br />
-                                  <input
-                                    type="text"
-                                    placeholder=""
-                                    value={this.state.min}
-                                    className="tsd2"
-                                    onChange={this.minInputChange}
+                                    />
+                                    <br />
+                                    <img
+                                      src={ImageName.IMAGE_NAME.B_ARROW}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.hourChangeUp}
+                                    />
+                                  </small>
+                                </span>
+                                <span className="t2">
+                                  <small>
+                                    <img
+                                      src={ImageName.IMAGE_NAME.U_IMG}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.minChange}
+                                    />
+                                    <br />
+                                    <input
+                                      type="text"
+                                      placeholder=""
+                                      value={this.state.min}
+                                      className="tsd2"
+                                      onChange={this.minInputChange}
                                     // readonly
-                                  />
-                                  <br />
-                                  <img
-                                    src={ImageName.IMAGE_NAME.B_ARROW}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.minChangeUp}
-                                  />
-                                </small>
-                              </span>
-                              <span className="t3" style={{ marginLeft: "2%" }}>
-                                <small>
-                                  <img
-                                    src={ImageName.IMAGE_NAME.U_IMG}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.ampmChange}
-                                  />
-                                  <br />
-                                  <input
-                                    type="text"
-                                    placeholder=""
-                                    value={this.state.ampm}
-                                    className="tsd2"
-                                    readonly
-                                  />
-                                  <br />
-                                  <img
-                                    src={ImageName.IMAGE_NAME.B_ARROW}
-                                    alt=""
-                                    style={{ cursor: "pointer" }}
-                                    onClick={this.ampmChange}
-                                  />
-                                </small>
-                              </span>
+                                    />
+                                    <br />
+                                    <img
+                                      src={ImageName.IMAGE_NAME.B_ARROW}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.minChangeUp}
+                                    />
+                                  </small>
+                                </span>
+                                <span className="t3" style={{ marginLeft: "2%" }}>
+                                  <small>
+                                    <img
+                                      src={ImageName.IMAGE_NAME.U_IMG}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.ampmChange}
+                                    />
+                                    <br />
+                                    <input
+                                      type="text"
+                                      placeholder=""
+                                      value={this.state.ampm}
+                                      className="tsd2"
+                                      readonly
+                                    />
+                                    <br />
+                                    <img
+                                      src={ImageName.IMAGE_NAME.B_ARROW}
+                                      alt=""
+                                      style={{ cursor: "pointer" }}
+                                      onClick={this.ampmChange}
+                                    />
+                                  </small>
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                          <div
-                            className="web-form-bx selct"
-                            hidden={
-                              this.state.isSelected == "true" ? false : true
-                            }
-                          >
-                            <div className="frm-label lblSize">Notes</div>
                             <div
-                              className="form-input-fields"
-                              style={{ marginBottom: "20px" }}
+                              className="web-form-bx selct"
+                              hidden={
+                                this.state.isSelected == "true" ? false : true
+                              }
                             >
-                              <textarea
-                                value={this.state.rescheduleNote}
-                                placeholder=""
-                                className="in-textarea msg min table-style"
-                                onChange={this.onRescheduleNote}
-                                style={{ resize: "none" }}
-                              ></textarea>
+                              <div className="frm-label lblSize">Notes</div>
+                              <div
+                                className="form-input-fields"
+                                style={{ marginBottom: "20px" }}
+                              >
+                                <textarea
+                                  value={this.state.rescheduleNote}
+                                  placeholder=""
+                                  className="in-textarea msg min table-style"
+                                  onChange={this.onRescheduleNote}
+                                  style={{ resize: "none" }}
+                                ></textarea>
+                              </div>
                             </div>
-                          </div>
-                          </React.Fragment>: <React.Fragment>
-                            
-                            </React.Fragment>}
-                          
+                          </React.Fragment> : <React.Fragment>
+
+                          </React.Fragment>}
+
                         </div>
                       </div>
                     </div>

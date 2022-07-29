@@ -90,5 +90,56 @@ export const COMMON = Object.freeze({
       "subTask": []
     }
   ],
-  
+  CLIENT_JOB_STATUS: [
+    {
+      label: "Requested",
+      value: "0",
+    },
+    {
+      label: "Quote Received",
+      value: "1",
+    },
+    {
+      label: "Quote Accepted",
+      value: "2",
+    },
+    {
+      label: "Offer Sent to Interpreter",
+      value: "3",
+    },
+    {
+      label: "Offer Accepted by Interpreter",
+      value: "4",
+    },
+    {
+      label: "Offer Rejected by Interpreter",
+      value: "5",
+    },
+    // {
+    //   label: "Bids Received",
+    //   value: "6",
+    // },
+    {
+      label: "Quote Rejected",
+      value: "7",
+    },
+
+    {
+      label: "Interpreter Assigned",
+      value: "8",
+    },
+    {
+      label: "InProgress",
+      value: "9",
+    },
+    {
+      label: "Completed",
+      value: "10",
+    },
+    {
+      label: "Cancelled",
+      value: "11",
+    },
+  ],
+
 });

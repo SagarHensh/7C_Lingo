@@ -2316,13 +2316,13 @@ export default class InterpretationInvoicePage extends React.Component {
                               ) : data.status === 1 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn sky">
-                                    Verified
+                                    Invoicable
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 2 ? (
                                 <React.Fragment>
                                   <span href="#" className="progress-btn blue">
-                                    Invoice Created
+                                    Invoiced
                                   </span>
                                 </React.Fragment>
                               ) : data.status === 3 ? (
